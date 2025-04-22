@@ -26,7 +26,7 @@ if (!$user_id || !$text) {
 $uploaded_paths = [];
 
 if (!empty($_FILES['images']['name'][0])) {
-    $upload_dir = 'uploads/';
+    $upload_dir = '../../uploads/';
     if (!is_dir($upload_dir)) {
         mkdir($upload_dir, 0777, true);
     }

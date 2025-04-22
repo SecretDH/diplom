@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 22 2025 г., 20:45
+-- Время создания: Апр 22 2025 г., 21:02
 -- Версия сервера: 10.4.32-MariaDB
 -- Версия PHP: 8.2.12
 
@@ -76,7 +76,9 @@ INSERT INTO `forum` (`ID`, `user_id`, `user_name`, `user_login`, `user_avatar`, 
 (17, 1, 'Davit', 'SoloGamer', '../../Avatars/Davit_avatar.jpg\r\n', 'a', '[]', '2025-04-21 23:36:35', 0, 0, 0, 0),
 (18, 1, 'Davit', 'SoloGamer', '../../Avatars/Davit_avatar.jpg\r\n', 'Post Post', '[]', '2025-04-22 15:40:45', 0, 0, 0, 0),
 (19, 1, 'Davit', 'SoloGamer', '../../Avatars/Davit_avatar.jpg\r\n', 'LALALALA\r\n', '[\"uploads\\/1745346748_slide_4_mini.png\"]', '2025-04-22 20:32:28', 0, 0, 0, 0),
-(20, 1, 'Davit', 'SoloGamer', '../../Avatars/Davit_avatar.jpg\r\n', 'I AM A STEEVEEE!!!!', '[\"uploads\\/1745347428_slide_2_mini.png\"]', '2025-04-22 20:43:48', 0, 0, 0, 0);
+(20, 1, 'Davit', 'SoloGamer', '../../Avatars/Davit_avatar.jpg\r\n', 'I AM A STEEVEEE!!!!', '[\"uploads\\/1745347428_slide_2_mini.png\"]', '2025-04-22 20:43:48', 0, 0, 0, 0),
+(21, 1, 'Davit', 'SoloGamer', '../../Avatars/Davit_avatar.jpg\r\n', 'I AM STEEVEE!!', '[\"..\\/..\\/uploads\\/1745348529_slide_2_mini.png\"]', '2025-04-22 21:02:09', 0, 0, 0, 0),
+(22, 1, 'Davit', 'SoloGamer', '../../Avatars/Davit_avatar.jpg\r\n', 'LALALALA', '[\"..\\/..\\/uploads\\/1745348552_slide_5.png\"]', '2025-04-22 21:02:32', 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -144,7 +146,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT для таблицы `forum`
 --
 ALTER TABLE `forum`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
