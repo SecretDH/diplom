@@ -22,7 +22,7 @@
         <div class="add_post_background"></div>
         <div class="add_post_conteiner_center">
             <div class="add_post_conteiner">
-                <img src="Avatars/Davit_avatar.jpg" class="add_post_avatar_img">
+                <img src="../../Avatars/Davit_avatar.jpg" class="add_post_avatar_img">
                 <div class="add_post_div_textare">
                     <textarea class="add_post_textarea" id="autoResize" placeholder="Lets people know your opinion" maxlength="1000"></textarea>
                 </div>
@@ -31,10 +31,10 @@
                     <span> Who can reply </span>
                 </div>
                 <div class="add_post_footer">
-                    <img src="Image/add_post_image.svg" id="add_post_image">
+                    <img src="../../Image/add_post_image.svg" id="add_post_image">
                     <input type="file" id="add_post_image_input" accept="image/*, video/*" multiple style="display: none;">
 
-                    <img src="Image/add_post_gif.svg" id="add_post_gif">
+                    <img src="../../Image/add_post_gif.svg" id="add_post_gif">
                     <input type="file" id="add_post_gif_input" accept="image/gif" multiple style="display: none;">
 
                     <div class="upload_post">

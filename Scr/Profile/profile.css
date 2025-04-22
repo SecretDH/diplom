@@ -10,17 +10,17 @@ html, body {
 
 @font-face {
 	font-family: Peace Sans;
-	src: url(Font/ofont.ru_Peace.ttf);
+	src: url(../../Font/ofont.ru_Peace.ttf);
 }
 
 @font-face {
 	font-family: Intro;
-	src: url(Font/SCP_Font.otf);
+	src: url(../../Font/SCP_Font.otf);
 }
 
 @font-face {
 	font-family: Helvetica;
-	src: url(Font/helveticaneueltstd_blk.otf);
+	src: url(../../Font/helveticaneueltstd_blk.otf);
 }
 
 

@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/db.php';
+require __DIR__ . '../../db.php';
 
 $sql = "SELECT * FROM forum ORDER BY post_date DESC";
 $result = mysqli_query($conn, $sql);
@@ -26,7 +26,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     
     echo '<span class="dot"></span>';
     echo '<h3 class="upload_data">' . date('M d', strtotime($row['post_date'])) . '</h3>';
-    echo '<img src="Image/union.svg">';
+    echo '<img src="../../Image/union.svg">';
     echo '</div>';
 
     echo '<span class="post_text_invisible">' . nl2br(htmlspecialchars($row['post_text'])) . '</span>';
@@ -38,12 +38,12 @@ while ($row = mysqli_fetch_assoc($result)) {
     }
 
     echo '<div class="post_stat">';
-    echo '<div class="stat" id="comment_stat"><img src="Image/comment.svg"><span>' . $row['post_comment'] . '</span></div>';
-    echo '<div class="stat" id="like_stat"><img src="Image/like.svg"><span>' . $row['post_like'] . '</span></div>';
-    echo '<div class="stat" id="repost_stat"><img src="Image/repost.svg"><span>' . $row['post_retweet'] . '</span></div>';
-    echo '<div class="stat" id="view_stat"><img src="Image/view.svg"><span>' . $row['post_view'] . '</span></div>';
-    echo '<div class="stat" id="save_stat"><img src="Image/save.svg"></div>';
-    echo '<div class="stat" id="share_stat"><img src="Image/share.svg"></div>';
+    echo '<div class="stat" id="comment_stat"><img src="../../Image/comment.svg"><span>' . $row['post_comment'] . '</span></div>';
+    echo '<div class="stat" id="like_stat"><img src="../../Image/like.svg"><span>' . $row['post_like'] . '</span></div>';
+    echo '<div class="stat" id="repost_stat"><img src="../../Image/repost.svg"><span>' . $row['post_retweet'] . '</span></div>';
+    echo '<div class="stat" id="view_stat"><img src="../../Image/view.svg"><span>' . $row['post_view'] . '</span></div>';
+    echo '<div class="stat" id="save_stat"><img src="../../Image/save.svg"></div>';
+    echo '<div class="stat" id="share_stat"><img src="../../Image/share.svg"></div>';
     echo '</div>';
 
     echo '</div>'; // .content_block

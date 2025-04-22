@@ -42,13 +42,13 @@
     <div class="background_color"></div>
     <div class="background"></div>
     <header>
-        <a href="home.php"><p class="close-iframe">&#8592 Return </p></a>
+        <a href="../Home/home.php"><p class="close-iframe">&#8592 Return </p></a>
     </header>
 
     <div class="login-outline">
             <div class="title">
                 <div class="login_logo">
-                    <img src="Image/logo.png">
+                    <img src="../../Image/logo.png">
                     <h1> ASTRALIKS </h1>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                 </form>
             </div>
             <div class="circles">
-                <img src="Image/circles.svg">
+                <img src="../../Image/circles.svg">
             </div>
         </div>
 
@@ -92,7 +92,7 @@
                 </form>
             </div>
             <div class="circles">
-                <img src="Image/circles.svg">
+                <img src="../../Image/circles.svg">
             </div>
         </div>
 
@@ -129,7 +129,7 @@
             if (data.status === "success") {
                 localStorage.setItem('token', data.token);
                 console.log("Токен сохранён, перенаправляю...");
-                window.location.href = 'profile.php';
+                window.location.href = '../Profile/profile.php';
             } else {
                 alert(data.message || 'Ошибка сервера');
             }

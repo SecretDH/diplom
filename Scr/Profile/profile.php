@@ -8,16 +8,16 @@
     <link rel="stylesheet" type="text/css" href="profile.css">
 </head>
 <body>
-    <?php include 'navbar.php'; ?>
+    <?php include '../navbar.php'; ?>
 
     <div class="profile_info">
         <div>
-            <img src="Avatars/Davit_avatar.jpg" class="profile_img" id="avatar-img">
+            <img src="../../Avatars/Davit_avatar.jpg" class="profile_img" id="avatar-img">
         </div>
         <div>
             <div style="display: flex;">
                 <div class="user_info">
-                    <p class="user_name" id="username-display">Loading...</p> <!-- Изменено -->
+                    <p class="user_name" id="username-display">Loading...</p>
                     <p class="user_login" id="login-display">Loading...</p>
                 </div>
                 <div class="edit">
@@ -88,7 +88,7 @@
                 console.log('Интерфейс обновлен!', decoded);
             } catch (e) {
                 console.error('Ошибка обновления интерфейса:', e);
-                window.location.href = 'home.php';
+                window.location.href = '../Home/home.php';
             }
         }
 
@@ -96,12 +96,12 @@
         async function refreshTokenData() {
             const token = localStorage.getItem('token');
             if (!token) { 
-                window.location.href = 'home.php'; 
+                window.location.href = '../Home/home.php'; 
                 return;
             }
             
             try {
-                const response = await fetch(`refresh-token.php?token=${encodeURIComponent(token)}`);
+                const response = await fetch(`../refresh-token.php?token=${encodeURIComponent(token)}`);
                 const result = await response.json();
                 
                 if (result.status === 'success') {
@@ -110,6 +110,7 @@
                     console.log('Данные успешно обновлены!');
                 }
             } catch (error) {
+                console.log(token);
                 console.error('Ошибка обновления:', error);
             }
         }

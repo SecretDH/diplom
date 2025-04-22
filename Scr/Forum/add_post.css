@@ -14,22 +14,22 @@ a {
 
 @font-face {
     font-family: Peace Sans;
-    src: url(Font/ofont.ru_Peace.ttf);
+    src: url(../../Font/ofont.ru_Peace.ttf);
 }
 
 @font-face {
     font-family: Intro;
-    src: url(Font/SCP_Font.otf);
+    src: url(../../Font/SCP_Font.otf);
 }
 
 @font-face {
     font-family: Helvetica;
-    src: url(Font/helveticaneueltstd_blk.otf);
+    src: url(../../Font/helveticaneueltstd_blk.otf);
 }
 
 @font-face {
     font-family: Din_next;
-    src: url(Font/DIN_Next_LT_Arabic_Light.ttf);
+    src: url(../../Font/DIN_Next_LT_Arabic_Light.ttf);
 }
 
 .add_post_background {

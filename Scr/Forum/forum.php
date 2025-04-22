@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,7 +25,7 @@
                 iframe.allowTransparency = "true";
                 iframe.id = "SDKiframe";
                 iframe.style = "background: transparent; opacity: 1; position: fixed; left: 0; top: 0; z-index: 9999;";
-                
+
                 // HTML контент внутри iframe
                 iframe.src = "add_post.php";
 
@@ -43,15 +44,16 @@
         });
     </script>
 </head>
+
 <body>
-    <?php include 'navbar.php'; ?>
+    <?php include '../navbar.php'; ?>
     <div class="title">
         <h1> Forum </h1>
     </div>
     <div class="conteiner">
         <div class="post_button">
             <div class="add_post">
-                <img src="Image/add.svg">
+                <img src="../../Image/add.svg">
                 <span> Post</span>
             </div>
         </div>
@@ -60,7 +62,7 @@
         </div>
 
         <div class="search_bar">
-            <input type="txt" name="search" id="search" placeholder="Search" autocomplete="off" >
+            <input type="txt" name="search" id="search" placeholder="Search" autocomplete="off">
         </div>
     </div>
 
@@ -71,7 +73,7 @@
             const postText = post.querySelector('.post_text');
             const toggleBtn = post.querySelector('.read-more');
             let isExpanded = false;
-    
+
             function updateText() {
                 if (fullText.length <= maxLength) {
                     postText.textContent = fullText;
@@ -82,14 +84,15 @@
                     toggleBtn.style.display = 'inline-block';
                 }
             }
-    
+
             toggleBtn.addEventListener('click', () => {
                 isExpanded = !isExpanded;
                 updateText();
             });
-    
+
             updateText();
         });
     </script>
 </body>
+
 </html>

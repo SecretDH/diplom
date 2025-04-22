@@ -1,17 +1,17 @@
 
 <div class="nav_bar_navbar">
-    <img src="Image/logo.png" class="nav_logo_navbar">
+    <img src="../../Image/logo.png" class="nav_logo_navbar">
     <p class="nav_logo_text_navbar">ASTRALIKS</p>
 
     <div class="nav-button_navbar">
         <div class="button_navbar">
-            <a href="home.php"><p class="button-text_navbar"> Home </p></a>
+            <a href="../Home/home.php"><p class="button-text_navbar"> Home </p></a>
         </div>
         <div class="button_navbar">
             <a href="#"><p class="button-text_navbar"> Live Room </p></a>
         </div>
         <div class="button_navbar">
-            <a href="forum.php"><p class="button-text_navbar"> Forum </p></a>
+            <a href="../Forum/forum.php"><p class="button-text_navbar"> Forum </p></a>
         </div>
         <div class="button_navbar">
             <a href="#"><p class="button-text_navbar"> Shop </p></a>
@@ -27,10 +27,10 @@
     <div class="navbar_left_space"></div>
 
     <div class="avatar_navbar">
-        <img src="Avatars/Davit_avatar.jpg" class="avatar_img_navbar" id="avatar_navbar">
+        <img src="../../Avatars/Davit_avatar.jpg" class="avatar_img_navbar" id="avatar_navbar">
     </div>
 
-    <a href="register.html">
+    <a href="../Regestration/register.html">
         <div class="reg_button_navbar">
             <p> Log in / Sing up </p>
         </div>
@@ -38,17 +38,17 @@
 
     <nav class="burger-menu_navbar" id="burgerMenu_navbar">
         <ul class="menu-list_navbar">
-            <li id="premium_button_navbar"><a href="#"> <img src="Image/premium.svg" id="premium_img_navbar"> </a></li>
-            <li id="buy_premium_navbar"><a href="#"> <div class="buy_premium_navbar"> <img src="Image/logo_black.svg"> <p> Buy Premium </p> </div> </a></li>
-            <li id="burger_button_navbar"><a href="profile.php"> <div class="burger_button_navbar"> <img src="Image/bell.svg"> Profile </div> </a></li>
-            <li id="burger_button_navbar"><a href="#"> <div class="burger_button_navbar"> <img src="Image/bell.svg"> Notification </div> </a></li>
-            <li id="burger_button_navbar"><a href="#"> <div class="burger_button_navbar"> <img src="Image/message_circle.svg"> Comments </div></a></li>
-            <li id="burger_button_navbar"><a href="#"> <div class="burger_button_navbar"> <img src="Image/mail.svg"> Personal message </div></a></li>
-            <li id="burger_button_navbar"><a href="#"> <div class="burger_button_navbar"> <img src="Image/rotate_story.svg"> Story </div></a></li>
-            <li id="burger_button_navbar"><a href="#"> <div class="burger_button_navbar"> <img src="Image/friends.svg"> Friends </div></a></li>
-            <li id="burger_button_navbar"><a href="#"> <div class="burger_button_navbar"> <img src="Image/star.svg"> Favorites </div></a></li>
-            <li id="burger_button_navbar"><a href="#"> <div class="burger_button_navbar"> <img src="Image/settings.svg"> Settings </div></a></li>
-            <li id="burger_button_navbar"><a href="#" id="log_out_navbar"> <div class="burger_button_navbar"> <img src="Image/log_out.svg"> Log out </div></a></li>
+            <li id="premium_button_navbar"><a href="#"> <img src="../../Image/premium.svg" id="premium_img_navbar"> </a></li>
+            <li id="buy_premium_navbar"><a href="#"> <div class="buy_premium_navbar"> <img src="../../Image/logo_black.svg"> <p> Buy Premium </p> </div> </a></li>
+            <li id="burger_button_navbar"><a href="../Profile/profile.php"> <div class="burger_button_navbar"> <img src="../../Image/bell.svg"> Profile </div> </a></li>
+            <li id="burger_button_navbar"><a href="#"> <div class="burger_button_navbar"> <img src="../../Image/bell.svg"> Notification </div> </a></li>
+            <li id="burger_button_navbar"><a href="#"> <div class="burger_button_navbar"> <img src="../../Image/message_circle.svg"> Comments </div></a></li>
+            <li id="burger_button_navbar"><a href="#"> <div class="burger_button_navbar"> <img src="../../Image/mail.svg"> Personal message </div></a></li>
+            <li id="burger_button_navbar"><a href="#"> <div class="burger_button_navbar"> <img src="../../Image/rotate_story.svg"> Story </div></a></li>
+            <li id="burger_button_navbar"><a href="#"> <div class="burger_button_navbar"> <img src="../../Image/friends.svg"> Friends </div></a></li>
+            <li id="burger_button_navbar"><a href="#"> <div class="burger_button_navbar"> <img src="../../Image/star.svg"> Favorites </div></a></li>
+            <li id="burger_button_navbar"><a href="#"> <div class="burger_button_navbar"> <img src="../../Image/settings.svg"> Settings </div></a></li>
+            <li id="burger_button_navbar"><a href="#" id="log_out_navbar"> <div class="burger_button_navbar"> <img src="../../Image/log_out.svg"> Log out </div></a></li>
         </ul>
     </nav>
 </div>
@@ -69,17 +69,17 @@
     
     @font-face {
         font-family: Peace Sans;
-        src: url(Font/ofont.ru_Peace.ttf);
+        src: url(../../Font/ofont.ru_Peace.ttf);
     }
     
     @font-face {
         font-family: Intro;
-        src: url(Font/SCP_Font.otf);
+        src: url(../../Font/SCP_Font.otf);
     }
     
     @font-face {
         font-family: Helvetica;
-        src: url(Font/helveticaneueltstd_blk.otf);
+        src: url(../../Font/helveticaneueltstd_blk.otf);
     }
     
     .nav_bar_navbar {
@@ -324,7 +324,7 @@
         localStorage.removeItem('token');
         
         // 2. Перенаправляем на страницу входа
-        window.location.href = 'home.php';
+        window.location.href = '../Home/home.php';
         
         // 3. Опционально: можно добавить подтверждение
         // if (!confirm('Вы уверены, что хотите выйти?')) return;

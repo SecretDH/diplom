@@ -9,11 +9,11 @@
     
 </head>
 <body>
-    <?php include 'navbar.php'; ?>
+    <?php include '../navbar.php'; ?>
 
     <div class="background_image">
         <div class="background_image_blur"></div>
-        <img src="Sliders/slide_1.png" id="slider_background_image">
+        <img src="../../Sliders/slide_1.png" id="slider_background_image">
     </div>
     <div class="slider-container" id="slider">
         
@@ -21,7 +21,7 @@
             <!-- Твои слайды -->
             <div class="slide" >
                 <div class="slide_img" id="1">
-                    <img src="Sliders/slide_1_mini.png" draggable="false">
+                    <img src="../../Sliders/slide_1_mini.png" draggable="false">
                     <div class="slide_description">
                         <h1> Wanda Vision </h1>
                         <h2> Wanda and Vision are newlyweds living in the idyllic town of Westview. At first, their lives seem perfect, but they gradually realize that this is not the case. </h2>
@@ -30,7 +30,7 @@
             </div>
             <div class="slide" >
                 <div class="slide_img" id="2">
-                    <img src="Sliders/slide_2_mini.png" draggable="false">
+                    <img src="../../Sliders/slide_2_mini.png" draggable="false">
                     <div class="slide_description">
                         <h1> Ant-Man Wasp <br> Quantamania </h1>
                         <h2> Scott Lang and Hope Van Dyne are dragged into the Quantum Realm, along with Hope's parents and Scott's daughter Cassie. Together they must find a way to escape, but what secrets  is Hope's mother hiding? And who is the mysterious Kang? </h2>
@@ -39,7 +39,7 @@
             </div>
             <div class="slide" >
                 <div class="slide_img" id="3">
-                    <img src="Sliders/slide_3_mini.png" draggable="false">
+                    <img src="../../Sliders/slide_3_mini.png" draggable="false">
                     <div class="slide_description">
                         <h1> Agata All Along </h1>
                         <h2> A spell-bound Agatha Harkness regains freedom thanks to a teen's help. Intrigued by his plea, she embarks on the Witches' Road trials to reclaim her powers and discover the teen's motivations. </h2>
@@ -48,7 +48,7 @@
             </div>
             <div class="slide" >
                 <div class="slide_img" id="4">
-                    <img src="Sliders/slide_4_mini.png" draggable="false">
+                    <img src="../../Sliders/slide_4_mini.png" draggable="false">
                     <div class="slide_description">
                         <h1> Thunderbolts </h1>
                         <h2> After finding themselves ensnared in a death trap, an unconventional team of antiheroes must embark on a dangerous mission that will force them to confront the darkest corners of their pasts. </h2>
@@ -57,7 +57,7 @@
             </div>
             <div class="slide" >
                 <div class="slide_img" id="5">
-                    <img src="Sliders/slide_5_mini.png" draggable="false">
+                    <img src="../../Sliders/slide_5_mini.png" draggable="false">
                     <div class="slide_description">
                         <h1> Capitan America <br> Brave New World </h1>
                         <h2> Sam Wilson, the new Captain America, finds himself in the middle of an international incident and must discover the motive behind a nefarious global plan. </h2>
@@ -66,7 +66,7 @@
             </div>
             <div class="slide" >
                 <div class="slide_img" id="6">
-                    <img src="Sliders/slide_6_mini.png" draggable="false">
+                    <img src="../../Sliders/slide_6_mini.png" draggable="false">
                     <div class="slide_description">
                         <h1> Moonknigh </h1>
                         <h2> Steven Grant discovers he's been granted the powers of an Egyptian moon god. But he soon finds out that these newfound powers can be both a blessing and a curse to his troubled life. </h2>
@@ -75,7 +75,7 @@
             </div>
             <div class="slide" >
                 <div class="slide_img" id="7">
-                    <img src="Sliders/slide_7_mini.png" draggable="false">
+                    <img src="../../Sliders/slide_7_mini.png" draggable="false">
                     <div class="slide_description">
                         <h1> She-Hulk </h1>
                         <h2> Jennifer Walters navigates the complicated life of a single, 30-something attorney who also happens to be a green 6-foot-7-inch superpowered Hulk. </h2>
@@ -84,7 +84,7 @@
             </div>
             <div class="slide" >
                 <div class="slide_img" id="8">
-                    <img src="Sliders/slide_8_mini.png" draggable="false">
+                    <img src="../../Sliders/slide_8_mini.png" draggable="false">
                     <div class="slide_description">
                         <h1> Secret Invasion </h1>
                         <h2> Fury and Talos try to stop the Skrulls who have infiltrated the highest spheres of the Marvel Universe. </h2>
@@ -93,7 +93,7 @@
             </div>
             <div class="slide" >
                 <div class="slide_img" id="9">
-                    <img src="Sliders/slide_9_mini.png" draggable="false">
+                    <img src="../../Sliders/slide_9_mini.png" draggable="false">
                     <div class="slide_description">
                         <h1> Loki </h1>
                         <h2> The mercurial villain Loki resumes his role as the God of Mischief in a new series that takes place after the events of “Avengers: Endgame.” </h2>
@@ -102,7 +102,7 @@
             </div>
             <div class="slide" >
                 <div class="slide_img" id="10">
-                    <img src="Sliders/slide_10_mini.png" draggable="false">
+                    <img src="../../Sliders/slide_10_mini.png" draggable="false">
                     <div class="slide_description">
                         <h1> Avengers: <br> EndGame </h1>
                         <h2> After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe. </h2>
@@ -111,7 +111,7 @@
             </div>
             <div class="slide" >
                 <div class="slide_img" id="11">
-                    <img src="Sliders/slide_11_mini.png" draggable="false">
+                    <img src="../../Sliders/slide_11_mini.png" draggable="false">
                     <div class="slide_description">
                         <h1> The Amazing Spider-Man </h1>
                         <h2> After Peter Parker is bitten by a genetically altered spider, he gains newfound, spider-like powers and ventures out to save the city from the machinations of a mysterious reptilian foe. </h2>
@@ -120,7 +120,7 @@
             </div>
             <div class="slide" >
                 <div class="slide_img" id="12">
-                    <img src="Sliders/slide_12_mini.png" draggable="false">
+                    <img src="../../Sliders/slide_12_mini.png" draggable="false">
                     <div class="slide_description">
                         <h1> The Amazing Spider-Man 2 </h1>
                         <h2> When New York is put under siege by Oscorp, it is up to Spider-Man to save the city he swore to protect as well as his loved ones. </h2>
@@ -141,11 +141,11 @@
                 <div class="second_slide" >
                     <div class="second_slide_content" id="1">
                         <div class="second_slide_sender"> 
-                            <img src="Image/doggy.svg">
+                            <img src="../../Image/doggy.svg">
                             <span> 101SoloGamer101 </span>
                         </div>
                         <div class="second_slide_retweet"> 
-                            <img src="Image/retweet.svg">
+                            <img src="../../Image/retweet.svg">
                         </div>
                         <p class="second_slide_content_messege">
                             Everything moves, everything changes, yet it all feels the same. We think something matters, but soon we forget. Maybe it wasn’t worth worrying about after all.
@@ -158,11 +158,11 @@
                 <div class="second_slide" >
                     <div class="second_slide_content" id="2">
                         <div class="second_slide_sender"> 
-                            <img src="Image/doggy.svg">
+                            <img src="../../Image/doggy.svg">
                             <span> GigaNiga </span>
                         </div>
                         <div class="second_slide_retweet"> 
-                            <img src="Image/retweet.svg">
+                            <img src="../../Image/retweet.svg">
                         </div>
                         <p class="second_slide_content_messege">
                             Everything moves, everything changes, yet it all feels the same. We think something matters, but soon we forget. Maybe it wasn’t worth worrying about after all.
@@ -175,11 +175,11 @@
                 <div class="second_slide" >
                     <div class="second_slide_content" id="3">
                         <div class="second_slide_sender"> 
-                            <img src="Image/doggy.svg">
+                            <img src="../../Image/doggy.svg">
                             <span> NotYourBussines </span>
                         </div>
                         <div class="second_slide_retweet"> 
-                            <img src="Image/retweet.svg">
+                            <img src="../../Image/retweet.svg">
                         </div>
                         <p class="second_slide_content_messege">
                             Everything moves, everything changes, yet it all feels the same. We think something matters, but soon we forget. Maybe it wasn’t worth worrying about after all.
@@ -192,11 +192,11 @@
                 <div class="second_slide" >
                     <div class="second_slide_content" id="4">
                         <div class="second_slide_sender"> 
-                            <img src="Image/doggy.svg">
+                            <img src="../../Image/doggy.svg">
                             <span> Tralaleo_Tralala </span>
                         </div>
                         <div class="second_slide_retweet"> 
-                            <img src="Image/retweet.svg">
+                            <img src="../../Image/retweet.svg">
                         </div>
                         <p class="second_slide_content_messege">
                             Everything moves, everything changes, yet it all feels the same. We think something matters, but soon we forget. Maybe it wasn’t worth worrying about after all.
@@ -209,11 +209,11 @@
                 <div class="second_slide" >
                     <div class="second_slide_content" id="5">
                         <div class="second_slide_sender"> 
-                            <img src="Image/doggy.svg">
+                            <img src="../../Image/doggy.svg">
                             <span> Bombordino_Crocodilo </span>
                         </div>
                         <div class="second_slide_retweet"> 
-                            <img src="Image/retweet.svg">
+                            <img src="../../Image/retweet.svg">
                         </div>
                         <p class="second_slide_content_messege">
                             Everything moves, everything changes, yet it all feels the same. We think something matters, but soon we forget. Maybe it wasn’t worth worrying about after all.
@@ -321,7 +321,7 @@
         slide.classList.add('active');
 
         // Устанавливаем новое изображение фона
-        document.getElementById('slider_background_image').src = 'Sliders/slide_' + slide.id + '.png';
+        document.getElementById('slider_background_image').src = '../../Sliders/slide_' + slide.id + '.png';
     });
   </script>
 

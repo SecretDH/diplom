@@ -34,24 +34,24 @@ html {
 
 @font-face {
 	font-family: Peace Sans;
-	src: url(Font/ofont.ru_Peace.ttf);
+	src: url(../../Font/ofont.ru_Peace.ttf);
 }
 
 @font-face {
 	font-family: Intro;
-	src: url(Font/SCP_Font.otf);
+	src: url(../../Font/SCP_Font.otf);
 }
 
 @font-face {
     font-family: Helvetica;
-    src: url(Font/helveticaneueltstd_blk.otf);
+    src: url(../../Font/helveticaneueltstd_blk.otf);
 }
 
 .background {
     position: absolute;
     width: 100%;
     height: 100vh;
-    background-image: url(Image/register_background.png);
+    background-image: url(../../Image/register_background.png);
     background-repeat: no-repeat;
     background-size: 100%;
     opacity: 0.2;
