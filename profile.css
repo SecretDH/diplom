@@ -1,0 +1,160 @@
+/* 1vh = 12.9px */
+
+html, body {
+	margin: 0; 
+	height: 100%; 
+	overflow: hidden;
+    user-select: none;
+	background-color: #0E091D;
+}
+
+@font-face {
+	font-family: Peace Sans;
+	src: url(Font/ofont.ru_Peace.ttf);
+}
+
+@font-face {
+	font-family: Intro;
+	src: url(Font/SCP_Font.otf);
+}
+
+@font-face {
+	font-family: Helvetica;
+	src: url(Font/helveticaneueltstd_blk.otf);
+}
+
+
+p {
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+.nav_bar {
+	display: flex;
+	width: 100%;
+	height: 105px;
+}
+
+.nav_logo {
+	height: 75px;
+	margin-left: 40px;
+	margin-top: 30px;
+}
+
+.nav_logo_text {
+	font-family: Helvetica;
+	font-size: 24px;
+	color: #FFFFFF;
+	margin-top: 47px;
+	margin-left: 13px;
+}
+
+.nav-button {
+	display: flex;
+	margin: auto;
+}
+
+.button {
+	margin-right: 40px;
+	margin-left: 40px;
+}
+
+.button-text {
+	font-family: Helvetica;
+	color: #FFFFFF;
+	font-size: 20px;
+}
+
+.avatar {
+	margin: auto;
+	margin-left: 0;
+	margin-right: 40px;
+}
+
+.avatar_img {
+	margin: auto;
+	height: 52px;
+	border-radius: 50%;
+	border: 1.5px solid #FFFFFF;
+}
+
+.profile_info {
+	display: flex;
+	width: 100%;
+	height: 500px;
+	padding-top: 118px;
+	padding-left: 380px;
+	padding-right: 380px;
+}
+
+.profile_img {
+	margin: auto;
+	height: 290px;
+	border-radius: 50%;
+}
+
+.user_info {
+	margin-left: 20px;
+}
+
+.user_name {
+	font-family: Helvetica;
+	color: #FFFFFF;
+	font-size: 72px;
+	margin-top: 15px;
+}
+
+.user_login {
+	font-family: Helvetica;
+	color: #FFFFFF;
+	font-size: 22px;
+	margin-top: 5px;
+	opacity: 50%;
+}
+
+.edit {
+	margin-left: 30px;
+	margin-top: 30px;
+	width: 340px;
+	height: 64px;
+	background-color: #FFFFFF;
+	border-radius: 20px;
+	text-align: center;
+}
+
+.edit p {
+	margin-top: 18px;
+	font-family: Helvetica;
+	font-size: 24px;
+	color: #0E091D;
+}
+
+.user_stats {
+	display: flex;
+	margin-top: 50px;
+	margin-left: 20px;
+	height: 50px;
+}
+
+.stat {
+	display: flex;
+	margin-right: 30px;
+}
+
+.big_text {
+	font-family: Helvetica;
+	color: #FFFFFF;
+	font-size: 44px;
+	margin-right: 5px;
+}
+
+.mini_text {
+	font-family: Helvetica;
+	color: #FFFFFF;
+	font-size: 20px;
+	opacity: 50%;
+	margin-top: 22px;
+}

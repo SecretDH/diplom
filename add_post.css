@@ -1,0 +1,187 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+p, h1, h2, h3 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: Peace Sans;
+    src: url(Font/ofont.ru_Peace.ttf);
+}
+
+@font-face {
+    font-family: Intro;
+    src: url(Font/SCP_Font.otf);
+}
+
+@font-face {
+    font-family: Helvetica;
+    src: url(Font/helveticaneueltstd_blk.otf);
+}
+
+@font-face {
+    font-family: Din_next;
+    src: url(Font/DIN_Next_LT_Arabic_Light.ttf);
+}
+
+.add_post_background {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: #434343;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.add_post_conteiner_center {
+    position: relative;
+    width: 1000px;
+    margin:auto;
+    background-color: #0E091D;
+    z-index: 2;
+}
+
+.add_post_conteiner {
+    position: absolute;
+    width: 100%;
+    min-height: 400px;
+    margin-top: 50px;
+    background-color: #0E091D;
+    border-radius: 20px;
+}
+
+.add_post_avatar_img {
+    position: absolute;
+    height: 78px;
+    margin-left: 25px;
+    margin-top: 95px;
+    border-radius: 50%;
+}
+
+.add_post_textarea {
+    width: 840px;
+    margin-left: 125px;
+    margin-top: 90px;
+    margin-bottom: 50px;
+    min-height: 120px;
+    font-size: 32px;
+    color: #FFFFFF;
+    background-color: #0E091D;
+    resize: none;
+    border: none;
+    outline: none;
+    font-family: Din_next;
+}
+
+/* width */
+.add_post_textarea::-webkit-scrollbar {
+    width: 15px;
+}
+
+/* Track */
+.add_post_textarea::-webkit-scrollbar-track {
+    background: #0E091D;
+}
+
+/* Handle */
+.add_post_textarea::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #241A43;
+}
+
+/* Handle on hover */
+.add_post_textarea::-webkit-scrollbar-thumb:hover {
+    background: #4D1E96;
+}
+
+#add_post_preview_container {
+    margin-left: 25px;
+    margin-right: 35px;
+    margin-top: 10px; 
+    display: flex; 
+    gap: 10px; 
+    flex-wrap: nowrap;
+    overflow-x: auto;         /* Добавляем горизонтальный скролл */
+    max-width: 100%;          /* Ограничиваем ширину контейнера */
+    margin-bottom: 10px;
+}
+
+/* width */
+#add_post_preview_container::-webkit-scrollbar {
+    width: 15px;
+}
+
+/* Track */
+#add_post_preview_container::-webkit-scrollbar-track {
+    background: #0E091D;
+}
+
+/* Handle */
+#add_post_preview_container::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #241A43;
+}
+
+/* Handle on hover */
+#add_post_preview_container::-webkit-scrollbar-thumb:hover {
+    background: #4D1E96;
+}
+
+.add_post_reply_access {
+    width: 100%;
+    height: 35px;
+    margin-bottom: 100px;
+}
+
+.add_post_reply_access span {
+    cursor: pointer;
+    color: #0A7AFB;
+    font-family: Din_next;
+    font-size: 20px;
+    margin-left: 25px;
+}
+
+
+.add_post_footer {
+    position: absolute;
+    display: flex;
+    width: 940px;
+    height: 80px;
+    margin-left: 25px;
+    bottom: 0;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.5);
+}
+
+.add_post_footer img {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.upload_post {
+    cursor: pointer;
+    margin: auto;
+    margin-left: 730px;
+    width: 110px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.upload_post span {
+    font-family: Helvetica;
+    font-size: 19px;
+    color: #0E091D;
+}
