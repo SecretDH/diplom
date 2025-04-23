@@ -70,6 +70,7 @@
         const maxLength = 300; // Типичное ограничение твиттера
         document.querySelectorAll('.content_block').forEach((post, index) => {
             const fullText = post.querySelector('.post_text_invisible').textContent;
+            post.querySelector('.post_text_invisible').textContent = '';
             const postText = post.querySelector('.post_text');
             const toggleBtn = post.querySelector('.read-more');
             let isExpanded = false;
@@ -91,6 +92,32 @@
             });
 
             updateText();
+        });
+    </script>
+    <script>
+        document.querySelectorAll('.content_block').forEach((post, index) => {
+            const combtn = post.querySelector('#comment_stat');
+
+            combtn.addEventListener('click', () => {
+                const forum_block = document.querySelector('.forum_feed');
+                document.querySelectorAll('.content_block').forEach((block) => {
+                    block.classList.add('hidden'); // Делаем элементы невидимыми
+                });
+                const postId = post.getAttribute('data-post-id'); // Получаем ID поста
+                const iframe = document.createElement('iframe');
+                document.body.classList.add('noscroll');
+                iframe.display = "block";
+                iframe.height = "100%";
+                iframe.width = "47.7%";
+                iframe.frameBorder = "0";
+                iframe.scrolling = "yes";
+                iframe.allowTransparency = "true";
+                iframe.id = "SDKiframe";
+                iframe.style = "background: transparent; opacity: 1; position: fixed; left: 0; top: 0; z-index: 999; margin-left: 25.85%";
+                iframe.src = `comment.php?post_id=${postId}`; // Передаем ID поста в URL
+
+                forum_block.appendChild(iframe);
+            });
         });
     </script>
 </body>

@@ -129,6 +129,8 @@
                 // Только gif-файлы
                 if (file.type === 'image/gif') {
                     addPreview(file);
+                } else {
+                    alert('Пожалуйста, выберите только GIF-файлы.');
                 }
             }
         });
@@ -137,6 +139,7 @@
         document.querySelector('.upload_post').addEventListener('click', async () => {
             const text = document.querySelector('.add_post_textarea').value;
             const images = document.querySelector('#add_post_image_input').files;
+            const gif = document.querySelector('#add_post_gif_input').files;
 
             // Получаем токен из localStorage
             const token = localStorage.getItem('token');
@@ -173,6 +176,10 @@
             for (let i = 0; i < images.length; i++) {
                 formData.append('images[]', images[i]);
             }
+            for (let i = 0; i < gif.length; i++) {
+                formData.append('images[]', gif[i]);
+            }
+            
             console.log("Token:", token);
 
             const response = await fetch('upload_post.php', {
@@ -190,8 +197,15 @@
                 console.error("Ошибка разбора JSON:", err);
             }
 
-            if (error_text = 'Пост успешно добавлен!') {
-                window.location.href = 'forum.php';
+            try {
+                const result = JSON.parse(error_text); // Парсим JSON
+                if (result.status === "success" && result.message === "Пост успешно добавлен!") {
+                    window.location.reload(); // Перезагружаем страницу
+                } else {
+                    console.log(result); // Логируем результат, если статус не "success"
+                }
+            } catch (err) {
+                console.error("Ошибка разбора JSON:", err);
             }
         });
     </script>

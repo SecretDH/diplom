@@ -31,12 +31,21 @@ if (!empty($_FILES['images']['name'][0])) {
         mkdir($upload_dir, 0777, true);
     }
 
-    foreach ($_FILES['images']['tmp_name'] as $index => $tmp_name) {
-        $filename = basename($_FILES['images']['name'][$index]);
-        $target_path = $upload_dir . time() . '_' . $filename;
+    // Разрешенные MIME-типы
+    $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
 
-        if (move_uploaded_file($tmp_name, $target_path)) {
-            $uploaded_paths[] = $target_path;
+    foreach ($_FILES['images']['tmp_name'] as $index => $tmp_name) {
+        $file_type = mime_content_type($tmp_name); // Определяем MIME-тип файла
+        if (in_array($file_type, $allowed_types)) {
+            $filename = basename($_FILES['images']['name'][$index]);
+            $target_path = $upload_dir . time() . '_' . $filename;
+
+            if (move_uploaded_file($tmp_name, $target_path)) {
+                $uploaded_paths[] = $target_path;
+            }
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Недопустимый тип файла: ' . $file_type]);
+            exit;
         }
     }
 }

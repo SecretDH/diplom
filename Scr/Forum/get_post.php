@@ -13,7 +13,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     $images = json_decode($row['post_image'], true);
     $main_image = !empty($images) ? $images[0] : '';
 
-    echo '<div class="content_block">';
+    echo '<div class="content_block" data-post-id="' . htmlspecialchars($row['ID']) . '">';
     echo '<img src="' . htmlspecialchars($row['user_avatar']) . '" class="avatar_img">';
     
     echo '<div class="user_info">';
@@ -30,7 +30,8 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '</div>';
 
     echo '<span class="post_text_invisible">' . nl2br(htmlspecialchars($row['post_text'])) . '</span>';
-    echo '<div class="post_text"></div>';
+    echo '<div class="post_text">';
+    echo '</div>';
     echo '<span class="read-more" style="display: none;">Show more</span>';
 
     if ($main_image) {
@@ -45,7 +46,6 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '<div class="stat" id="save_stat"><img src="../../Image/save.svg"></div>';
     echo '<div class="stat" id="share_stat"><img src="../../Image/share.svg"></div>';
     echo '</div>';
-
     echo '</div>'; // .content_block
 }
 ?>

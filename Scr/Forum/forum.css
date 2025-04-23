@@ -67,10 +67,11 @@ a {
 }
 
 .title h1 {
+    position: fixed;
 	margin-top: 60px;
-	margin-left: 40px;
+    margin-left: 40px;
 	font-family: Helvetica;
-	font-size: 96px;
+	font-size: 7.3vh;
 	color: #F4F4F2;
 }
 
@@ -87,72 +88,21 @@ a {
 }
 
 .add_post {
-	cursor: pointer;
-	margin: auto;
-	width: 400px;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	background-color: #FFFFFF;
-	border-radius: 20px;
-	text-align: center;
+    position: fixed;
+    margin-left: 40px;
+    cursor: pointer;
+    width: 23.5%;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    text-align: center;
 }
 
 .add_post span {
 	font-family: Helvetica;
-	font-size: 40px;
+	font-size: 3vh;
 	color: #0E091D;
-}
-
-.add_post_conteiner {
-    position: absolute;
-    width: 100%;
-    min-height: 400px;
-    margin-top: 190px;
-    background-color: #0E091D;
-    border-radius: 20px;
-}
-
-.add_post_avatar_img {
-    position: absolute;
-    height: 78px;
-    margin-left: 25px;
-    margin-top: 95px;
-    border-radius: 50%;
-    border: 1.5px solid #FFFFFF;
-}
-
-.add_post_textarea {
-    width: 840px;
-    margin-left: 125px;
-    margin-top: 110px;
-    margin-bottom: 100px;
-    min-height: 120px;
-    font-size: 32px;
-    color: #FFFFFF;
-    background-color: #0E091D;
-    resize: none;
-    border: none;
-    outline: none;
-    font-family: Din_next;
-}
-
-.add_post_footer {
-    position: absolute;
-    display: flex;
-    width: 940px;
-    height: 80px;
-    margin-left: 25px;
-    bottom: 0;
-    border-top: 1.5px solid rgba(255, 255, 255, 0.5);
-}
-
-.add_post_footer img {
-    width: 40px;
-    margin-right: 20px;
-}
-
-#add_post_map_pin {
-    width: 33px;
 }
 
 /*  POST END  */
@@ -174,6 +124,10 @@ a {
 	padding-right: 40px;
 	padding-bottom: 60px;
 	padding-top: 40px;
+}
+
+.content_block.hidden {
+	display: none;
 }
 
 .avatar_img {
@@ -241,11 +195,14 @@ a {
 }
 
 .post_text {
-	white-space: pre-line; /* сохраняет переносы строк */
-	font-family: Din_next;
-	font-size: 18px;
-	color: #FFFFFF;
+	width: 100%;
 	margin-bottom: 30px;
+    min-height: 50px;
+	font-size: 18px;
+    color: #FFFFFF;
+    font-family: Din_next;
+	word-wrap: break-word; /* принудительный перенос слов */
+    overflow-wrap: break-word; /* альтернативный вариант для более широкой поддержки */
 }
 
 .read-more {
@@ -258,16 +215,12 @@ a {
 	font-size: 18px;
 }
 
-
-
-
-
 .content_image {
 	margin-top: 10px;
 	margin-bottom: 40px;
 	width: 100%;
     border-radius: 20px;
-    border: 1.5px solid #FFFFFF;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
 }
 
 .post_stat {
@@ -315,14 +268,16 @@ a {
 /*  SEARCH START  */
 
 .search_bar {
+    position: fixed;
+    margin-left: 74%;
 	width: 26%;
 	height: 200px;
 	text-align: center;
 }
 
 #search {
-    width: 440px;
-    height: 70px;
+    width: 93%;
+    height: 5.8vh;
     border-radius: 25px;
     border: 2px solid #FFFFFF;
 	background-color: #0E091D;
