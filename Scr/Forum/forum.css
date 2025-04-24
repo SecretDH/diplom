@@ -264,6 +264,14 @@ a {
 	margin-left: 18px;
 }
 
+.liked {
+	opacity: 1;
+}
+
+.liked:hover {
+	opacity: 0.5;
+}
+
 /*  FORUM END  */
 /*  SEARCH START  */
 

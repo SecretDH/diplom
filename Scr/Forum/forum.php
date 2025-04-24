@@ -43,6 +43,32 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const token = localStorage.getItem('token'); // Получаем токен из localStorage
+
+            if (!token) {
+                alert("Пользователь не авторизован.");
+                return;
+            }
+
+            // Декодируем токен и получаем user_id
+            let user_id;
+            try {
+                const payload = JSON.parse(atob(token.split('.')[1]));
+                user_id = payload.user_id;
+            } catch (e) {
+                console.error("Ошибка декодирования токена:", e);
+                alert("Недействительный токен.");
+                return;
+            }
+
+            // Добавляем user_id в URL
+            const url = new URL(window.location.href);
+            url.searchParams.set('user_id', user_id);
+            window.history.replaceState({}, '', url);
+        });
+    </script>
 </head>
 
 <body>
@@ -58,7 +84,16 @@
             </div>
         </div>
         <div class="forum_feed">
-            <?php include 'get_post.php'; ?>
+        <?php
+            $user_id = $_GET['user_id'] ?? null;
+
+            if (!$user_id) {
+                die("ID пользователя не передан.");
+            }
+
+            // Передаем user_id в get_post.php
+            include 'get_post.php';
+        ?>
         </div>
 
         <div class="search_bar">
@@ -95,31 +130,121 @@
         });
     </script>
     <script>
-        document.querySelectorAll('.content_block').forEach((post, index) => {
-            const combtn = post.querySelector('#comment_stat');
+document.querySelectorAll('.content_block').forEach((post) => {
+    const combtn = post.querySelector('#comment_stat');
 
-            combtn.addEventListener('click', () => {
-                const forum_block = document.querySelector('.forum_feed');
-                document.querySelectorAll('.content_block').forEach((block) => {
-                    block.classList.add('hidden'); // Делаем элементы невидимыми
-                });
-                const postId = post.getAttribute('data-post-id'); // Получаем ID поста
-                const iframe = document.createElement('iframe');
-                document.body.classList.add('noscroll');
-                iframe.display = "block";
-                iframe.height = "100%";
-                iframe.width = "47.7%";
-                iframe.frameBorder = "0";
-                iframe.scrolling = "yes";
-                iframe.allowTransparency = "true";
-                iframe.id = "SDKiframe";
-                iframe.style = "background: transparent; opacity: 1; position: fixed; left: 0; top: 0; z-index: 999; margin-left: 25.85%";
-                iframe.src = `comment.php?post_id=${postId}`; // Передаем ID поста в URL
-
-                forum_block.appendChild(iframe);
-            });
+    combtn.addEventListener('click', () => {
+        const forum_block = document.querySelector('.forum_feed');
+        document.querySelectorAll('.content_block').forEach((block) => {
+            block.classList.add('hidden'); // Делаем элементы невидимыми
         });
+
+        const postId = post.getAttribute('data-post-id'); // Получаем ID поста
+        const urlParams = new URLSearchParams(window.location.search); // Получаем параметры из URL
+        const userId = urlParams.get('user_id'); // Извлекаем user_id
+
+        if (!postId || !userId) {
+            console.error("Post ID или User ID не найден.");
+            return;
+        }
+
+        console.log("Post ID:", postId, "User ID:", userId); // Логируем ID поста и пользователя
+
+        const iframe = document.createElement('iframe');
+        iframe.style.display = "block";
+        iframe.height = "100%";
+        iframe.width = "47.7%";
+        iframe.frameBorder = "0";
+        iframe.scrolling = "yes";
+        iframe.allowTransparency = "true";
+        iframe.id = "SDKiframe";
+        iframe.style = "background: transparent; opacity: 1; position: fixed; left: 0; top: 0; z-index: 999; margin-left: 25.85%";
+
+        // Передаем post_id и user_id в URL iframe
+        iframe.src = `comment.php?post_id=${postId}&user_id=${userId}`;
+
+        forum_block.appendChild(iframe);
+    });
+});
     </script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.like_stat').forEach(div => {
+        // Проверяем, стоит ли лайк, и добавляем класс "liked"
+        if (div.getAttribute('data-liked') === 'true') {
+            div.classList.add('liked');
+        }
+
+        div.addEventListener('click', function () {
+            // Получаем токен из localStorage
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert("Пользователь не авторизован.");
+                return;
+            }
+
+            // Декодируем токен
+            let user_id;
+            try {
+                const payload = JSON.parse(atob(token.split('.')[1]));
+                user_id = payload.user_id;
+            } catch (e) {
+                console.error("Ошибка декодирования токена:", e);
+                alert("Недействительный токен.");
+                return;
+            }
+
+            // Получаем ID поста из атрибута data-post-id
+            const post_id = div.getAttribute('data-post-id');
+            if (!post_id) {
+                console.error("ID поста не найден.");
+                return;
+            }
+
+            // Отправляем запрос на сервер
+            fetch('like_toggle.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    'user_id': user_id,
+                    'post_id': post_id
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json(); // Ожидаем JSON-ответ
+            })
+            .then(jsonData => {
+                if (jsonData.status === 'success') {
+                    console.log(`Действие: ${jsonData.action}, Новое количество лайков: ${jsonData.new_like_count}`);
+                    
+                    // Обновляем количество лайков в реальном времени
+                    const likeCountElement = div.querySelector('#like_count_' + post_id);
+                    if (likeCountElement) {
+                        likeCountElement.textContent = jsonData.new_like_count;
+                    }
+
+                    // Меняем класс "liked" в зависимости от действия
+                    if (jsonData.action === 'liked') {
+                        div.classList.add('liked');
+                        div.setAttribute('data-liked', 'true');
+                    } else if (jsonData.action === 'unliked') {
+                        div.classList.remove('liked');
+                        div.setAttribute('data-liked', 'false');
+                    }
+                } else {
+                    console.error('Ошибка:', jsonData.error);
+                }
+            })
+            .catch(error => console.error('Ошибка:', error));
+        });
+    });
+});
+</script>
 </body>
 
 </html>
