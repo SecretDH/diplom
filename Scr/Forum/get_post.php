@@ -7,7 +7,25 @@ if (!isset($user_id)) {
 }
 
 // Ваш код для получения постов
-$sql = "SELECT * FROM forum ORDER BY post_date DESC";
+$sql = "
+    SELECT 
+        forum.*, 
+        COALESCE(forum_likes_view.like_count, 0) AS like_count,
+        COALESCE(forum_views_view.view_count, 0) AS view_count,
+        users.name AS user_name,
+        users.login AS user_login,
+        users.avatar AS user_avatar
+    FROM 
+        forum
+    LEFT JOIN 
+        forum_likes_view ON forum.ID = forum_likes_view.post_id
+    LEFT JOIN 
+        forum_views_view ON forum.ID = forum_views_view.post_id
+    LEFT JOIN 
+        users ON forum.user_id = users.ID
+    ORDER BY 
+        forum.post_date DESC
+";
 $result = mysqli_query($conn, $sql);
 
 if (!$result) {
@@ -17,6 +35,9 @@ if (!$result) {
 
 while ($row = mysqli_fetch_assoc($result)) {
     $postId = htmlspecialchars($row['ID']);
+    $userName = htmlspecialchars($row['user_name']);
+    $userLogin = htmlspecialchars($row['user_login']);
+    $userAvatar = htmlspecialchars($row['user_avatar']);
     $images = json_decode($row['post_image'], true);
     $main_image = !empty($images) ? $images[0] : '';
 
@@ -27,10 +48,10 @@ while ($row = mysqli_fetch_assoc($result)) {
     $isLiked = $stmt->fetch() ? 'true' : 'false';
 
     echo '<div class="content_block" data-post-id="' . $postId . '" data-liked="' . $isLiked . '">';
-    echo '<img src="' . htmlspecialchars($row['user_avatar']) . '" class="avatar_img">';
+    echo '<img src="' . $userAvatar . '" class="avatar_img">';
     echo '<div class="user_info">';
-    echo '<h1 class="user_name">' . htmlspecialchars($row['user_name']) . '</h1>';
-    echo '<h2 class="user_login">@' . htmlspecialchars($row['user_login'] ?: $row['user_name']) . '</h2>';
+    echo '<h1 class="user_name">' . ($userName ?: $userLogin) . '</h1>';
+    echo '<h2 class="user_login">@' . $userLogin . '</h2>';
     echo '<span class="dot"></span>';
     echo '<h3 class="upload_data">' . date('M d', strtotime($row['post_date'])) . '</h3>';
     echo '<img src="../../Image/union.svg">';
@@ -47,10 +68,10 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '<div class="stat" id="comment_stat"><img src="../../Image/comment.svg"><span>' . $row['post_comment'] . '</span></div>';
     echo '<div class="stat like_stat" data-post-id="' . $postId . '" data-liked="' . $isLiked . '">';
     echo '<img src="../../Image/like.svg">';
-    echo '<span id="like_count_' . $postId . '">' . $row['post_like'] . '</span>';
+    echo '<span id="like_count_' . $postId . '">' . $row['like_count'] . '</span>';
     echo '</div>';
     echo '<div class="stat" id="repost_stat"><img src="../../Image/repost.svg"><span>' . $row['post_retweet'] . '</span></div>';
-    echo '<div class="stat" id="view_stat"><img src="../../Image/view.svg"><span>' . $row['post_view'] . '</span></div>';
+    echo '<div class="stat" id="view_stat"><img src="../../Image/view.svg"><span>' . $row['view_count'] . '</span></div>';
     echo '<div class="stat" id="save_stat"><img src="../../Image/save.svg"></div>';
     echo '<div class="stat" id="share_stat"><img src="../../Image/share.svg"></div>';
     echo '</div>'; // .post_stat

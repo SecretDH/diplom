@@ -17,38 +17,38 @@ if (!isset($pdo)) {
 
 // Получаем данные из POST-запроса
 $user_id = $_POST['user_id'] ?? null;
-$post_id = $_POST['post_id'] ?? null;
+$comment_id = $_POST['comment_id'] ?? null;
 
 // Проверяем наличие необходимых данных
-if (!$user_id || !$post_id) {
+if (!$user_id || !$comment_id) {
     http_response_code(400); // Неверный запрос
-    echo json_encode(['error' => 'User ID and Post ID are required']);
+    echo json_encode(['error' => 'User ID and Comment ID are required']);
     exit;
 }
 
 try {
     // Проверяем, был ли лайк
-    $stmt = $pdo->prepare("SELECT id FROM likes WHERE user_id = ? AND post_id = ?");
-    $stmt->execute([$user_id, $post_id]);
+    $stmt = $pdo->prepare("SELECT id FROM comments_likes WHERE user_id = ? AND comment_id = ?");
+    $stmt->execute([$user_id, $comment_id]);
     $alreadyLiked = $stmt->fetch();
 
     if ($alreadyLiked) {
         // Если лайк уже был, удаляем его
-        $stmt = $pdo->prepare("DELETE FROM likes WHERE user_id = ? AND post_id = ?");
-        $stmt->execute([$user_id, $post_id]);
+        $stmt = $pdo->prepare("DELETE FROM comments_likes WHERE user_id = ? AND comment_id = ?");
+        $stmt->execute([$user_id, $comment_id]);
 
         $action = 'unliked'; // Действие: убран лайк
     } else {
         // Если лайка не было, добавляем его
-        $stmt = $pdo->prepare("INSERT INTO likes (user_id, post_id) VALUES (?, ?)");
-        $stmt->execute([$user_id, $post_id]);
+        $stmt = $pdo->prepare("INSERT INTO comments_likes (user_id, comment_id) VALUES (?, ?)");
+        $stmt->execute([$user_id, $comment_id]);
 
         $action = 'liked'; // Действие: поставлен лайк
     }
 
-    // Подсчитываем текущее количество лайков для поста
-    $stmt = $pdo->prepare("SELECT COUNT(*) AS like_count FROM likes WHERE post_id = ?");
-    $stmt->execute([$post_id]);
+    // Подсчитываем текущее количество лайков для комментария
+    $stmt = $pdo->prepare("SELECT COUNT(*) AS like_count FROM comments_likes WHERE comment_id = ?");
+    $stmt->execute([$comment_id]);
     $updated = $stmt->fetch();
 
     echo json_encode([

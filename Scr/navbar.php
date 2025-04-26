@@ -5,22 +5,22 @@
 
     <div class="nav-button_navbar">
         <div class="button_navbar">
-            <a href="../Home/home.php"><p class="button-text_navbar"> Home </p></a>
+            <a href="../Home/home.php"><p class="button-text_navbar"> HOME </p></a>
         </div>
         <div class="button_navbar">
-            <a href="#"><p class="button-text_navbar"> Live Room </p></a>
+            <a href="#"><p class="button-text_navbar"> LIVE ROOM </p></a>
         </div>
         <div class="button_navbar">
-            <a href="../Forum/forum.php"><p class="button-text_navbar"> Forum </p></a>
+            <a href="../Forum/forum.php" id="navbar_forum_scr"><p class="button-text_navbar"> FORUM </p></a>
         </div>
         <div class="button_navbar">
-            <a href="#"><p class="button-text_navbar"> Shop </p></a>
+            <a href="#"><p class="button-text_navbar"> SHOP </p></a>
         </div>
         <div class="button_navbar">
-            <a href="#"><p class="button-text_navbar"> Library </p></a>
+            <a href="#"><p class="button-text_navbar"> LIBRARY </p></a>
         </div>
         <div class="button_navbar">
-            <a href="#"><p class="button-text_navbar"> Comic </p></a>
+            <a href="#"><p class="button-text_navbar"> COMIC </p></a>
         </div>
     </div>
 
@@ -124,7 +124,7 @@
     .button-text_navbar {
         font-family: Helvetica;
         color: #FFFFFF;
-        font-size: 1.1vw;
+        font-size: 1vw;
     }
     
     .avatar_navbar {
@@ -333,4 +333,68 @@
 
     // Вешаем обработчик на кнопку
     document.getElementById('log_out_navbar').addEventListener('click', logout);
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const avatarElement = document.getElementById('avatar_navbar');
+    const regButtonNavbar = document.querySelector('.reg_button_navbar');
+    const profileNavbar = document.querySelector('.avatar_navbar');
+
+    // Проверяем наличие токена
+    const token = localStorage.getItem('token');
+    if (token) {
+        try {
+            // Декодируем токен (предполагается, что это JWT)
+            const payload = JSON.parse(atob(token.split('.')[1]));
+
+            // Получаем URL аватара из токена
+            const avatarUrl = payload.avatar;
+
+            // Устанавливаем аватар в навбаре
+            if (avatarUrl) {
+                avatarElement.src = avatarUrl;
+            }
+
+            // Показываем профиль и скрываем кнопку регистрации
+            profileNavbar.classList.add('active');
+            regButtonNavbar.classList.remove('active');
+        } catch (error) {
+            console.error('Ошибка декодирования токена:', error);
+        }
+    } else {
+        // Если токена нет, показываем кнопку регистрации и скрываем профиль
+        regButtonNavbar.classList.add('active');
+        profileNavbar.classList.remove('active');
+    }
+});
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const token = localStorage.getItem('token'); // Получаем токен из localStorage
+
+        if (!token) {
+            console.warn("Пользователь не авторизован.");
+            return;
+        }
+
+        // Декодируем токен и получаем user_id
+        let user_id;
+        try {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            user_id = payload.user_id;
+        } catch (e) {
+            console.error("Ошибка декодирования токена:", e);
+            return;
+        }
+
+        // Добавляем user_id в URL ссылки
+        const forumLink = document.getElementById('navbar_forum_scr');
+        if (forumLink) {
+            const url = new URL(forumLink.href, window.location.origin);
+            url.searchParams.set('user_id', user_id);
+            forumLink.href = url.toString();
+        }
+    });
 </script>

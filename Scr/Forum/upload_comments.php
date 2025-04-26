@@ -6,15 +6,14 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 header('Content-Type: application/json');
 
+// Получаем данные из POST-запроса
 $text = $_POST['text'] ?? '';
 $user_id = $_POST['user_id'] ?? null;
+$post_id = $_POST['post_id'] ?? null;
 $date = date('Y-m-d H:i:s');
 
-$post_comment = 0;
-$post_retweet = 0;
-
-if (!$user_id || !$text) {
-    echo json_encode(['status' => 'error', 'message' => 'Отсутствует user_id или текст']);
+if (!$user_id || !$post_id || !$text) {
+    echo json_encode(['status' => 'error', 'message' => 'Отсутствует user_id, post_id или текст']);
     exit;
 }
 
@@ -47,16 +46,16 @@ if (!empty($_FILES['images']['name'][0])) {
 
 $image_paths = json_encode($uploaded_paths);
 
-// ✨ Используем mysqli
-$sql = "INSERT INTO forum (user_id, post_text, post_image, post_date, post_comment, post_retweet)
-        VALUES (?, ?, ?, ?, ?, ?)";
+// ✨ Используем mysqli для вставки комментария
+$sql = "INSERT INTO comments (post_id, user_id, comment_text, comment_image, comment_date) 
+        VALUES (?, ?, ?, ?, ?)";
 
 $stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, 'isssii', $user_id, $text, $image_paths, $date, $post_comment, $post_retweet);
+mysqli_stmt_bind_param($stmt, 'iisss', $post_id, $user_id, $text, $image_paths, $date);
 
 if (mysqli_stmt_execute($stmt)) {
-    echo json_encode(['status' => 'success', 'message' => 'Пост успешно добавлен!']);
+    echo json_encode(['status' => 'success', 'message' => 'Комментарий успешно добавлен!']);
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'Ошибка при добавлении поста']);
+    echo json_encode(['status' => 'error', 'message' => 'Ошибка при добавлении комментария']);
 }
 ?>

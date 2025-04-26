@@ -22,7 +22,7 @@
         <div class="add_post_background"></div>
         <div class="add_post_conteiner_center">
             <div class="add_post_conteiner">
-                <img src="../../Avatars/Davit_avatar.jpg" class="add_post_avatar_img">
+                <img src="../../Avatars/Davit_avatar.jpg" class="add_post_avatar_img" id="add_post_avatar_img">
                 <div class="add_post_div_textare">
                     <textarea class="add_post_textarea" id="autoResize" placeholder="Lets people know your opinion" maxlength="1000"></textarea>
                 </div>
@@ -46,6 +46,29 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const avatarElement = document.getElementById('add_post_avatar_img');
+
+        // Проверяем наличие токена
+        const token = localStorage.getItem('token');
+        try {
+            // Декодируем токен (предполагается, что это JWT)
+            const payload = JSON.parse(atob(token.split('.')[1]));
+
+            // Получаем URL аватара из токена
+            const avatarUrl = payload.avatar;
+
+            // Устанавливаем аватар в навбаре
+            if (avatarUrl) {
+                avatarElement.src = avatarUrl;
+            }
+        } catch (error) {
+            console.error('Ошибка декодирования токена:', error);
+        }
+    });
+    </script>
+
+    <script>
         const add_post_textarea = document.getElementById('autoResize');
 
         add_post_textarea.addEventListener('input', () => {
@@ -55,6 +78,7 @@
             }
         });
     </script>
+
     <script>
         const addImageBtn = document.getElementById('add_post_image');
         const addGifBtn = document.getElementById('add_post_gif');
@@ -150,15 +174,9 @@
 
             // Декодируем токен
             let user_id;
-            let user_name;
-            let user_login;
-            let user_avatar;
             try {
                 const payload = JSON.parse(atob(token.split('.')[1]));
                 user_id = payload.user_id;
-                user_name = payload.username;
-                user_login = payload.name;
-                user_avatar = payload.avatar;
             } catch (e) {
                 console.error("Ошибка декодирования токена:", e);
                 alert("Недействительный токен.");
@@ -168,9 +186,6 @@
             const formData = new FormData();
             formData.append('text', text);
             formData.append('user_id', user_id);
-            formData.append('user_name', user_name);
-            formData.append('user_login', user_login); 
-            formData.append('user_avatar', user_avatar);
 
 
             for (let i = 0; i < images.length; i++) {
