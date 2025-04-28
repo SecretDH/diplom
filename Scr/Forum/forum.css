@@ -272,6 +272,14 @@ a {
 	opacity: 0.5;
 }
 
+.reposted {
+	opacity: 1;
+}
+
+.reposted:hover {
+	opacity: 0.5;
+}
+
 /*  FORUM END  */
 /*  SEARCH START  */
 

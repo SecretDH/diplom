@@ -286,6 +286,35 @@
 </style>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const token = localStorage.getItem('token'); // Получаем токен из localStorage
+
+        if (!token) {
+            console.warn("Пользователь не авторизован.");
+            return;
+        }
+
+        // Декодируем токен и получаем user_id
+        let user_id;
+        try {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            user_id = payload.user_id;
+        } catch (e) {
+            console.error("Ошибка декодирования токена:", e);
+            return;
+        }
+
+        // Добавляем user_id в URL ссылки на профиль
+        const profileLink = document.querySelector('a[href="../Profile/profile.php"]');
+        if (profileLink) {
+            const url = new URL(profileLink.href, window.location.origin);
+            url.searchParams.set('user_id', user_id);
+            profileLink.href = url.toString();
+        }
+    });
+</script>
+
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         const avatar = document.getElementById('avatar_navbar');
         const burgerMenu = document.getElementById('burgerMenu_navbar');

@@ -99,102 +99,102 @@
     </div>
 
     <script>
-    async function login() {
-        console.log("Функция login() вызвана"); // Проверка срабатывания
-        
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        
-        console.log("Введённые данные:", {username, password}); // Проверка значений
-
-        try {
-            console.log("Отправка запроса...");
+        async function login() {
+            console.log("Функция login() вызвана"); // Проверка срабатывания
             
-            const response = await fetch('login.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams({
-                    fname: username,
-                    password: password
-                })
-            });
-
-            console.log("Ответ получен, статус:", response.status);
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
             
-            const data = await response.json();
-            console.log("Данные ответа:", data);
+            console.log("Введённые данные:", {username, password}); // Проверка значений
 
-            if (data.status === "success") {
-                localStorage.setItem('token', data.token);
-                console.log("Токен сохранён, перенаправляю...");
-                window.location.href = '../Profile/profile.php';
-            } else {
-                alert(data.message || 'Ошибка сервера');
+            try {
+                console.log("Отправка запроса...");
+                
+                const response = await fetch('login.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        fname: username,
+                        password: password
+                    })
+                });
+
+                console.log("Ответ получен, статус:", response.status);
+                
+                const data = await response.json();
+                console.log("Данные ответа:", data);
+
+                if (data.status === "success") {
+                    localStorage.setItem('token', data.token);
+                    console.log("Токен сохранён, перенаправляю...");
+                    window.location.href = '../Profile/profile.php';
+                } else {
+                    alert(data.message || 'Ошибка сервера');
+                }
+            } catch (error) {
+                console.error("Полная ошибка:", error);
+                alert('Ошибка соединения: ' + error.message);
             }
-        } catch (error) {
-            console.error("Полная ошибка:", error);
-            alert('Ошибка соединения: ' + error.message);
-        }
-    }
-
-    // Функция проверки и декодирования токена
-    function parseJwt(token) {
-        try {
-            const base64Url = token.split('.')[1];
-            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-            }).join(''));
-            return JSON.parse(jsonPayload);
-        } catch (e) {
-            return null;
-        }
-    }
-
-    // Проверка авторизации при загрузке страницы
-    function checkAuth() {
-        const token = localStorage.getItem("token");
-        
-        if (!token) {
-            console.log("Пользователь не авторизован");
-            return;
         }
 
-        const decoded = parseJwt(token);
-        
-        if (!decoded) {
-            console.error("Неверный формат токена");
-            return;
+        // Функция проверки и декодирования токена
+        function parseJwt(token) {
+            try {
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+                return JSON.parse(jsonPayload);
+            } catch (e) {
+                return null;
+            }
         }
 
-        // Проверка срока действия токена
-        if (decoded.exp && Date.now() / 1000 > decoded.exp) {
+        // Проверка авторизации при загрузке страницы
+        function checkAuth() {
+            const token = localStorage.getItem("token");
+            
+            if (!token) {
+                console.log("Пользователь не авторизован");
+                return;
+            }
+
+            const decoded = parseJwt(token);
+            
+            if (!decoded) {
+                console.error("Неверный формат токена");
+                return;
+            }
+
+            // Проверка срока действия токена
+            if (decoded.exp && Date.now() / 1000 > decoded.exp) {
+                localStorage.removeItem("token");
+                console.log("Токен истёк");
+                return;
+            }
+
+            console.log("Текущий пользователь:", decoded.username);
+            
+            // Если пользователь авторизован, можно обновить интерфейс
+            if (decoded.username) {
+                const loginBtn = document.getElementById('login-btn');
+                const profileBtn = document.getElementById('profile-btn');
+                if (loginBtn) loginBtn.style.display = 'none';
+                if (profileBtn) profileBtn.style.display = 'block';
+            }
+        }
+
+        // Функция выхода
+        function logout() {
             localStorage.removeItem("token");
-            console.log("Токен истёк");
-            return;
+            window.location.reload();
         }
 
-        console.log("Текущий пользователь:", decoded.username);
-        
-        // Если пользователь авторизован, можно обновить интерфейс
-        if (decoded.username) {
-            const loginBtn = document.getElementById('login-btn');
-            const profileBtn = document.getElementById('profile-btn');
-            if (loginBtn) loginBtn.style.display = 'none';
-            if (profileBtn) profileBtn.style.display = 'block';
-        }
-    }
-
-    // Функция выхода
-    function logout() {
-        localStorage.removeItem("token");
-        window.location.reload();
-    }
-
-    // Проверяем авторизацию при загрузке страницы
-    document.addEventListener('DOMContentLoaded', checkAuth);
-</script>
+        // Проверяем авторизацию при загрузке страницы
+        document.addEventListener('DOMContentLoaded', checkAuth);
+    </script>
 </body>
 </html>

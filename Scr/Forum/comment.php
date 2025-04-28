@@ -33,6 +33,9 @@ $sql = "
         forum.*, 
         COALESCE(forum_likes_view.like_count, 0) AS like_count,
         COALESCE(forum_views_view.view_count, 0) AS view_count,
+        COALESCE(forum_comments_view.comment_count, 0) AS comment_count,
+        COALESCE(forum_reposts_view.repost_count, 0) AS repost_count,
+        users.ID AS post_user_id,
         users.name AS user_name,
         users.login AS user_login,
         users.avatar AS user_avatar
@@ -44,6 +47,10 @@ $sql = "
         forum_views_view ON forum.ID = forum_views_view.post_id
     LEFT JOIN 
         users ON forum.user_id = users.ID
+    LEFT JOIN 
+        forum_comments_view ON forum.ID = forum_comments_view.post_id
+    LEFT JOIN 
+        forum_reposts_view ON forum.ID = forum_reposts_view.post_id
     WHERE 
         forum.ID = ?
 ";
@@ -67,6 +74,14 @@ $isLiked = $stmt->fetch() ? 'true' : 'false';
 
 // Добавляем информацию о лайке в массив $row
 $row['is_liked'] = $isLiked;
+
+$repostQuery = "SELECT 1 FROM reposts WHERE user_id = ? AND post_id = ?";
+$stmt = $pdo->prepare($repostQuery);
+$stmt->execute([$user_id, $post_id]);
+$isReposted = $stmt->fetch() ? 'true' : 'false';
+
+// Добавляем информацию о лайке в массив $row
+$row['is_reposted'] = $isReposted;
 
 // Получаем данные зарегистрированного пользователя
 $login_user_query = "SELECT avatar AS user_avatar FROM users WHERE ID = ?";
@@ -139,13 +154,21 @@ $main_image = !empty($images) ? $images[0] : '';
         <h3 class="upload_data"><?php echo htmlspecialchars($row['view_count']); ?> Views</h3>
 
         <div class="post_stat">
-            <div class="stat" id="comment_stat"><img src="../../Image/comment.svg"><span><?php echo htmlspecialchars($row['post_comment']); ?></span></div>
+            <div class="stat" id="comment_stat">
+                <img src="../../Image/comment.svg"><span><?php echo htmlspecialchars($row['comment_count']); ?></span>
+            </div>
             <div class="stat like_stat liked" data-post-id="<?php echo htmlspecialchars($row['ID']); ?>" data-liked="<?php echo $row['is_liked']; ?>">
                 <img src="../../Image/like.svg">
                 <span id="like_count_<?php echo htmlspecialchars($row['ID']); ?>"><?php echo htmlspecialchars($row['like_count']); ?></span>
             </div>
-            <div class="stat" id="repost_stat"><img src="../../Image/repost.svg"><span><?php echo htmlspecialchars($row['post_retweet']); ?></span></div>
-            <div class="stat" id="save_stat"><img src="../../Image/save.svg"><span><?php echo htmlspecialchars($row['post_save']); ?></span></div>
+            <div class="stat repost_stat" data-post-id="<?php echo htmlspecialchars($row['ID']); ?>" data-post-user-id="<?php echo htmlspecialchars($row['post_user_id']); ?>" data-reposted="<?php echo $row['is_reposted']; ?>">
+                <img src="../../Image/repost.svg">
+                <span id="repost_count_<?php echo htmlspecialchars($row['ID']); ?>"><?php echo htmlspecialchars($row['repost_count']); ?></span>
+            </div>
+            <div class="stat" id="save_stat">
+                <img src="../../Image/save.svg">
+                <span><?php echo htmlspecialchars($row['post_save']); ?></span>
+            </div>
             <div class="stat" id="share_stat"><img src="../../Image/share.svg"></div>
         </div>
         <div class="add_comment">
@@ -362,83 +385,12 @@ $main_image = !empty($images) ? $images[0] : '';
         });
     </script>
 
-<script>
-    document.querySelector('.add_comment_btn').addEventListener('click', async () => {
-        const text = document.querySelector('.add_comment_textarea').value;
-        const images = document.querySelector('#add_comment_image_input').files;
-        const gif = document.querySelector('#add_comment_gif_input').files;
+    <script>
+        document.querySelector('.add_comment_btn').addEventListener('click', async () => {
+            const text = document.querySelector('.add_comment_textarea').value;
+            const images = document.querySelector('#add_comment_image_input').files;
+            const gif = document.querySelector('#add_comment_gif_input').files;
 
-        // Получаем токен из localStorage
-        const token = localStorage.getItem('token');
-        if (!token) {
-            alert("Пользователь не авторизован.");
-            return;
-        }
-
-        // Декодируем токен
-        let user_id;
-        try {
-            const payload = JSON.parse(atob(token.split('.')[1]));
-            user_id = payload.user_id;
-        } catch (e) {
-            console.error("Ошибка декодирования токена:", e);
-            alert("Недействительный токен.");
-            return;
-        }
-
-        // Получаем ID поста из атрибута data-post-id
-        const post_id = document.querySelector('.comment_block').getAttribute('data-post-id');
-        if (!post_id) {
-            console.error("ID поста не найден.");
-            return;
-        }
-
-        const formData = new FormData();
-        formData.append('text', text);
-        formData.append('user_id', user_id);
-        formData.append('post_id', post_id);
-
-        for (let i = 0; i < images.length; i++) {
-            formData.append('images[]', images[i]);
-        }
-        for (let i = 0; i < gif.length; i++) {
-            formData.append('images[]', gif[i]);
-        }
-
-        try {
-            const response = await fetch('upload_comments.php', {
-                method: 'POST',
-                body: formData
-            });
-
-            const error_text = await response.text(); // Получаем ответ как текст
-            console.log("Raw server response:", error_text);
-
-            try {
-                const result = JSON.parse(error_text); // Парсим JSON
-                if (result.status === "success") {
-                    alert(result.message);
-                    window.location.reload(); // Перезагружаем страницу
-                } else {
-                    console.error("Ошибка:", result.error || "Неизвестная ошибка");
-                }
-            } catch (err) {
-                console.error("Ошибка разбора JSON:", err);
-            }
-        } catch (err) {
-            console.error("Ошибка отправки запроса:", err);
-        }
-    });
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.comment_like_stat').forEach(div => {
-        // Проверяем, стоит ли лайк, и добавляем класс "liked"
-        if (div.getAttribute('data-liked') === 'true') {
-            div.classList.add('liked');
-        }
-
-        div.addEventListener('click', function () {
             // Получаем токен из localStorage
             const token = localStorage.getItem('token');
             if (!token) {
@@ -457,56 +409,221 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            // Получаем ID комментария из атрибута data-comment-id
-            const comment_id = div.getAttribute('data-comment-id');
-            if (!comment_id) {
-                console.error("ID комментария не найден.");
+            // Получаем ID поста из атрибута data-post-id
+            const post_id = document.querySelector('.comment_block').getAttribute('data-post-id');
+            if (!post_id) {
+                console.error("ID поста не найден.");
                 return;
             }
 
-            // Отправляем запрос на сервер
-            fetch('comment_like_toggle.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({
-                    'user_id': user_id,
-                    'comment_id': comment_id
-                })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
+            const formData = new FormData();
+            formData.append('text', text);
+            formData.append('user_id', user_id);
+            formData.append('post_id', post_id);
+
+            for (let i = 0; i < images.length; i++) {
+                formData.append('images[]', images[i]);
+            }
+            for (let i = 0; i < gif.length; i++) {
+                formData.append('images[]', gif[i]);
+            }
+
+            try {
+                const response = await fetch('upload_comments.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const error_text = await response.text(); // Получаем ответ как текст
+                console.log("Raw server response:", error_text);
+
+                try {
+                    const result = JSON.parse(error_text); // Парсим JSON
+                    if (result.status === "success") {
+                        alert(result.message);
+                        window.location.reload(); // Перезагружаем страницу
+                    } else {
+                        console.error("Ошибка:", result.error || "Неизвестная ошибка");
+                    }
+                } catch (err) {
+                    console.error("Ошибка разбора JSON:", err);
                 }
-                return response.json(); // Ожидаем JSON-ответ
-            })
-            .then(jsonData => {
-                if (jsonData.status === 'success') {
-                    console.log(`Действие: ${jsonData.action}, Новое количество лайков: ${jsonData.new_like_count}`);
-                    
-                    // Обновляем количество лайков в реальном времени
-                    const likeCountElement = div.querySelector('#comment_feed_like_count_' + comment_id);
-                    if (likeCountElement) {
-                        likeCountElement.textContent = jsonData.new_like_count;
+            } catch (err) {
+                console.error("Ошибка отправки запроса:", err);
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.comment_like_stat').forEach(div => {
+                // Проверяем, стоит ли лайк, и добавляем класс "liked"
+                if (div.getAttribute('data-liked') === 'true') {
+                    div.classList.add('liked');
+                }
+
+                div.addEventListener('click', function () {
+                    // Получаем токен из localStorage
+                    const token = localStorage.getItem('token');
+                    if (!token) {
+                        alert("Пользователь не авторизован.");
+                        return;
                     }
 
-                    // Меняем класс "liked" в зависимости от действия
-                    if (jsonData.action === 'liked') {
-                        div.classList.add('liked');
-                        div.setAttribute('data-liked', 'true');
-                    } else if (jsonData.action === 'unliked') {
-                        div.classList.remove('liked');
-                        div.setAttribute('data-liked', 'false');
+                    // Декодируем токен
+                    let user_id;
+                    try {
+                        const payload = JSON.parse(atob(token.split('.')[1]));
+                        user_id = payload.user_id;
+                    } catch (e) {
+                        console.error("Ошибка декодирования токена:", e);
+                        alert("Недействительный токен.");
+                        return;
                     }
-                } else {
-                    console.error('Ошибка:', jsonData.error);
-                }
-            })
-            .catch(error => console.error('Ошибка:', error));
+
+                    // Получаем ID комментария из атрибута data-comment-id
+                    const comment_id = div.getAttribute('data-comment-id');
+                    if (!comment_id) {
+                        console.error("ID комментария не найден.");
+                        return;
+                    }
+
+                    // Отправляем запрос на сервер
+                    fetch('comment_like_toggle.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: new URLSearchParams({
+                            'user_id': user_id,
+                            'comment_id': comment_id
+                        })
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+                        return response.json(); // Ожидаем JSON-ответ
+                    })
+                    .then(jsonData => {
+                        if (jsonData.status === 'success') {
+                            console.log(`Действие: ${jsonData.action}, Новое количество лайков: ${jsonData.new_like_count}`);
+                            
+                            // Обновляем количество лайков в реальном времени
+                            const likeCountElement = div.querySelector('#comment_feed_like_count_' + comment_id);
+                            if (likeCountElement) {
+                                likeCountElement.textContent = jsonData.new_like_count;
+                            }
+
+                            // Меняем класс "liked" в зависимости от действия
+                            if (jsonData.action === 'liked') {
+                                div.classList.add('liked');
+                                div.setAttribute('data-liked', 'true');
+                            } else if (jsonData.action === 'unliked') {
+                                div.classList.remove('liked');
+                                div.setAttribute('data-liked', 'false');
+                            }
+                        } else {
+                            console.error('Ошибка:', jsonData.error);
+                        }
+                    })
+                    .catch(error => console.error('Ошибка:', error));
+                });
+            });
         });
-    });
-});
-</script>
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.repost_stat').forEach(div => {
+                // Проверяем, стоит ли репост, и добавляем класс "reposted"
+                if (div.getAttribute('data-reposted') === 'true') {
+                    div.classList.add('reposted');
+                }
+
+                div.addEventListener('click', function () {
+                    // Получаем токен из localStorage
+                    const token = localStorage.getItem('token');
+                    if (!token) {
+                        alert("Пользователь не авторизован.");
+                        return;
+                    }
+
+                    // Декодируем токен
+                    let user_id;
+                    try {
+                        const payload = JSON.parse(atob(token.split('.')[1]));
+                        user_id = payload.user_id;
+                    } catch (e) {
+                        console.error("Ошибка декодирования токена:", e);
+                        alert("Недействительный токен.");
+                        return;
+                    }
+
+                    // Получаем ID поста из атрибута data-post-id
+                    const post_id = div.getAttribute('data-post-id');
+                    if (!post_id) {
+                        console.error("ID поста не найден.");
+                        return;
+                    }
+
+                    const post_user_id = div.getAttribute('data-post-user-id');
+                    if (!post_user_id) {
+                        console.error("ID поста не найден.");
+                        return;
+                    }
+
+                    console.log("user_id:", user_id, "post_user_id:", post_user_id);
+
+                    // Проверяем, не является ли пользователь автором поста
+                    if (parseInt(user_id) !== parseInt(post_user_id)) {
+                        // Отправляем запрос на сервер только если условие не выполнено
+                        fetch('repost_toggle.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            },
+                            body: new URLSearchParams({
+                                'user_id': user_id,
+                                'post_id': post_id
+                            })
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! Status: ${response.status}`);
+                            }
+                            return response.json(); // Ожидаем JSON-ответ
+                        })
+                        .then(jsonData => {
+                            if (jsonData.status === 'success') {
+                                console.log(`Действие: ${jsonData.action}, Новое количество репостов: ${jsonData.new_repost_count}`);
+                                
+                                // Обновляем количество репостов в реальном времени
+                                const repostCountElement = div.querySelector('#repost_count_' + post_id);
+                                if (repostCountElement) {
+                                    repostCountElement.textContent = jsonData.new_repost_count;
+                                }
+
+                                // Меняем класс "reposted" в зависимости от действия
+                                if (jsonData.action === 'reposted') {
+                                    div.classList.add('reposted');
+                                    div.setAttribute('data-reposted', 'true');
+                                } else if (jsonData.action === 'unreposted') {
+                                    div.classList.remove('reposted');
+                                    div.setAttribute('data-reposted', 'false');
+                                }
+                            } else {
+                                console.error('Ошибка:', jsonData.error);
+                            }
+                        })
+                        .catch(error => console.error('Ошибка:', error));
+                    } else {
+                        alert("Вы не можете репостнуть свою собственную публикацию.");
+                        return; // Останавливаем выполнение функции
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

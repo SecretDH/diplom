@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 27 2025 г., 01:24
+-- Время создания: Апр 28 2025 г., 03:46
 -- Версия сервера: 10.4.28-MariaDB
 -- Версия PHP: 8.2.4
 
@@ -64,7 +64,8 @@ CREATE TABLE `comments_likes` (
 
 INSERT INTO `comments_likes` (`id`, `user_id`, `comment_id`, `created_at`) VALUES
 (4, 1, 2, '2025-04-26 23:23:29'),
-(5, 1, 3, '2025-04-26 23:23:56');
+(5, 1, 3, '2025-04-26 23:23:56'),
+(6, 5, 3, '2025-04-28 01:22:35');
 
 -- --------------------------------------------------------
 
@@ -89,8 +90,6 @@ CREATE TABLE `forum` (
   `post_text` varchar(2000) NOT NULL,
   `post_image` varchar(255) NOT NULL,
   `post_date` datetime NOT NULL,
-  `post_comment` int(10) NOT NULL DEFAULT 0,
-  `post_retweet` int(10) NOT NULL DEFAULT 0,
   `post_save` int(10) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -98,26 +97,38 @@ CREATE TABLE `forum` (
 -- Дамп данных таблицы `forum`
 --
 
-INSERT INTO `forum` (`ID`, `user_id`, `post_text`, `post_image`, `post_date`, `post_comment`, `post_retweet`, `post_save`) VALUES
-(4, 1, 'Now i am genius', '[]', '2025-04-21 23:01:45', 0, 0, 0),
-(5, 1, 'I am fucking genius', '[]', '2025-04-21 23:10:27', 0, 0, 0),
-(6, 1, 'Test 3', '[]', '2025-04-21 23:10:47', 0, 0, 0),
-(7, 1, 'Can i get image?', '[\"../../uploads\\/1745269905_slide_1.png\"]', '2025-04-21 23:11:45', 0, 0, 0),
-(8, 1, 'How about more image?', '[\"../../uploads\\/1745269950_slide_1.png\",\"../../uploads\\/1745269950_slide_1_mini.png\",\"../../uploads\\/1745269950_slide_2.png\",\"../../uploads\\/1745269950_slide_2_mini.png\"]', '2025-04-21 23:12:30', 0, 0, 0),
-(10, 5, 'Mega Giga NIIIIIIGGGGGGGAAAAAAA!!!!', '[]', '2025-04-21 23:18:08', 0, 0, 0),
-(11, 1, 'Mega test', '[]', '2025-04-21 23:24:01', 0, 0, 0),
-(12, 1, 'SUCHKA', '[]', '2025-04-21 23:32:37', 0, 0, 0),
-(13, 1, 'SUCHKA', '[]', '2025-04-21 23:32:44', 0, 0, 0),
-(14, 1, 'SUCHKA?', '[]', '2025-04-21 23:33:00', 0, 0, 0),
-(15, 1, 'GAY?', '[]', '2025-04-21 23:33:37', 0, 0, 0),
-(16, 1, 'please', '[]', '2025-04-21 23:35:17', 0, 0, 0),
-(17, 1, 'a', '[]', '2025-04-21 23:36:35', 0, 0, 0),
-(18, 1, 'Post Post', '[]', '2025-04-22 15:40:45', 0, 0, 0),
-(21, 1, 'I AM STEEVEE!!', '[\"..\\/..\\/uploads\\/1745348529_slide_2_mini.png\"]', '2025-04-22 21:02:09', 0, 0, 0),
-(22, 1, 'LALALALA', '[\"..\\/..\\/uploads\\/1745348552_slide_5.png\"]', '2025-04-22 21:02:32', 0, 0, 0),
-(23, 1, 'DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', '[]', '2025-04-23 19:34:07', 0, 0, 0),
-(24, 1, 'Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2', '[]', '2025-04-23 19:36:57', 0, 0, 10),
-(44, 1, 'SOSAT AMERIKA!!!!', '[\"..\\/..\\/uploads\\/1745447619_Frustrated Customer Service GIF.gif\"]', '2025-04-24 00:33:39', 0, 0, 0);
+INSERT INTO `forum` (`ID`, `user_id`, `post_text`, `post_image`, `post_date`, `post_save`) VALUES
+(4, 1, 'Now i am genius', '[]', '2025-04-21 23:01:45', 0),
+(5, 1, 'I am fucking genius', '[]', '2025-04-21 23:10:27', 0),
+(6, 1, 'Test 3', '[]', '2025-04-21 23:10:47', 0),
+(7, 1, 'Can i get image?', '[\"../../uploads\\/1745269905_slide_1.png\"]', '2025-04-21 23:11:45', 0),
+(8, 1, 'How about more image?', '[\"../../uploads\\/1745269950_slide_1.png\",\"../../uploads\\/1745269950_slide_1_mini.png\",\"../../uploads\\/1745269950_slide_2.png\",\"../../uploads\\/1745269950_slide_2_mini.png\"]', '2025-04-21 23:12:30', 0),
+(10, 5, 'Mega Giga NIIIIIIGGGGGGGAAAAAAA!!!!', '[]', '2025-04-21 23:18:08', 0),
+(11, 1, 'Mega test', '[]', '2025-04-21 23:24:01', 0),
+(12, 1, 'SUCHKA', '[]', '2025-04-21 23:32:37', 0),
+(13, 1, 'SUCHKA', '[]', '2025-04-21 23:32:44', 0),
+(14, 1, 'SUCHKA?', '[]', '2025-04-21 23:33:00', 0),
+(15, 1, 'GAY?', '[]', '2025-04-21 23:33:37', 0),
+(16, 1, 'please', '[]', '2025-04-21 23:35:17', 0),
+(17, 1, 'a', '[]', '2025-04-21 23:36:35', 0),
+(18, 1, 'Post Post', '[]', '2025-04-22 15:40:45', 0),
+(21, 1, 'I AM STEEVEE!!', '[\"..\\/..\\/uploads\\/1745348529_slide_2_mini.png\"]', '2025-04-22 21:02:09', 0),
+(22, 1, 'LALALALA', '[\"..\\/..\\/uploads\\/1745348552_slide_5.png\"]', '2025-04-22 21:02:32', 0),
+(23, 1, 'DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', '[]', '2025-04-23 19:34:07', 0),
+(24, 1, 'Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2_Test2', '[]', '2025-04-23 19:36:57', 10),
+(44, 1, 'SOSAT AMERIKA!!!!', '[\"..\\/..\\/uploads\\/1745447619_Frustrated Customer Service GIF.gif\"]', '2025-04-24 00:33:39', 0),
+(47, 5, 'Retweet Testing', '[]', '2025-04-28 01:29:19', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Дублирующая структура для представления `forum_comments_view`
+-- (См. Ниже фактическое представление)
+--
+CREATE TABLE `forum_comments_view` (
+`post_id` int(10) unsigned
+,`comment_count` bigint(21)
+);
 
 -- --------------------------------------------------------
 
@@ -128,6 +139,17 @@ INSERT INTO `forum` (`ID`, `user_id`, `post_text`, `post_image`, `post_date`, `p
 CREATE TABLE `forum_likes_view` (
 `post_id` int(10) unsigned
 ,`like_count` bigint(21)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Дублирующая структура для представления `forum_reposts_view`
+-- (См. Ниже фактическое представление)
+--
+CREATE TABLE `forum_reposts_view` (
+`post_id` int(10) unsigned
+,`repost_count` bigint(21)
 );
 
 -- --------------------------------------------------------
@@ -160,9 +182,32 @@ CREATE TABLE `likes` (
 
 INSERT INTO `likes` (`id`, `user_id`, `post_id`, `created_at`) VALUES
 (25, 1, 23, '2025-04-24 21:23:17'),
-(34, 5, 44, '2025-04-25 23:23:37'),
 (37, 1, 24, '2025-04-25 23:31:06'),
-(43, 1, 44, '2025-04-26 23:21:30');
+(44, 1, 47, '2025-04-27 23:49:51'),
+(45, 1, 44, '2025-04-27 23:53:53'),
+(47, 5, 44, '2025-04-28 01:18:38');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `reposts`
+--
+
+CREATE TABLE `reposts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `post_id` int(10) UNSIGNED NOT NULL,
+  `post_user_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Дамп данных таблицы `reposts`
+--
+
+INSERT INTO `reposts` (`id`, `user_id`, `post_id`, `post_user_id`, `created_at`) VALUES
+(7, 1, 47, 5, '2025-04-27 23:49:55'),
+(36, 5, 44, 1, '2025-04-28 01:44:57');
 
 -- --------------------------------------------------------
 
@@ -210,10 +255,11 @@ CREATE TABLE `views` (
 --
 
 INSERT INTO `views` (`id`, `user_id`, `post_id`, `viewed_at`) VALUES
-(1, 1, 44, '2025-04-26 23:23:48'),
+(1, 1, 44, '2025-04-28 01:39:19'),
 (3, 1, 24, '2025-04-25 22:40:00'),
-(16, 5, 44, '2025-04-25 23:23:31'),
-(153, 1, 22, '2025-04-26 22:31:42');
+(16, 5, 44, '2025-04-28 01:43:15'),
+(153, 1, 22, '2025-04-26 22:31:42'),
+(238, 5, 47, '2025-04-28 01:22:23');
 
 -- --------------------------------------------------------
 
@@ -227,11 +273,29 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Структура для представления `forum_comments_view`
+--
+DROP TABLE IF EXISTS `forum_comments_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `forum_comments_view`  AS SELECT `forum`.`ID` AS `post_id`, count(`comments`.`ID`) AS `comment_count` FROM (`forum` left join `comments` on(`comments`.`post_id` = `forum`.`ID`)) GROUP BY `forum`.`ID` ;
+
+-- --------------------------------------------------------
+
+--
 -- Структура для представления `forum_likes_view`
 --
 DROP TABLE IF EXISTS `forum_likes_view`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `forum_likes_view`  AS SELECT `forum`.`ID` AS `post_id`, count(`likes`.`id`) AS `like_count` FROM (`forum` left join `likes` on(`forum`.`ID` = `likes`.`post_id`)) GROUP BY `forum`.`ID` ;
+
+-- --------------------------------------------------------
+
+--
+-- Структура для представления `forum_reposts_view`
+--
+DROP TABLE IF EXISTS `forum_reposts_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `forum_reposts_view`  AS SELECT `forum`.`ID` AS `post_id`, count(`reposts`.`id`) AS `repost_count` FROM (`forum` left join `reposts` on(`forum`.`ID` = `reposts`.`post_id`)) GROUP BY `forum`.`ID` ;
 
 -- --------------------------------------------------------
 
@@ -277,6 +341,16 @@ ALTER TABLE `likes`
   ADD KEY `idx_user_id` (`user_id`);
 
 --
+-- Индексы таблицы `reposts`
+--
+ALTER TABLE `reposts`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uniq_user_post` (`user_id`,`post_id`),
+  ADD KEY `idx_post_id` (`post_id`),
+  ADD KEY `idx_user_id` (`user_id`),
+  ADD KEY `reposts_ibfk_3` (`post_user_id`);
+
+--
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
@@ -307,19 +381,25 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT для таблицы `comments_likes`
 --
 ALTER TABLE `comments_likes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `forum`
 --
 ALTER TABLE `forum`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT для таблицы `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT для таблицы `reposts`
+--
+ALTER TABLE `reposts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
@@ -331,7 +411,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `views`
 --
 ALTER TABLE `views`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=235;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=296;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -350,6 +430,14 @@ ALTER TABLE `comments_likes`
 ALTER TABLE `likes`
   ADD CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`ID`) ON DELETE CASCADE,
   ADD CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `forum` (`ID`) ON DELETE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `reposts`
+--
+ALTER TABLE `reposts`
+  ADD CONSTRAINT `reposts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`ID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `reposts_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `forum` (`ID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `reposts_ibfk_3` FOREIGN KEY (`post_user_id`) REFERENCES `users` (`ID`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `views`

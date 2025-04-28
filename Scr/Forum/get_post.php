@@ -12,6 +12,9 @@ $sql = "
         forum.*, 
         COALESCE(forum_likes_view.like_count, 0) AS like_count,
         COALESCE(forum_views_view.view_count, 0) AS view_count,
+        COALESCE(forum_comments_view.comment_count, 0) AS comment_count,
+        COALESCE(forum_reposts_view.repost_count, 0) AS repost_count,
+        users.ID AS post_user_id,
         users.name AS user_name,
         users.login AS user_login,
         users.avatar AS user_avatar
@@ -21,6 +24,10 @@ $sql = "
         forum_likes_view ON forum.ID = forum_likes_view.post_id
     LEFT JOIN 
         forum_views_view ON forum.ID = forum_views_view.post_id
+    LEFT JOIN 
+        forum_comments_view ON forum.ID = forum_comments_view.post_id
+    LEFT JOIN 
+        forum_reposts_view ON forum.ID = forum_reposts_view.post_id
     LEFT JOIN 
         users ON forum.user_id = users.ID
     ORDER BY 
@@ -35,6 +42,7 @@ if (!$result) {
 
 while ($row = mysqli_fetch_assoc($result)) {
     $postId = htmlspecialchars($row['ID']);
+    $postUserId = htmlspecialchars($row['post_user_id']);
     $userName = htmlspecialchars($row['user_name']);
     $userLogin = htmlspecialchars($row['user_login']);
     $userAvatar = htmlspecialchars($row['user_avatar']);
@@ -46,6 +54,11 @@ while ($row = mysqli_fetch_assoc($result)) {
     $stmt = $pdo->prepare($likeQuery);
     $stmt->execute([$user_id, $postId]);
     $isLiked = $stmt->fetch() ? 'true' : 'false';
+    
+    $repostQuery = "SELECT 1 FROM reposts WHERE user_id = ? AND post_id = ?";
+    $stmt = $pdo->prepare($repostQuery);
+    $stmt->execute([$user_id, $postId]);
+    $isReposted = $stmt->fetch() ? 'true' : 'false';
 
     echo '<div class="content_block" data-post-id="' . $postId . '" data-liked="' . $isLiked . '">';
     echo '<img src="' . $userAvatar . '" class="avatar_img">';
@@ -65,12 +78,15 @@ while ($row = mysqli_fetch_assoc($result)) {
     }
 
     echo '<div class="post_stat">';
-    echo '<div class="stat" id="comment_stat"><img src="../../Image/comment.svg"><span>' . $row['post_comment'] . '</span></div>';
+    echo '<div class="stat" id="comment_stat"><img src="../../Image/comment.svg"><span>' . $row['comment_count'] . '</span></div>';
     echo '<div class="stat like_stat" data-post-id="' . $postId . '" data-liked="' . $isLiked . '">';
     echo '<img src="../../Image/like.svg">';
     echo '<span id="like_count_' . $postId . '">' . $row['like_count'] . '</span>';
     echo '</div>';
-    echo '<div class="stat" id="repost_stat"><img src="../../Image/repost.svg"><span>' . $row['post_retweet'] . '</span></div>';
+    echo '<div class="stat repost_stat" data-post-id="' . $postId . '" data-post-user-id="' . $postUserId . '" data-reposted="' . $isReposted . '">';
+    echo '<img src="../../Image/repost.svg">';
+    echo '<span id="repost_count_' . $postId . '">' . $row['repost_count'] . '</span>';
+    echo '</div>';
     echo '<div class="stat" id="view_stat"><img src="../../Image/view.svg"><span>' . $row['view_count'] . '</span></div>';
     echo '<div class="stat" id="save_stat"><img src="../../Image/save.svg"></div>';
     echo '<div class="stat" id="share_stat"><img src="../../Image/share.svg"></div>';
