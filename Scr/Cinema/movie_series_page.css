@@ -1,0 +1,518 @@
+html, body {
+	margin: 0;
+	padding: 0;
+    user-select: none;
+	background-color: #0E091D;
+}
+
+body.noscroll {
+	overflow: hidden;
+	padding-right: 15px;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #0E091D;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	background: #241A43;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #4D1E96;
+}
+
+@font-face {
+	font-family: Peace Sans;
+	src: url(../../Font/ofont.ru_Peace.ttf);
+}
+
+@font-face {
+	font-family: Intro;
+	src: url(../../Font/SCP_Font.otf);
+}
+
+@font-face {
+	font-family: Helvetica;
+	src: url(../../Font/helveticaneueltstd_blk.otf);
+}
+
+@font-face {
+	font-family: Din_next;
+	src: url(../../Font/DIN_Next_LT_Arabic_Light.ttf);
+}
+
+
+p, h1, h2, h3 {
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+.page_space{
+    width: 100%;
+    height: 5000px;
+}
+
+.movie_series_page {
+    width: 100%;
+    height: 94vh;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+}
+
+.poster_container {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    transform: translateY(-105px);
+}
+
+.movie_poster {
+    position: absolute;
+    width: 100%;
+    transform: translateY(-105px);
+}
+
+.filtr{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.poster_gradient {
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    bottom: 0px;
+    background: linear-gradient(0deg,rgba(14, 9, 29, 1) 0%, rgba(14, 9, 29, 0) 100%);
+}
+
+.title {
+    margin-top: 300px;
+    margin-left: 40px;
+    font-size: 96px;
+    font-family: Helvetica;
+    color: #FFFFFF;
+
+}
+
+.raiting {
+    margin-top: 10px;
+    margin-left: 40px;
+}
+
+.star {
+    height: 30px;
+    margin-left: 5px;
+}
+
+.watch_btn {
+    width: 260px;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    font-size: 30px;
+    font-family: Helvetica;
+    color: #000000;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+/* Similar movies */
+
+.similar h1 {
+    margin-left: 40px;
+    font-size: 50px;
+    font-family: Helvetica;
+    color: #FFFFFF;
+}
+
+.similar_list {
+    display: flex;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    white-space: nowrap; 
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-left: 30px;
+}
+
+.similar_list::-webkit-scrollbar {
+	display: none; 
+}
+
+.similar_item {
+    flex: 0 0 auto;
+    width: 396px;
+    height: 594px;
+	margin-left: 10px;
+	margin-right: 10px;
+    background-color: #241A43;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.similar_item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(0deg,rgba(0, 0, 0, 1) 8%, rgba(0, 0, 0, 0.50) 90%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    border-radius: 20px;
+}
+
+.similar_item:hover::before {
+    opacity: 1;
+}
+
+.similar_image {
+    position: absolute;
+    height: 100%;
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.series_pin, .series_eye {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: white;
+    width: 35px;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 2;
+}
+
+.series_eye {
+    top: 70px;
+}
+
+.similar_year {
+    position: absolute;
+    bottom: 55px;
+    left: 20px;
+    color: white;
+    font-size: 20px;
+    font-family: Din_next;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 2;
+}
+.similar_duration {
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    color: white;
+    font-size: 20px;
+    font-family: Din_next;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 2;
+}
+
+.similar_item:hover .similar_duration {
+    opacity: 1;
+}
+
+.similar_item:hover .similar_year {
+    opacity: 1;
+}
+
+.similar_item:hover .series_pin {
+    opacity: 1;
+}
+
+.similar_item:hover .series_eye {
+    opacity: 1;
+}
+
+.similar_item:hover .similar_image {
+    opacity: 1;
+    transform: scale(1.2);
+}
+/* Similar movies end */
+/* ACTORS CONTAINER */
+
+.actors_container {
+    width: 95.83%;
+    margin: 0 auto;
+    margin-top: 150px;
+}
+
+.actors_container h1 {
+    font-family: Helvetica;
+    font-size: 64px;
+    color: #F4F4F2;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.actors_list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+}
+
+.actors_list::-webkit-scrollbar {
+    display: none;
+}
+
+.actor_item {
+    flex: 0 0 auto;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.actor_item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    border-radius: 20px;
+}
+
+.actor_item:hover::before {
+    opacity: 1;
+}
+
+.actor_image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.actor_name {
+    position: absolute;
+    left: 30px;
+    bottom: 85px;
+    color: white;
+    font-size: 24px;
+    font-family: Din_next;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 2;
+}
+
+.actor_item:hover .actor_name {
+    opacity: 1;
+}
+
+.actor_statistics {
+    position: absolute;
+    bottom: 50px;
+    left: 30px;
+    color: white;
+    font-size: 20px;
+    font-family: Din_next;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 2;
+}
+
+.actor_item:hover .actor_statistics {
+    opacity: 1;
+}
+
+.actors-scroll-left {
+    position: relative;
+    left: -40px;
+    top: 270px;
+    transform: translateY(-50%);
+    background-color: #4D1E96;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.actors-scroll-right {
+    position: relative;
+    left: 100%;
+    top: -235px;
+    transform: translateY(-50%);
+    background-color: #4D1E96;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.actors-scroll-left {
+    left: -40px;
+}
+
+.actors-scroll-right {
+    left: 100%;
+}
+
+/* ACTORS CONTAINER END*/
+
+.about_rate {
+    display: flex;
+    width: 100%;
+    height: 500px;
+    margin-top: 150px;
+}
+
+.about {
+    width: 55%;
+    height: 200px;
+}
+
+.about h1 {
+    margin-top: 20px;
+    margin-left: 40px;
+    font-size: 50px;
+    font-family: Helvetica;
+    color: #FFFFFF;
+}
+
+.about p {
+    margin-top: 20px;
+    margin-left: 40px;
+    font-size: 18px;
+    font-family: Helvetica;
+    color: #FFFFFF;
+}
+
+.rate {
+    width: 45%;
+}
+
+.rate_item {
+    width: 90%;
+    height: 320px;
+    background-color: #322658;
+    border-radius: 20px;
+    margin: auto;
+}
+
+.rate_info {
+    display: flex;
+}
+
+.rate_star {
+    width: 90px;
+    height: 90px;
+    margin-top: 50px;
+    margin-left: 110px;
+}
+
+.rate_item span {
+    font-size: 130px;
+    font-family: 'Din_next';
+    color: #FFFFFF;
+    margin-left: 20px;
+    margin-top: -30px;
+}
+
+.rate_item h3 {
+    font-size: 36px;
+    font-family: 'Helvetica';
+    color: #FFFFFF;
+    margin-top: 60px;
+    margin-left: 60px;
+}
+
+.rate_item h4 {
+    font-size: 20px;
+    font-family: 'Helvetica';
+    color: #FFFFFF;
+    opacity: 0.5;
+    margin-left: 60px;
+    transform: translateY(-20px);
+}
+
+.rate_btn {
+    width: 92%;
+    height: 50px;
+    margin-left: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    transform: translateY(-10px);
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.rate_btn:hover {
+    background-color: #4D1E96;
+}
+
+.rate_btn span {
+    font-size: 30px;
+    font-family: Helvetica;
+    color: #000000;
+    line-height: 50px;
+    transition: color 0.3s ease;
+}
+
+.rate_btn:hover span {
+    color: #FFFFFF;
+}
