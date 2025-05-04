@@ -8,6 +8,9 @@
             <a href="../Home/home.php"><p class="button-text_navbar"> HOME </p></a>
         </div>
         <div class="button_navbar">
+            <a href="../Cinema/Cinema.php"><p class="button-text_navbar"> CINEMA </p></a>
+        </div>
+        <div class="button_navbar">
             <a href="#"><p class="button-text_navbar"> LIVE ROOM </p></a>
         </div>
         <div class="button_navbar">
@@ -30,7 +33,7 @@
         <img src="../../Avatars/Davit_avatar.jpg" class="avatar_img_navbar" id="avatar_navbar">
     </div>
 
-    <a href="../Regestration/register.html">
+    <a href="../Regestration/register.php">
         <div class="reg_button_navbar">
             <p> Log in / Sing up </p>
         </div>
@@ -112,7 +115,6 @@
     }
 
     .navbar_left_space {
-        margin-left: auto;
         width: 185px;
     }
     
