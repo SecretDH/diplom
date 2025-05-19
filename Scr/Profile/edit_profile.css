@@ -1,0 +1,513 @@
+html {
+    font-size: 16px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    background-color: #0E091D;
+}
+
+body.noscroll {
+    overflow: hidden;
+    padding-right: 0.9375rem;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 0.9375rem;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: #0E091D;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 0.3125rem;
+    background: #241A43;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #4D1E96;
+}
+
+@font-face {
+    font-family: Peace Sans;
+    src: url(../../Font/ofont.ru_Peace.ttf);
+}
+
+@font-face {
+    font-family: Intro;
+    src: url(../../Font/SCP_Font.otf);
+}
+
+@font-face {
+    font-family: Helvetica;
+    src: url(../../Font/helveticaneueltstd_blk.otf);
+}
+
+@font-face {
+    font-family: Din_next;
+    src: url(../../Font/DIN_Next_LT_Arabic_Light.ttf);
+}
+
+p, h1, h2, h3 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.edit_title {
+    font-family: Helvetica;
+    font-size: 4rem;
+    color: #FFFFFF;
+    margin-top: 6.25rem;
+    margin-left: 2.5rem;
+}
+
+.edit_container {
+    width: 96.4%;
+    margin: auto;
+    margin-top: 3.125rem;
+    margin-bottom: 4rem;
+    border-radius: 1.25rem;
+    border: #3F2E72 solid 0.25rem;
+}
+
+.edit_background {
+    position: absolute;
+    z-index: 1;
+    width: 96.4%;
+    height: 17rem;
+    overflow: hidden;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    opacity: 0.5;
+}
+
+.edit_background img {
+    width: 100%;
+    border-radius: 1.25rem;
+    transform: translateY(-25%);
+}
+
+.edit_avatar_container {
+    display: flex;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+.edit_avatar_img {
+    position: relative;
+    width: 11.875rem;
+    height: 11.875rem;
+    margin-left: 3.125rem;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.change_photo {
+    position: relative;
+    width: 35.625rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    margin: auto;
+    margin-right: 3.125rem;
+    border-radius: 1.5625rem;
+    background-color: #FFFFFF;
+    border: none;
+    font-family: Helvetica;
+    font-size: 2rem;
+    color: #0E091D;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    z-index: 2;
+}
+
+.change_photo:hover {
+    background-color: #9747FF;
+    color: #FFFFFF;
+}
+
+.edit_avatar_container {
+    position: relative;
+}
+
+.hidden-box {
+    position: absolute;
+    top: 200%;
+    left: -21.5rem;
+    transform: translateY(-50%);
+    width: 19.25rem;
+    padding: 0.625rem;
+    background-color: #9747FF;
+    color: #fff;
+    border: 0.0625rem solid #444;
+    border-radius: 1.25rem;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.hidden-box p {
+    margin: 0 0 0.625rem;
+    font-size: 0.875rem;
+}
+
+.hidden-box input {
+    width: 100%;
+    margin-bottom: 0.625rem;
+}
+
+#close-box {
+    display: none;
+}
+
+.change_photo_btn {
+    display: flex;
+    width: 100%;
+    height: 4.25rem;
+    padding: 0.3125rem;
+    background-color: rgba(0, 0, 0, 0);
+    color: #fff;
+    border: none;
+    border-radius: 0.3125rem; 
+    cursor: pointer;
+}
+
+.change_photo_btn span {
+    font-family: din_next;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    margin: auto;
+    margin-left: 1rem;
+}
+
+.change_photo_img {
+    width: 2.43rem;
+    margin-left: 1rem;
+}
+
+.edit_info_container {
+    display: flex;
+}
+
+.edit_info{
+    width: 53%;
+}
+
+.input_container {
+    position: relative;
+    width: 100%;
+}
+
+.input_container input {
+    position: relative;
+    display: flex;
+    width: 75.5rem;
+    height: 6rem;
+    align-items: center;
+    border-radius: 1.5625rem;
+    border: 0.25rem solid #3F2E72;
+    text-indent: 1.25rem;
+    font-size: 1.5rem;
+    font-family: Helvetica;
+    color: #FFFFFF;
+    outline: none;
+    margin-left: 3.125rem;
+    margin-top: 1.25rem;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0);
+}
+.input_container input:focus + label,
+.input_container input:not(:placeholder-shown) + label {
+    top: 1.25rem;
+    left: 0.3rem;
+    font-size: 1rem;
+    color: #FFFFFF;
+    opacity: 0.5;
+}
+
+.input_container textarea {
+    display: flex;
+    width: 73.30rem;
+    height: 17.625rem;
+    margin-top: 1.25rem;
+    margin-left: 3.125rem;
+    align-items: flex-start;
+    flex-shrink: 0;
+    border-radius: 1.5625rem;
+    border: 0.25rem solid #3F2E72; 
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 2.1rem;
+    padding-bottom: 2.1rem;
+    font-size: 1.5rem;
+    font-family: Helvetica; 
+    color: #FFFFFF;
+    background-color: #0E091D; 
+    outline: none;
+    resize: none; /* Отключаем возможность изменения размера вручную */
+    overflow: hidden; /* Убираем прокрутку */
+}
+
+.input_container label {
+    position: absolute;
+    top: 2.5rem;
+    left: 1rem;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    transform: translateY(-50%);
+    font-family: Helvetica;
+    text-indent: 1.25rem;
+    margin-left: 3.125rem;
+}
+
+.input_container textarea:focus + label,
+.input_container textarea:not(:placeholder-shown) + label {
+    top: 1.25rem;
+    left: 0.3rem;
+    font-size: 1rem;
+    color: #FFFFFF;
+    opacity: 0.5;
+}
+
+.status-icon {
+    position: absolute;
+    width: 6rem;
+    height: 6.3rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background-color: #3F2E72;
+    right: 2.1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    display: inline;
+}
+
+.status-icon.valid {
+    color: green; /* Цвет для птички */
+}
+
+.status-icon.invalid {
+    color: red; /* Цвет для крестика */
+}
+
+.status-image {
+    width: 3rem;
+    height: 3rem;
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+}
+
+.password_info{
+    width: 47%;
+}
+
+.password_info h1 {
+    font-family: din_next;
+    font-size: 2.9rem;
+    color: #FFFFFF;
+    margin-top: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.password_info span {
+    font-family: din_next;
+    font-size: 1.6rem;
+    color: #FFFFFF;
+}
+
+.save_container {
+    display: flex;
+    width: 100%;
+    height: 10rem;
+    background-color: #3F2E72;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    margin-top: 2.5rem;
+}
+
+.save_container h2 {
+    font-family: din_next;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    margin-left: 3.125rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    opacity: 0.5;
+}
+
+.save_button {
+    width: 35.625rem;
+    height: 4.5rem;
+    margin: auto;
+    margin-right: 3.125rem;
+    border-radius: 1.5625rem;
+    background-color: #FFFFFF;
+    border: none;
+    font-family: Helvetica;
+    font-size: 2rem;
+    color: #0E091D;
+    opacity: 0.5;
+    cursor: not-allowed;
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.2s;
+}
+.save_button.active {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.save_button.active:hover {
+    background-color: #8852CE;
+    color: #FFFFFF;
+}
+
+.crop_container {
+    position: absolute;
+    width: 100%;
+    height: 90.5vh;
+    margin-top: 1rem;
+    background-color: rgba(14, 9, 29, 0.7);
+    justify-content: center;
+    z-index: 10;
+}
+
+.crop_preview {
+    width: 70%;
+    height: 70rem;
+    overflow: hidden;
+    border: 0.125rem solid #ccc; /* 2px */
+    border-radius: 0.625rem; /* 10px */
+}
+
+.crop_controls {
+    margin-left: 2rem;
+}
+
+#cropButton {
+    display: block;
+    width: 4.43rem;
+    height: 4.43rem;
+    margin-top: 1rem;
+    background-color: #0E091D;
+    border: 0.125rem solid #8852CE;
+    border-radius: 1.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#cropButton:hover {
+    background-color: #8852CE;
+}
+
+#deleteCropButton {
+    display: block;
+    width: 4.43rem;
+    height: 4.43rem;
+    margin-top: 1rem;
+    background-color: #0E091D;
+    border: 0.125rem solid #8852CE;
+    border-radius: 1.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#deleteCropButton:hover {
+    background-color: #8852CE;
+}
+
+#rotate_view {
+    display: block;
+    width: 4.43rem;
+    height: 4.43rem;
+    margin-top: 1rem;
+    background-color: #0E091D;
+    border: 0.125rem solid #8852CE;
+    border-radius: 1.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#rotate_view:hover {
+    background-color: #8852CE;
+}
+
+.crop_controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rotate_slider_container {
+    width: 4.2rem;
+    height: 15rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: 0.125rem solid #8852CE;
+    border-radius: 1.25rem;
+    background-color: #0E091D;
+}
+
+#rotateSlider {
+    transform: rotate(270deg) translateY(-5.5rem);
+    transform-origin: center; 
+    width: 15rem;
+    height: 15rem;
+    appearance: none;
+    background: transparent;
+    margin: 0;
+}
+
+#rotateSlider::-webkit-slider-thumb {
+    appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: #8852CE; 
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translateY(-0.45rem);
+}
+
+#rotateSlider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 0.3125rem;
+    background: #FFFFFF;
+    border-radius: 0.3125rem;
+}
+
+#rotationValue {
+    display: block;
+    width: 4.43rem;
+    padding-top: 1.5rem;
+    height: 2.93rem;
+    margin-top: 2rem;
+    background-color: #0E091D;
+    border: 0.125rem solid #8852CE;
+    border-radius: 1.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-family: Helvetica;
+    font-size: 1rem;
+    transform: translateX(-0.3rem);
+}
+
+#rotationValue:hover {
+    background-color: #8852CE;
+}

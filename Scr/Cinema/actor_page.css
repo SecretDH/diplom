@@ -1,139 +1,163 @@
+html {
+    font-size: 16px;
+}
+
 html, body {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
     user-select: none;
-	background-color: #0E091D;
+    background-color: #0E091D;
+    overflow-x: hidden;
 }
 
 body.noscroll {
-	overflow: hidden;
-	padding-right: 15px;
+    overflow: hidden;
+    padding-right: 0.9375rem;
 }
 
 /* width */
 ::-webkit-scrollbar {
-	width: 15px;
+    width: 0.9375rem;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-	background: #0E091D;
+    background: #0E091D;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	border-radius: 5px;
-	background: #241A43;
+    border-radius: 0.3125rem;
+    background: #241A43;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	background: #4D1E96;
+    background: #4D1E96;
 }
 
 @font-face {
-	font-family: Peace Sans;
-	src: url(../../Font/ofont.ru_Peace.ttf);
+    font-family: Peace Sans;
+    src: url(../../Font/ofont.ru_Peace.ttf);
 }
 
 @font-face {
-	font-family: Intro;
-	src: url(../../Font/SCP_Font.otf);
+    font-family: Intro;
+    src: url(../../Font/SCP_Font.otf);
 }
 
 @font-face {
-	font-family: Helvetica;
-	src: url(../../Font/helveticaneueltstd_blk.otf);
+    font-family: Helvetica;
+    src: url(../../Font/helveticaneueltstd_blk.otf);
 }
 
 @font-face {
-	font-family: Din_next;
-	src: url(../../Font/DIN_Next_LT_Arabic_Light.ttf);
+    font-family: Din_next;
+    src: url(../../Font/DIN_Next_LT_Arabic_Light.ttf);
 }
-
 
 p, h1, h2, h3 {
-	margin: 0;
+    margin: 0;
 }
 
 a {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 .actor_photo {
-    width: 370px;
-    height: 370px;
+    width: 23.125rem;
+    height: 23.125rem;
     border-radius: 50%;
-    margin-top: 60px;
-    margin-left: 40px;
+    margin-top: 3.75rem;
+    margin-left: 2.5rem;
 }
 
 .actor_name {
     font-family: Helvetica;
-    font-size: 96px;
+    font-size: 6rem;
     color: #FFFFFF;
-    margin-top: 40px;
-    margin-left: 40px;
+    margin-top: 2.5rem;
+    margin-left: 2.5rem;
 }
 
 .actor_flag {
-    height: 70px;
+    height: 4.375rem;
 }
 
 .actor_bio {
     font-family: Helvetica;
-    font-size: 24px;
+    font-size: 1.5rem;
     color: #FFFFFF;
-    margin-top: 20px;
-    margin-left: 40px;
-    width: 1200px;
+    margin-top: 1.25rem;
+    margin-left: 2.5rem;
+    width: 75rem;
 }
 
-.actor_statistics{
+.actor_statistics {
     font-family: Helvetica;
-    font-size: 18px;
+    font-size: 1.125rem;
     color: #FFFFFF;
-    margin-top: 20px;
-    margin-left: 40px;
-
+    margin-top: 1.25rem;
+    margin-left: 2.5rem;
 }
 
 /* SERIES CONTAINER */
-
 .series_container {
+    position: relative;
     width: 96.9%;
     margin: 0 auto;
-    background-color: #4D1E96;
+}
+
+.series_container::before,
+.series_container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 7rem; 
+    z-index: 1; 
+}
+
+.series_container::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(14, 9, 29, 1), transparent);
+}
+
+.series_container::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(14, 9, 29, 1), transparent);
 }
 
 .series_container h1 {
-	font-family: Helvetica;
-	font-size: 64px;
-	color: #F4F4F2;
-	margin-top: 20px;
+    position: relative;
+    font-family: Helvetica;
+    font-size: 4rem;
+    color: #F4F4F2;
+    margin-top: 1.25rem;
+    z-index: 3;
 }
 
 .series_list {
     display: flex;
-    margin-top: 20px;
-    padding-bottom: 20px;
-    white-space: nowrap; 
+    margin-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
 }
 
 .series_list::-webkit-scrollbar {
-	display: none; 
+    display: none;
 }
 
 .series_item {
     flex: 0 0 auto;
-    width: 224px;
-    height: 336px;
-	margin-left: 10px;
-	margin-right: 10px;
+    width: 14rem;
+    height: 21rem;
+    margin-left: 0.625rem;
+    margin-right: 0.625rem;
     background-color: #241A43;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -147,12 +171,15 @@ a {
 .series_item::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(0deg,rgba(0, 0, 0, 1) 8%, rgba(0, 0, 0, 0.50) 90%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 8%, rgba(0, 0, 0, 0.50) 90%);
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 1;
-    border-radius: 20px;
+    border-radius: 1.25rem;
 }
 
 .series_item:hover::before {
@@ -161,39 +188,44 @@ a {
 
 .series-scroll-left {
     position: relative;
-    left: -40px;
-    top: 270px;
+    left: -2.5rem;
+    top: 13.5rem;
     transform: translateY(-50%);
-    background-color: #4D1E96;
+    background-color: rgba(0, 0, 0, 0);
     color: #fff;
-    border: none;
+    font-size: 2rem;
+    border: solid 0.06rem #FFFFFF;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 5rem;
+    height: 5rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
     z-index: 10;
+    
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 .series-scroll-right {
     position: relative;
-    left: 100%;
-    top: -235px;
+    left: 98.6%;
+    top: -12.3rem;
     transform: translateY(-50%);
-    background-color: #4D1E96;
+    background-color: rgba(0, 0, 0, 0);
     color: #fff;
-    border: none;
+    font-size: 2rem;
+    border: solid 0.06rem #FFFFFF;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 5rem;
+    height: 5rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 1);
+    box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
     z-index: 10;
 }
 
@@ -205,36 +237,37 @@ a {
 
 .series_pin, .series_eye {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 0.9375rem;
+    right: 0.9375rem;
     color: white;
-    width: 35px;
+    width: 2.1875rem;
     opacity: 0;
     transition: opacity 0.5s ease, transform 0.5s ease;
     z-index: 2;
 }
 
 .series_eye {
-    top: 70px;
+    top: 4.375rem;
 }
 
 .series_date {
     position: absolute;
-    bottom: 55px;
-    left: 20px;
+    bottom: 3.4375rem;
+    left: 1.25rem;
     color: white;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-family: Din_next;
     opacity: 0;
     transition: opacity 0.5s ease, transform 0.5s ease;
     z-index: 2;
 }
+
 .series_duration {
     position: absolute;
-    bottom: 30px;
-    left: 20px;
+    bottom: 1.875rem;
+    left: 1.25rem;
     color: white;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-family: Din_next;
     opacity: 0;
     transition: opacity 0.5s ease, transform 0.5s ease;

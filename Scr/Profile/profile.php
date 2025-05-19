@@ -1,3 +1,82 @@
+<?php
+require __DIR__ . '/../db.php'; // Убедитесь, что путь к db.php корректный
+
+// Получаем ID пользователя из URL
+$user_id = isset($_GET['user_id']) ? intval($_GET['user_id']) : 0;
+
+if ($user_id <= 0) {
+    die("Некорректный ID пользователя.");
+}
+
+// Запрос для получения общего количества постов (total_posts)
+$sql = "
+    SELECT 
+        COALESCE(total_posts, 0) AS total_posts
+    FROM 
+        user_posts_count
+    WHERE 
+        user_id = ?
+";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$user_id]);
+$totalPosts = $stmt->fetchColumn(); // Получаем значение total_posts
+
+// Запрос для получения общего количества пинов (total_pins)
+$sql = "
+    SELECT 
+        COALESCE(SUM(total_pin), 0) AS total_pins
+    FROM 
+        user_pins_count
+    WHERE 
+        user_id = ?
+";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$user_id]);
+$totalPins = $stmt->fetchColumn(); // Получаем значение total_pins
+
+
+// Запрос для получения информации о пользователе
+$sql = "
+    SELECT 
+        login,
+        name,
+        email,
+        avatar,
+        description,
+        background_image,
+        posts,
+        followers,
+        following,
+        pin,
+        achivments,
+        balance
+    FROM 
+        users
+    WHERE 
+        ID = ?
+";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$user_id]);
+$userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$userInfo) {
+    die("Пользователь с указанным ID не найден.");
+}
+
+// Присваиваем переменные для удобства
+$login = htmlspecialchars($userInfo['login']);
+$name = htmlspecialchars($userInfo['name']);
+$email = htmlspecialchars($userInfo['email']);
+$avatar = htmlspecialchars($userInfo['avatar']);
+$description = htmlspecialchars($userInfo['description']);
+$background = htmlspecialchars($userInfo['background_image']);
+$posts = intval($userInfo['posts']);
+$followers = intval($userInfo['followers']);
+$following = intval($userInfo['following']);
+$pin = intval($userInfo['pin']);
+$achivments = intval($userInfo['achivments']);
+$balance = number_format($userInfo['balance'], 2);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,46 +147,93 @@
             window.history.replaceState({}, '', url);
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const token = localStorage.getItem('token'); // Получаем токен из localStorage
+
+            if (!token) {
+                document.body.innerHTML = '<h1>Пользователь не авторизован.</h1>';
+                return;
+            }
+
+            // Декодируем токен и получаем user_id
+            let tokenUserId;
+            try {
+                const payload = JSON.parse(atob(token.split('.')[1]));
+                tokenUserId = payload.user_id;
+            } catch (e) {
+                console.error('Ошибка декодирования токена:', e);
+                document.body.innerHTML = '<h1>Недействительный токен.</h1>';
+                return;
+            }
+
+            // Сравниваем user_id из токена и PHP
+            const phpUserId = <?php echo json_encode($user_id); ?>; // Получаем user_id из PHP
+            if (parseInt(tokenUserId) !== parseInt(phpUserId)) {
+                document.body.innerHTML = '<h1 class="warning"> Attempt to log into someone else\'s account.</h1>';
+            }
+        });
+    </script>
 </head>
 <body>
     <?php include '../navbar.php'; ?>
+    <div class="background">
+        <img src="../../Backgrounds/background_gradient.png" alt="background" class="background_gradient">
+        <img src="<?php echo htmlspecialchars($background); ?>" alt="background" class="background_image">
+    </div>
 
     <div class="profile_info">
         <div>
-            <img src="../../Avatars/Davit_avatar.jpg" class="profile_img" id="avatar-img">
+            <img src="<?php echo htmlspecialchars($avatar); ?>" class="profile_img" id="avatar-img">
         </div>
         <div>
             <div style="display: flex;">
                 <div class="user_personal_info">
-                    <p class="user_name" id="username-display">Loading...</p>
-                    <p class="user_login" id="login-display">Loading...</p>
+                    <p class="user_name" id="username-display"><?php echo htmlspecialchars(!empty($name) ? $name : $login); ?></p>
+                    <p class="user_login" id="login-display">@<?php echo htmlspecialchars($login); ?></p>
                 </div>
                 <div class="edit">
-                    <p>Edit Profile</p>
+                    <p>
+                        Edit Profile
+                    </p>
                 </div>
             </div>
             <div class="user_stats">
                 <div class="user_stat">
-                    <p class="big_text" id="posts-display"> Loading... </p>
+                    <p class="big_text" id="posts-display"> <?php echo htmlspecialchars($totalPosts); ?> </p>
                     <p class="mini_text"> posts</p>
                 </div>
                 <div class="user_stat">
-                    <p class="big_text" id="followers-display"> Loading... </p>
+                    <p class="big_text" id="followers-display"> <?php echo htmlspecialchars($followers); ?> </p>
                     <p class="mini_text"> followers </p>
                 </div>
                 <div class="user_stat">
-                    <p class="big_text" id="following-display"> Loading... </p>
+                    <p class="big_text" id="following-display"> <?php echo htmlspecialchars($following); ?> </p>
                     <p class="mini_text"> following </p>
                 </div>
                 <div class="user_stat">
-                    <p class="big_text" id="pin-display"> Loading... </p>
+                    <p class="big_text" id="pin-display"> <?php echo htmlspecialchars($totalPins); ?> </p>
                     <p class="mini_text"> pin </p>
                 </div>
                 <div class="user_stat">
-                    <p class="big_text" id="achivments-display"> Loading... </p>
+                    <p class="big_text" id="achivments-display"> <?php echo htmlspecialchars($achivments); ?> </p>
                     <p class="mini_text"> achievements </p>
                 </div>
             </div>
+            <div class="profile_bio">
+                <p class="bio_text" id="bio-display">
+                    <?php echo htmlspecialchars($description); ?>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="user_pins">
+        <div class="pins_title">
+            <h1> Pins </h1>
+        </div>
+        <div class="pin_container">
+            <?php include 'get_user_pins.php'; ?>
         </div>
     </div>
 
@@ -143,159 +269,95 @@
     </div>
 
     <script>
-        const maxLength = 300; // Типичное ограничение твиттера
-        document.querySelectorAll('.content_block').forEach((post, index) => {
-            const fullText = post.querySelector('.post_text_invisible').textContent;
-            post.querySelector('.post_text_invisible').textContent = '';
-            const postText = post.querySelector('.post_text');
-            const toggleBtn = post.querySelector('.read-more');
-            let isExpanded = false;
+        // Функция для обработки текста постов
+        function processPostText() {
+            const maxLength = 300;
+            document.querySelectorAll('.content_block').forEach((post, index) => {
+                const fullText = post.querySelector('.post_text_invisible').textContent;
+                post.querySelector('.post_text_invisible').textContent = '';
+                const postText = post.querySelector('.post_text');
+                const toggleBtn = post.querySelector('.read-more');
+                let isExpanded = false;
 
-            function updateText() {
-                if (fullText.length <= maxLength) {
-                    postText.textContent = fullText;
-                    toggleBtn.style.display = 'none';
-                } else {
-                    postText.textContent = isExpanded ? fullText : fullText.slice(0, maxLength) + '...';
-                    toggleBtn.textContent = isExpanded ? 'Hide' : 'Show more';
-                    toggleBtn.style.display = 'inline-block';
+                function updateText() {
+                    if (fullText.length <= maxLength) {
+                        postText.textContent = fullText;
+                        toggleBtn.style.display = 'none';
+                    } else {
+                        postText.textContent = isExpanded ? fullText : fullText.slice(0, maxLength) + '...';
+                        toggleBtn.textContent = isExpanded ? 'Hide' : 'Show more';
+                        toggleBtn.style.display = 'inline-block';
+                    }
                 }
-            }
 
-            toggleBtn.addEventListener('click', () => {
-                isExpanded = !isExpanded;
-                updateText();
-            });
-
-            updateText();
-        });
-    </script>
-
-    <script>
-        // Функция декодирования JWT (с улучшенной обработкой ошибок)
-        function parseJwt(token) {
-            try {
-                const payload = JSON.parse(atob(token.split('.')[1]));
-                return payload;
-            } catch (e) {
-                console.error('Ошибка декодирования токена:', e);
-                return null;
-            }
-        }
-
-        // 1. Функция для обновления интерфейса (добавьте этот код)
-        function updateUserInterface(token) {
-            try {
-                // Декодируем токен
-                const decoded = JSON.parse(atob(token.split('.')[1]));
-                
-                // Обновляем данные на странице
-                document.getElementById('username-display').textContent = decoded.name || decoded.username;
-                document.getElementById('login-display').textContent = '@' + decoded.username;
-                
-                // Обновляем статистику
-                document.getElementById('posts-display').textContent = decoded.posts || 0;
-                document.getElementById('followers-display').textContent = decoded.followers || 0;
-                document.getElementById('following-display').textContent = decoded.following || 0;
-                document.getElementById('pin-display').textContent = decoded.pin || 0;
-                document.getElementById('achivments-display').textContent = decoded.achivments || 0;
-                
-                // Обновляем аватар (если есть)
-                if (decoded.avatar) {
-                    document.querySelectorAll('.avatar_img, .profile_img').forEach(img => {
-                        img.src = decoded.avatar;
-                    });
-                }
-                
-                console.log('Интерфейс обновлен!', decoded);
-            } catch (e) {
-                console.error('Ошибка обновления интерфейса:', e);
-                window.location.href = '../Home/home.php';
-            }
-        }
-
-        // 2. Функция обновления токена (ваш существующий код с исправлением)
-        async function refreshTokenData() {
-            const token = localStorage.getItem('token');
-            if (!token) { 
-                window.location.href = '../Home/home.php'; 
-                return;
-            }
-            
-            try {
-                const response = await fetch(`../refresh-token.php?token=${encodeURIComponent(token)}`);
-                const result = await response.json();
-                
-                if (result.status === 'success') {
-                    localStorage.setItem('token', result.token);
-                    updateUserInterface(result.token); // Теперь функция определена
-                    console.log('Данные успешно обновлены!');
-                }
-            } catch (error) {
-                console.log(token);
-                console.error('Ошибка обновления:', error);
-            }
-        }
-
-        // 3. Запускаем при загрузке страницы
-        window.addEventListener('load', refreshTokenData);
-    </script>
-    <script>
-        document.querySelectorAll('.content_block').forEach((post) => {
-            const combtn = post.querySelector('#comment_stat');
-
-            combtn.addEventListener('click', () => {
-                document.body.classList.add('noscroll');
-                const forum_block = document.querySelector('.forum_feed');
-                document.querySelectorAll('.content_block').forEach((block) => {
-                    block.classList.add('hidden'); // Делаем элементы невидимыми
+                toggleBtn.addEventListener('click', () => {
+                    isExpanded = !isExpanded;
+                    updateText();
                 });
 
-                const postId = post.getAttribute('data-post-id'); // Получаем ID поста
-                const urlParams = new URLSearchParams(window.location.search); // Получаем параметры из URL
-                const userId = urlParams.get('user_id'); // Извлекаем user_id
-
-                if (!postId || !userId) {
-                    console.error("Post ID или User ID не найден.");
-                    return;
-                }
-
-                console.log("Post ID:", postId, "User ID:", userId); // Логируем ID поста и пользователя
-
-                const iframe = document.createElement('iframe');
-                iframe.style.display = "block";
-                iframe.height = "100%";
-                iframe.width = "47.7%";
-                iframe.frameBorder = "0";
-                iframe.scrolling = "yes";
-                iframe.allowTransparency = "true";
-                iframe.id = "SDKiframe";
-                iframe.style = "background: transparent; opacity: 1; position: fixed; left: 0; top: 0; z-index: 999; margin-left: 25.85%";
-
-                // Передаем post_id и user_id в URL iframe
-                iframe.src = `../Forum/comment.php?post_id=${postId}&user_id=${userId}`;
-
-                forum_block.appendChild(iframe);
+                updateText();
             });
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        }
+
+        // Функция для обработки кликов по комментариям
+        function setupCommentListeners() {
+            document.querySelectorAll('.content_block').forEach((post) => {
+                const combtn = post.querySelector('#comment_stat');
+
+                combtn.addEventListener('click', () => {
+                    // Сохраняем позицию прокрутки
+                    localStorage.setItem('scrollPosition', window.scrollY);
+                    document.body.scrollTop = window.scrollY; // Для старых браузеров
+                    // Сохраняем ID поста (для центрирования, если нужно)
+                    localStorage.setItem('activePostId', post.getAttribute('data-post-id'));
+
+                    document.body.classList.add('noscroll');
+                    const forum_block = document.querySelector('.forum_feed');
+                    document.querySelectorAll('.content_block').forEach((block) => {
+                        block.classList.add('hidden');
+                    });
+
+                    const postId = post.getAttribute('data-post-id');
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const userId = urlParams.get('user_id');
+
+                    if (!postId || !userId) {
+                        console.error("Post ID или User ID не найден.");
+                        return;
+                    }
+
+                    console.log("Post ID:", postId, "User ID:", userId);
+
+                    const iframe = document.createElement('iframe');
+                    iframe.style.display = "block";
+                    iframe.height = "100%";
+                    iframe.width = "47.7%";
+                    iframe.frameBorder = "0";
+                    iframe.scrolling = "yes";
+                    iframe.allowTransparency = "true";
+                    iframe.id = "CommentIframe"; // Изменён ID
+                    iframe.style = "background: transparent; opacity: 1; position: fixed; left: 0; top: 0; z-index: 999; margin-left: 25.85%";
+                    iframe.src = `../Forum/comment.php?post_id=${postId}&user_id=${userId}`;
+
+                    forum_block.appendChild(iframe);
+                });
+            });
+        }
+
+        // Функция для обработки лайков
+        function setupLikeListeners() {
             document.querySelectorAll('.like_stat').forEach(div => {
-                // Проверяем, стоит ли лайк, и добавляем класс "liked"
                 if (div.getAttribute('data-liked') === 'true') {
                     div.classList.add('liked');
                 }
 
                 div.addEventListener('click', function () {
-                    // Получаем токен из localStorage
                     const token = localStorage.getItem('token');
                     if (!token) {
                         alert("Пользователь не авторизован.");
                         return;
                     }
 
-                    // Декодируем токен
                     let user_id;
                     try {
                         const payload = JSON.parse(atob(token.split('.')[1]));
@@ -306,14 +368,12 @@
                         return;
                     }
 
-                    // Получаем ID поста из атрибута data-post-id
                     const post_id = div.getAttribute('data-post-id');
                     if (!post_id) {
                         console.error("ID поста не найден.");
                         return;
                     }
 
-                    // Отправляем запрос на сервер
                     fetch('../Forum/like_toggle.php', {
                         method: 'POST',
                         headers: {
@@ -328,19 +388,16 @@
                         if (!response.ok) {
                             throw new Error(`HTTP error! Status: ${response.status}`);
                         }
-                        return response.json(); // Ожидаем JSON-ответ
+                        return response.json();
                     })
                     .then(jsonData => {
                         if (jsonData.status === 'success') {
                             console.log(`Действие: ${jsonData.action}, Новое количество лайков: ${jsonData.new_like_count}`);
-                            
-                            // Обновляем количество лайков в реальном времени
                             const likeCountElement = div.querySelector('#like_count_' + post_id);
                             if (likeCountElement) {
                                 likeCountElement.textContent = jsonData.new_like_count;
                             }
 
-                            // Меняем класс "liked" в зависимости от действия
                             if (jsonData.action === 'liked') {
                                 div.classList.add('liked');
                                 div.setAttribute('data-liked', 'true');
@@ -355,25 +412,22 @@
                     .catch(error => console.error('Ошибка:', error));
                 });
             });
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        }
+
+        // Функция для обработки репостов
+        function setupRepostListeners() {
             document.querySelectorAll('.repost_stat').forEach(div => {
-                // Проверяем, стоит ли репост, и добавляем класс "reposted"
                 if (div.getAttribute('data-reposted') === 'true') {
                     div.classList.add('reposted');
                 }
 
                 div.addEventListener('click', function () {
-                    // Получаем токен из localStorage
                     const token = localStorage.getItem('token');
                     if (!token) {
                         alert("Пользователь не авторизован.");
                         return;
                     }
 
-                    // Декодируем токен
                     let user_id;
                     try {
                         const payload = JSON.parse(atob(token.split('.')[1]));
@@ -384,7 +438,6 @@
                         return;
                     }
 
-                    // Получаем ID поста из атрибута data-post-id
                     const post_id = div.getAttribute('data-post-id');
                     if (!post_id) {
                         console.error("ID поста не найден.");
@@ -397,11 +450,7 @@
                         return;
                     }
 
-                    console.log("user_id:", user_id, "post_user_id:", post_user_id);
-
-                    // Проверяем, не является ли пользователь автором поста
                     if (parseInt(user_id) !== parseInt(post_user_id)) {
-                        // Отправляем запрос на сервер только если условие не выполнено
                         fetch('../Forum/repost_toggle.php', {
                             method: 'POST',
                             headers: {
@@ -416,19 +465,16 @@
                             if (!response.ok) {
                                 throw new Error(`HTTP error! Status: ${response.status}`);
                             }
-                            return response.json(); // Ожидаем JSON-ответ
+                            return response.json();
                         })
                         .then(jsonData => {
                             if (jsonData.status === 'success') {
                                 console.log(`Действие: ${jsonData.action}, Новое количество репостов: ${jsonData.new_repost_count}`);
-                                
-                                // Обновляем количество репостов в реальном времени
                                 const repostCountElement = div.querySelector('#repost_count_' + post_id);
                                 if (repostCountElement) {
                                     repostCountElement.textContent = jsonData.new_repost_count;
                                 }
 
-                                // Меняем класс "reposted" в зависимости от действия
                                 if (jsonData.action === 'reposted') {
                                     div.classList.add('reposted');
                                     div.setAttribute('data-reposted', 'true');
@@ -443,10 +489,139 @@
                         .catch(error => console.error('Ошибка:', error));
                     } else {
                         alert("Вы не можете репостнуть свою собственную публикацию.");
-                        return; // Останавливаем выполнение функции
+                        return;
                     }
                 });
             });
+        }
+
+        // Функция для инициализации всех обработчиков
+        function initializePostHandlers() {
+            processPostText();
+            setupCommentListeners();
+            setupLikeListeners();
+            setupRepostListeners();
+        }
+
+        // Функция debounce для задержки выполнения
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Функция для выполнения поиска
+        const performSearch = debounce(function(searchTerm) {
+            const userId = '<?php echo isset($user_id) ? htmlspecialchars($user_id) : ''; ?>';
+            console.log('Search term:', searchTerm, 'User ID:', userId); // Отладка
+            if (!userId) {
+                document.querySelector('.forum_feed').innerHTML = '<p class="error-message">Ошибка: ID пользователя не передан. Проверьте URL.</p>';
+                return;
+            }
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '../Forum/get_post.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.querySelector('.forum_feed').innerHTML = xhr.responseText;
+                    initializePostHandlers(); // Инициализируем все обработчики для новых постов
+                } else {
+                    document.querySelector('.forum_feed').innerHTML = '<p class="error-message">Ошибка при загрузке постов (статус: ' + xhr.status + ').</p>';
+                }
+            };
+            xhr.onerror = function() {
+                document.querySelector('.forum_feed').innerHTML = '<p class="error-message">Ошибка сети при загрузке постов.</p>';
+            };
+            xhr.send('search=' + encodeURIComponent(searchTerm) + '&user_id=' + encodeURIComponent(userId));
+        }, 500);
+
+        // Слушаем ввод в поле поиска
+        document.getElementById('search').addEventListener('input', function(e) {
+            performSearch(e.target.value);
+        });
+
+        // Инициализируем обработчики для начальных постов
+        initializePostHandlers();
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Слушаем сообщения от iframe
+            window.addEventListener('message', function (event) {
+                if (event.data === 'closeIframe') {
+                    // Удаляем iframe
+                    const iframe = document.getElementById('CommentIframe');
+                    if (iframe) {
+                        iframe.remove();
+                    }
+
+                    // Убираем класс "hidden" у всех постов
+                    document.querySelectorAll('.content_block').forEach((block) => {
+                        block.classList.remove('hidden');
+                    });
+
+                    // Убираем класс "noscroll" с body
+                    document.body.classList.remove('noscroll');
+
+                    // Восстанавливаем позицию прокрутки
+                    const scrollPosition = localStorage.getItem('scrollPosition');
+                    if (scrollPosition) {
+                        window.scrollTo(0, parseInt(scrollPosition, 10));
+                        localStorage.removeItem('scrollPosition');
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Делегирование событий для клика на элементы с классом pin_block
+            document.addEventListener('click', (event) => {
+                const pinBlock = event.target.closest('.pin_block'); // Проверяем, был ли клик внутри pin_block
+                if (pinBlock) {
+                    const pinId = pinBlock.getAttribute('id'); // Получаем ID пина из атрибута id
+                    if (pinId) {
+                        // Получаем токен из localStorage
+                        const token = localStorage.getItem('token');
+                        if (!token) {
+                            alert("Пользователь не авторизован.");
+                            return;
+                        }
+
+                        // Декодируем токен и извлекаем user_id
+                        let userId;
+                        try {
+                            const payload = JSON.parse(atob(token.split('.')[1])); // Декодируем payload токена
+                            userId = payload.user_id;
+                        } catch (e) {
+                            console.error("Ошибка декодирования токена:", e);
+                            alert("Недействительный токен.");
+                            return;
+                        }
+
+                        // Перенаправляем на страницу pin_page.php с передачей ID пина и user_id
+                        window.location.href = `pin_page.php?pin_id=${encodeURIComponent(pinId)}&user_id=${encodeURIComponent(userId)}`;
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const editDiv = document.querySelector('.edit');
+            const userId = <?php echo json_encode($user_id); ?>; // Получаем user_id из PHP
+
+            if (editDiv) {
+                editDiv.addEventListener('click', function () {
+                    // Перенаправляем на страницу редактирования профиля
+                    window.location.href = `edit_profile.php?user_id=${encodeURIComponent(userId)}`;
+                });
+            }
         });
     </script>
 </body>

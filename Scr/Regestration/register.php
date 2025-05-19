@@ -129,7 +129,21 @@
                 if (data.status === "success") {
                     localStorage.setItem('token', data.token);
                     console.log("Токен сохранён, перенаправляю...");
-                    window.location.href = '../Profile/profile.php' + '?user_id=' + data.user_id;
+
+                    // Расшифровываем токен
+                    const token = data.token;
+                    const decodedToken = parseJwt(token);
+
+                    if (decodedToken && decodedToken.user_id) {
+                        const userId = decodedToken.user_id;
+                        console.log("Расшифрованный user_id:", userId);
+
+                        // Перенаправляем с user_id
+                        window.location.href = '../Profile/profile.php' + '?user_id=' + userId;
+                    } else {
+                        console.error("Не удалось извлечь user_id из токена");
+                        alert("Ошибка авторизации: некорректный токен");
+                    }
                 } else {
                     alert(data.message || 'Ошибка сервера');
                 }

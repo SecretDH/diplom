@@ -31,20 +31,39 @@ if (!$result) {
 
 // Вывод данных
 while ($row = mysqli_fetch_assoc($result)) {
-    $moviesId = htmlspecialchars($row['id']);
-    $moviesTitle = htmlspecialchars($row['title']);
-    $moviesDuration = htmlspecialchars($row['duration']);
-    $moviesYear = htmlspecialchars($row['year']);
-    $moviesPoster = htmlspecialchars($row['poster']);
-    $moviesBigPoster = htmlspecialchars($row['big_poster']);
-    $moviesCreatedAt = htmlspecialchars($row['created_at']);
+    $movieId = htmlspecialchars($row['id']);
+    $movieTitle = htmlspecialchars($row['title']);
+    $movieDuration = htmlspecialchars($row['duration']);
+    $movieYear = htmlspecialchars($row['year']);
+    $moviePoster = htmlspecialchars($row['poster']);
+    $movieBigPoster = htmlspecialchars($row['big_poster']);
+    $movieCreatedAt = htmlspecialchars($row['created_at']);
 
-    echo '<div class="movie_item" id="movie_item_' . $moviesId . '">';
+    echo '<div class="movie_item" id="movie_item_' . $movieId . '" data-related-id="' . $movieId . '">';
     echo '<img src="../../Image/pin.svg" class="movie_pin">';
     echo '<img src="../../Image/eye.svg" class="movie_eye">';
-    echo '<img src="' . $moviesPoster . '" class="movie_image" alt="' . $moviesTitle . '">';
-    echo '<div class="movie_date">' . $moviesYear . '</div>';
-    echo '<div class="movie_duration">' . ($moviesDuration ?: 'No duration available') . ' minutes </div>';
+    echo '<img src="' . $moviePoster . '" class="movie_image" alt="' . $movieTitle . '">';
+    echo '<div class="movie_date">' . $movieYear . '</div>';
+    echo '<div class="movie_duration">' . ($movieDuration ?: 'No duration available') . ' minutes</div>';
+
+    // Добавляем скрытый шаблон
+    echo '<div class="info_box_template" style="display: none;">';
+    echo '<div class="info_box_movie">';
+    echo '<div class="info_box_title_movie">Pins</div>';
+    $user_id = $_GET['user_id'] ?? null;
+    $pin_type = 'movie';
+    $related_id = $movieId;
+
+    if (!$user_id) {
+        die("ID пользователя не передан.");
+    }
+
+    $_GET['pin_type'] = $pin_type;
+    $_GET['related_id'] = $related_id;
+    include 'get_pins.php';
+    echo '</div>';
+    echo '</div>';
+
     echo '</div>';
 }
 ?>

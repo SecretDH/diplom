@@ -1,12 +1,6 @@
 <?php
 require __DIR__ . '../../db.php';
 
-// Проверяем, что пользователь авторизован (если требуется)
-// if (!isset($user_id)) {
-//     echo "Ошибка: ID пользователя не передан.";
-//     exit;
-// }
-
 // Запрос к таблице series
 $sql = "
     SELECT 
@@ -38,15 +32,32 @@ while ($row = mysqli_fetch_assoc($result)) {
     $seriesPoster = htmlspecialchars($row['poster']);
     $seriesBigPoster = htmlspecialchars($row['big_poster']);
     $seriesCreatedAt = htmlspecialchars($row['created_at']);
-
-    echo '<a href="movie_series_page.php?series_id=' . $seriesId . '" class="movie_series_page_link">';
-    echo '<div class="series_item" id="series_item_' . $seriesId . '">';
+    
+    echo '<div class="series_item" id="series_item_' . $seriesId . '" data-related-id="' . $seriesId . '">';
     echo '<img src="../../Image/pin.svg" class="series_pin">';
     echo '<img src="../../Image/eye.svg" class="series_eye">';
     echo '<img src="' . $seriesPoster . '" class="series_image" alt="' . $seriesTitle . '">';
     echo '<div class="series_date">' . $seriesYear . '</div>';
-    echo '<div class="series_duration">' . ($seriesDuration ?: 'No duration available') . ' minutes </div>';
+    echo '<div class="series_duration">' . ($seriesDuration ?: 'No duration available') . ' minutes</div>';
+
+    // Добавляем скрытый шаблон
+    echo '<div class="info_box_template" style="display: none;">';
+    echo '<div class="info_box_series">';
+    echo '<div class="info_box_title_series">Pins</div>';
+    $user_id = $_GET['user_id'] ?? null;
+    $pin_type = 'series';
+    $related_id = $seriesId;
+
+    if (!$user_id) {
+        die("ID пользователя не передан.");
+    }
+
+    $_GET['pin_type'] = $pin_type;
+    $_GET['related_id'] = $related_id;
+    include 'get_pins.php';
     echo '</div>';
-    echo '</a>';
+    echo '</div>';
+
+    echo '</div>';
 }
 ?>

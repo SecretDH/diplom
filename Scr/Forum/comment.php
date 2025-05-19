@@ -123,6 +123,11 @@ $main_image = !empty($images) ? $images[0] : '';
 
     <div class="comment_block" data-post-id="<?php echo htmlspecialchars($row['ID']); ?>">
 
+    <button id="closeIframeBtn">
+        <img src="../../Image/return.svg" alt="">
+        <span> Post </span>
+    </button>
+
         <div class="user_info">
             <img src="<?php echo htmlspecialchars($row['user_avatar']); ?>" class="avatar_img">
             <div class="user-name-display">
@@ -623,6 +628,13 @@ $main_image = !empty($images) ? $images[0] : '';
                     }
                 });
             });
+        });
+    </script>
+
+    <script>
+        document.getElementById('closeIframeBtn').addEventListener('click', () => {
+            // Отправляем сообщение родительскому окну
+            window.parent.postMessage('closeIframe', '*');
         });
     </script>
 </body>

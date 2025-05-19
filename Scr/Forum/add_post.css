@@ -1,3 +1,7 @@
+html {
+    font-size: 16px;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -43,8 +47,8 @@ a {
 
 .add_post_conteiner_center {
     position: relative;
-    width: 1000px;
-    margin:auto;
+    width: 62.5rem;
+    margin: auto;
     background-color: #0E091D;
     z-index: 2;
 }
@@ -52,27 +56,27 @@ a {
 .add_post_conteiner {
     position: absolute;
     width: 100%;
-    min-height: 400px;
-    margin-top: 50px;
+    min-height: 25rem;
+    margin-top: 3.125rem;
     background-color: #0E091D;
-    border-radius: 20px;
+    border-radius: 1.25rem;
 }
 
 .add_post_avatar_img {
     position: absolute;
-    height: 78px;
-    margin-left: 25px;
-    margin-top: 95px;
+    height: 4.875rem;
+    margin-left: 1.5625rem;
+    margin-top: 5.9375rem;
     border-radius: 50%;
 }
 
 .add_post_textarea {
-    width: 840px;
-    margin-left: 125px;
-    margin-top: 100px;
-    margin-bottom: 40px;
-    min-height: 120px;
-    font-size: 32px;
+    width: 52.5rem;
+    margin-left: 7.8125rem;
+    margin-top: 6.25rem;
+    margin-bottom: 2.5rem;
+    min-height: 7.5rem;
+    font-size: 2rem;
     color: #FFFFFF;
     background-color: #0E091D;
     resize: none;
@@ -83,7 +87,7 @@ a {
 
 /* width */
 .add_post_textarea::-webkit-scrollbar {
-    width: 15px;
+    width: 0.9375rem;
 }
 
 /* Track */
@@ -93,7 +97,7 @@ a {
 
 /* Handle */
 .add_post_textarea::-webkit-scrollbar-thumb {
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     background: #241A43;
 }
 
@@ -103,20 +107,20 @@ a {
 }
 
 #add_post_preview_container {
-    margin-left: 25px;
-    margin-right: 35px;
-    margin-top: 10px; 
-    display: flex; 
-    gap: 10px; 
+    margin-left: 1.5625rem;
+    margin-right: 2.1875rem;
+    margin-top: 0.625rem;
+    display: flex;
+    gap: 0.625rem;
     flex-wrap: nowrap;
-    overflow-x: auto;         /* Добавляем горизонтальный скролл */
-    max-width: 100%;          /* Ограничиваем ширину контейнера */
-    margin-bottom: 10px;
+    overflow-x: auto;
+    max-width: 100%;
+    margin-bottom: 0.625rem;
 }
 
 /* width */
 #add_post_preview_container::-webkit-scrollbar {
-    width: 15px;
+    width: 0.9375rem;
 }
 
 /* Track */
@@ -126,7 +130,7 @@ a {
 
 /* Handle */
 #add_post_preview_container::-webkit-scrollbar-thumb {
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     background: #241A43;
 }
 
@@ -137,51 +141,50 @@ a {
 
 .add_post_reply_access {
     width: 100%;
-    height: 35px;
-    margin-bottom: 100px;
+    height: 2.1875rem;
+    margin-bottom: 6.25rem;
 }
 
 .add_post_reply_access span {
     cursor: pointer;
     color: #0A7AFB;
     font-family: Din_next;
-    font-size: 20px;
-    margin-left: 25px;
+    font-size: 1.25rem;
+    margin-left: 1.5625rem;
 }
-
 
 .add_post_footer {
     position: absolute;
     display: flex;
-    width: 940px;
-    height: 80px;
-    margin-left: 25px;
+    width: 58.75rem;
+    height: 5rem;
+    margin-left: 1.5625rem;
     bottom: 0;
-    border-top: 1.5px solid rgba(255, 255, 255, 0.5);
+    border-top: 0.09375rem solid rgba(255, 255, 255, 0.5);
 }
 
 .add_post_footer img {
     cursor: pointer;
-    width: 40px;
-    height: 40px;
-    margin-right: 20px;
-    margin-top: 20px;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 1.25rem;
+    margin-top: 1.25rem;
 }
 
 .upload_post {
     cursor: pointer;
     margin: auto;
-    margin-left: 730px;
-    width: 110px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    margin-left: 45.625rem;
+    width: 6.875rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     background-color: #FFFFFF;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     text-align: center;
 }
 
 .upload_post span {
     font-family: Helvetica;
-    font-size: 19px;
+    font-size: 1.1875rem;
     color: #0E091D;
 }

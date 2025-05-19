@@ -1,69 +1,71 @@
+html {
+    font-size: 16px;
+}
+
 html, body {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
     user-select: none;
-	background-color: #0E091D;
+    background-color: #0E091D;
 }
 
 body.noscroll {
-	overflow: hidden;
-	padding-right: 15px;
+    overflow: hidden;
+    padding-right: 0.9375rem;
 }
 
 /* width */
 ::-webkit-scrollbar {
-	width: 15px;
+    width: 0.9375rem;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-	background: #0E091D;
+    background: #0E091D;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	border-radius: 5px;
-	background: #241A43;
+    border-radius: 0.3125rem;
+    background: #241A43;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	background: #4D1E96;
+    background: #4D1E96;
 }
 
 @font-face {
-	font-family: Peace Sans;
-	src: url(../../Font/ofont.ru_Peace.ttf);
+    font-family: Peace Sans;
+    src: url(../../Font/ofont.ru_Peace.ttf);
 }
 
 @font-face {
-	font-family: Intro;
-	src: url(../../Font/SCP_Font.otf);
+    font-family: Intro;
+    src: url(../../Font/SCP_Font.otf);
 }
 
 @font-face {
-	font-family: Helvetica;
-	src: url(../../Font/helveticaneueltstd_blk.otf);
+    font-family: Helvetica;
+    src: url(../../Font/helveticaneueltstd_blk.otf);
 }
 
 @font-face {
-	font-family: Din_next;
-	src: url(../../Font/DIN_Next_LT_Arabic_Light.ttf);
+    font-family: Din_next;
+    src: url(../../Font/DIN_Next_LT_Arabic_Light.ttf);
 }
-
 
 p, h1, h2, h3 {
-	margin: 0;
+    margin: 0;
 }
 
 a {
-	text-decoration: none;
+    text-decoration: none;
 }
 
-
-.page_space{
+.page_space {
     width: 100%;
-    height: 5000px;
+    height: 62.5rem;
 }
 
 .movie_series_page {
@@ -83,16 +85,16 @@ a {
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    transform: translateY(-105px);
+    transform: translateY(-6.5625rem);
 }
 
 .movie_poster {
     position: absolute;
     width: 100%;
-    transform: translateY(-105px);
+    transform: translateY(-6.5625rem);
 }
 
-.filtr{
+.filtr {
     position: absolute;
     width: 100%;
     height: 100vh;
@@ -102,77 +104,95 @@ a {
 .poster_gradient {
     position: absolute;
     width: 100%;
-    height: 500px;
-    bottom: 0px;
-    background: linear-gradient(0deg,rgba(14, 9, 29, 1) 0%, rgba(14, 9, 29, 0) 100%);
+    height: 31.25rem;
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(14, 9, 29, 1) 0%, rgba(14, 9, 29, 0) 100%);
 }
 
 .title {
-    margin-top: 300px;
-    margin-left: 40px;
-    font-size: 96px;
+    margin-top: 18.75rem;
+    margin-left: 2.5rem;
+    font-size: 6rem;
     font-family: Helvetica;
     color: #FFFFFF;
-
+    width: 80%;
 }
 
 .raiting {
-    margin-top: 10px;
-    margin-left: 40px;
+    margin-top: 0.625rem;
+    margin-left: 2.5rem;
 }
 
 .star {
-    height: 30px;
-    margin-left: 5px;
+    height: 1.875rem;
+    margin-left: 0.3125rem;
+}
+
+.info {
+    width: 62.5rem;
+}
+
+.info p {
+    margin-top: 1.25rem;
+    margin-left: 2.5rem;
+    font-size: 1.125rem;
+    font-family: Helvetica;
+    color: #FFFFFF;
 }
 
 .watch_btn {
-    width: 260px;
-    height: 50px;
-    margin-top: 20px;
-    margin-left: 40px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    width: 16.25rem;
+    height: 3.125rem;
+    margin-top: 1.25rem;
+    margin-left: 2.5rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
     background-color: #FFFFFF;
-    border-radius: 20px;
-    font-size: 30px;
+    border-radius: 1.25rem;
+    font-size: 1.875rem;
     font-family: Helvetica;
     color: #000000;
     text-align: center;
-    line-height: 50px;
+    line-height: 3.125rem;
     cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
-/* Similar movies */
 
+.watch_btn:hover {
+    background-color: #4D1E96;
+    color: #FFFFFF;
+}
+
+/* Similar movies */
 .similar h1 {
-    margin-left: 40px;
-    font-size: 50px;
+    margin-left: 2.5rem;
+    font-size: 3.125rem;
     font-family: Helvetica;
     color: #FFFFFF;
 }
 
 .similar_list {
     display: flex;
-    margin-top: 20px;
-    padding-bottom: 20px;
-    white-space: nowrap; 
+    margin-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
-    margin-left: 30px;
+    margin-left: 1.875rem;
 }
 
 .similar_list::-webkit-scrollbar {
-	display: none; 
+    display: none;
 }
 
 .similar_item {
     flex: 0 0 auto;
-    width: 396px;
-    height: 594px;
-	margin-left: 10px;
-	margin-right: 10px;
+    width: 24.75rem;
+    height: 37.125rem;
+    margin-left: 0.625rem;
+    margin-right: 0.625rem;
     background-color: #241A43;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -186,12 +206,15 @@ a {
 .similar_item::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(0deg,rgba(0, 0, 0, 1) 8%, rgba(0, 0, 0, 0.50) 90%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 8%, rgba(0, 0, 0, 0.50) 90%);
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 1;
-    border-radius: 20px;
+    border-radius: 1.25rem;
 }
 
 .similar_item:hover::before {
@@ -206,36 +229,37 @@ a {
 
 .series_pin, .series_eye {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 0.9375rem;
+    right: 0.9375rem;
     color: white;
-    width: 35px;
+    width: 2.1875rem;
     opacity: 0;
     transition: opacity 0.5s ease, transform 0.5s ease;
     z-index: 2;
 }
 
 .series_eye {
-    top: 70px;
+    top: 4.375rem;
 }
 
 .similar_year {
     position: absolute;
-    bottom: 55px;
-    left: 20px;
+    bottom: 3.4375rem;
+    left: 1.25rem;
     color: white;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-family: Din_next;
     opacity: 0;
     transition: opacity 0.5s ease, transform 0.5s ease;
     z-index: 2;
 }
+
 .similar_duration {
     position: absolute;
-    bottom: 30px;
-    left: 20px;
+    bottom: 1.875rem;
+    left: 1.25rem;
     color: white;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-family: Din_next;
     opacity: 0;
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -262,27 +286,27 @@ a {
     opacity: 1;
     transform: scale(1.2);
 }
+
 /* Similar movies end */
 /* ACTORS CONTAINER */
-
 .actors_container {
     width: 95.83%;
     margin: 0 auto;
-    margin-top: 150px;
+    margin-top: 9.375rem;
 }
 
 .actors_container h1 {
     font-family: Helvetica;
-    font-size: 64px;
+    font-size: 4rem;
     color: #F4F4F2;
-    margin-top: 20px;
-    margin-bottom: 50px;
+    margin-top: 1.25rem;
+    margin-bottom: 3.125rem;
 }
 
 .actors_list {
     display: flex;
     flex-wrap: nowrap;
-    gap: 20px;
+    gap: 1.25rem;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
@@ -295,15 +319,15 @@ a {
 
 .actor_item {
     flex: 0 0 auto;
-    width: 250px;
-    height: 250px;
+    width: 15.625rem;
+    height: 15.625rem;
     border-radius: 50%;
     display: flex;
     flex-direction: column;
     align-items: left;
     justify-content: center;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
 }
@@ -311,12 +335,15 @@ a {
 .actor_item::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(0, 0, 0, 0.6);
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 1;
-    border-radius: 20px;
+    border-radius: 1.25rem;
 }
 
 .actor_item:hover::before {
@@ -333,10 +360,10 @@ a {
 
 .actor_name {
     position: absolute;
-    left: 30px;
-    bottom: 85px;
+    left: 1.875rem;
+    bottom: 5.3125rem;
     color: white;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-family: Din_next;
     opacity: 0;
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -349,10 +376,10 @@ a {
 
 .actor_statistics {
     position: absolute;
-    bottom: 50px;
-    left: 30px;
+    bottom: 3.125rem;
+    left: 1.875rem;
     color: white;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-family: Din_next;
     opacity: 0;
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -365,77 +392,76 @@ a {
 
 .actors-scroll-left {
     position: relative;
-    left: -40px;
-    top: 270px;
+    left: -2.5rem;
+    top: 16.875rem;
     transform: translateY(-50%);
     background-color: #4D1E96;
     color: #fff;
     border: none;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
     z-index: 10;
 }
 
 .actors-scroll-right {
     position: relative;
     left: 100%;
-    top: -235px;
+    top: -14.6875rem;
     transform: translateY(-50%);
     background-color: #4D1E96;
     color: #fff;
     border: none;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
     z-index: 10;
 }
 
 .actors-scroll-left {
-    left: -40px;
+    left: -2.5rem;
 }
 
 .actors-scroll-right {
     left: 100%;
 }
 
-/* ACTORS CONTAINER END*/
-
+/* ACTORS CONTAINER END */
 .about_rate {
     display: flex;
     width: 100%;
-    height: 500px;
-    margin-top: 150px;
+    height: 31.25rem;
+    margin-top: 9.375rem;
 }
 
 .about {
     width: 55%;
-    height: 200px;
+    height: 12.5rem;
 }
 
 .about h1 {
-    margin-top: 20px;
-    margin-left: 40px;
-    font-size: 50px;
+    margin-top: 1.25rem;
+    margin-left: 2.5rem;
+    font-size: 4rem;
     font-family: Helvetica;
     color: #FFFFFF;
 }
 
 .about p {
-    margin-top: 20px;
-    margin-left: 40px;
-    font-size: 18px;
-    font-family: Helvetica;
+    margin-top: 1.25rem;
+    margin-left: 2.5rem;
+    font-size: 1.5rem;
+    font-family: Din_next;
     color: #FFFFFF;
 }
 
@@ -445,10 +471,11 @@ a {
 
 .rate_item {
     width: 90%;
-    height: 320px;
+    height: 20rem;
     background-color: #322658;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     margin: auto;
+    margin-top: 7.5rem;
 }
 
 .rate_info {
@@ -456,63 +483,163 @@ a {
 }
 
 .rate_star {
-    width: 90px;
-    height: 90px;
-    margin-top: 50px;
-    margin-left: 110px;
+    width: 5.625rem;
+    height: 5.625rem;
+    margin-top: 3.125rem;
+    margin-left: 6.875rem;
 }
 
 .rate_item span {
-    font-size: 130px;
-    font-family: 'Din_next';
+    font-size: 8.125rem;
+    font-family: Din_next;
     color: #FFFFFF;
-    margin-left: 20px;
-    margin-top: -30px;
+    margin-left: 1.25rem;
+    margin-top: -1.875rem;
 }
 
 .rate_item h3 {
-    font-size: 36px;
-    font-family: 'Helvetica';
+    font-size: 2.25rem;
+    font-family: Helvetica;
     color: #FFFFFF;
-    margin-top: 60px;
-    margin-left: 60px;
+    margin-top: 3.75rem;
+    margin-left: 3.75rem;
 }
 
 .rate_item h4 {
-    font-size: 20px;
-    font-family: 'Helvetica';
+    font-size: 1.25rem;
+    font-family: Helvetica;
     color: #FFFFFF;
     opacity: 0.5;
-    margin-left: 60px;
-    transform: translateY(-20px);
+    margin-left: 3.75rem;
+    transform: translateY(-1.25rem);
 }
 
 .rate_btn {
     width: 92%;
-    height: 50px;
-    margin-left: 40px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    height: 3.125rem;
+    margin-left: 2.5rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
     background-color: #FFFFFF;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     cursor: pointer;
     text-align: center;
-    transform: translateY(-10px);
+    transform: translateY(-0.625rem);
     transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .rate_btn:hover {
-    background-color: #4D1E96;
+    background-color: #9747FF;
 }
 
 .rate_btn span {
-    font-size: 30px;
+    font-size: 1.875rem;
     font-family: Helvetica;
     color: #000000;
-    line-height: 50px;
+    line-height: 3.125rem;
     transition: color 0.3s ease;
 }
 
 .rate_btn:hover span {
     color: #FFFFFF;
+}
+
+/* Rate model start */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_content {
+    padding: 1.25rem;
+    width: 43.75rem;
+}
+
+.modal_content h2 {
+    font-size: 4rem;
+    font-family: Helvetica;
+    color: #FFFFFF;
+    margin-bottom: 1.25rem;
+}
+
+.rating_buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.3125rem;
+    margin-top: 1.25rem;
+    background-color: #564193;
+    border-radius: 1.25rem;
+    padding: 0.3125rem;
+}
+
+.rating_button {
+    width: 8.75rem;
+    height: 8.75rem;
+    border: none;
+    border-radius: 1.25rem;
+    background-color: #564193;
+    color: #FFFFFF;
+    font-size: 4rem;
+    font-family: din_next;
+    cursor: pointer;
+    transition: background-color 0.7s ease;
+}
+
+.rating_button:hover {
+    background-color: #9747FF;
+}
+
+/* Rate model end */
+#player {
+    display: none;
+    width: 100%;
+    height: auto;
+    z-index: 1000;
+}
+
+.movie_series_page,
+.similar {
+    transition: opacity 0.3s ease;
+}
+
+.movie_series_page.hidden,
+.similar.hidden {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+}
+
+#return_btn {
+    display: none;
+    width: 16.25rem;
+    margin: 1.25rem auto;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    background-color: #FFFFFF;
+    font-size: 1.875rem;
+    font-family: Helvetica;
+    color: #000;
+    line-height: 3.125rem;
+    border: none;
+    border-radius: 1.25rem;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+#return_btn:hover {
+    background-color: #9747FF;
+    color: #fff;
+}
+
+:root {
+    --plyr-color-main: #6A2EBE; /* Пурпурный */
 }

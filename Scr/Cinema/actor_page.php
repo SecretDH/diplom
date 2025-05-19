@@ -75,14 +75,14 @@ mysqli_close($conn);
 
     <div class="series_container">
         <h1>Filmography</h1>
-        <button class="series-scroll-left">&larr;</button>
+        <button class="series-scroll-left">&#10142;</button>
         <div class="series_list">
             <?php 
                 $actor_id = $actor['id'];
                 include 'get_actor_filmography.php'; 
             ?>
         </div>
-        <button class="series-scroll-right">&rarr;</button>
+        <button class="series-scroll-right">&#10142;</button>
     </div>
 </body>
 </html>

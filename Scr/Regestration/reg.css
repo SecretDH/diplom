@@ -1,8 +1,10 @@
-/* 1vh = 12.9px */
+html {
+    font-size: 16px;
+}
 
 html, body {
-	margin: 0; 
-	height: 100%; 
+    margin: 0;
+    height: 100%;
     user-select: none;
     overflow-x: hidden;
 }
@@ -13,7 +15,7 @@ html {
 
 /* width */
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 0.9375rem;
 }
 
 /* Track */
@@ -23,7 +25,7 @@ html {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     background: #241A43;
 }
 
@@ -33,13 +35,13 @@ html {
 }
 
 @font-face {
-	font-family: Peace Sans;
-	src: url(../../Font/ofont.ru_Peace.ttf);
+    font-family: Peace Sans;
+    src: url(../../Font/ofont.ru_Peace.ttf);
 }
 
 @font-face {
-	font-family: Intro;
-	src: url(../../Font/SCP_Font.otf);
+    font-family: Intro;
+    src: url(../../Font/SCP_Font.otf);
 }
 
 @font-face {
@@ -70,45 +72,45 @@ header {
     display: flex;
     width: 100%;
     text-align: center;
-    padding: 3vh 4vh;
+    padding: 2.41875rem 3.225rem; /* 3vh = 3 * 12.9px = 38.7px ≈ 2.41875rem; 4vh = 4 * 12.9px = 51.6px ≈ 3.225rem */
 }
 
 header p {
     color: white;
     display: inline-block;
     font-family: Helvetica;
-    font-size: 2.5vh;
+    font-size: 2.0125rem; /* 2.5vh = 2.5 * 12.9px = 32.25px ≈ 2.0125rem */
     margin: 0;
 }
 
 header img {
     display: inline-block;
-    height: 10vh;
+    height: 8.0625rem; /* 10vh = 10 * 12.9px = 129px ≈ 8.0625rem */
     margin-left: 34vw;
 }
 
 .login-outline {
-    width: 560px;
-    height: 700px;
+    width: 35rem;
+    height: 43.75rem;
     background-color: #4B3795;
     margin: auto;
-    margin-top: 50px;
-    margin-bottom: 100px;
-    border-radius: 40px;
+    margin-top: 3.125rem;
+    margin-bottom: 6.25rem;
+    border-radius: 2.5rem;
 }
 
 .login-outline.active {
-    height: 900px;
+    height: 56.25rem;
 }
 
 .circles {
-    width: 360px;
+    width: 22.5rem;
     margin: auto;
-    margin-top: 40px;
-} 
+    margin-top: 2.5rem;
+}
 
 .switcher {
-    height: 100px;
+    height: 6.25rem;
     width: 100%;
 }
 
@@ -116,25 +118,25 @@ header img {
 .toggle-switch {
     position: relative;
     display: flex;
-    width: 440px;
-    height: 70px;
+    width: 27.5rem;
+    height: 4.375rem;
     background: #4B3795;
-    border-radius: 25px;
-    border: 1px solid #FFFFFF;
-    padding: 5px;
+    border-radius: 1.5625rem;
+    border: 0.0625rem solid #FFFFFF;
+    padding: 0.3125rem;
     margin: auto;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 .switch-btn {
-    width: 210px;
-    height: 30px;
-    padding-top: 20px;
+    width: 13.125rem;
+    height: 1.875rem;
+    padding-top: 1.25rem;
     border: none;
     background: transparent;
     color: #FFFFFF;
     font-family: Helvetica;
-    font-size: 24px;
+    font-size: 1.5rem;
     z-index: 2;
     cursor: pointer;
     transition: color 0.3s ease;
@@ -146,12 +148,12 @@ header img {
 
 .slider {
     position: absolute;
-    top: 5px;
-    left: 5px;
-    width: calc(50% - 10px);
-    height: 70px;
+    top: 0.3125rem;
+    left: 0.3125rem;
+    width: calc(50% - 0.625rem);
+    height: 4.375rem;
     background-color: #a88bd8;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     transition: all 0.3s ease;
     z-index: 1;
 }
@@ -172,49 +174,49 @@ header img {
 .login {
     display: block;
     width: 99.5%;
-    height: 72.5vh;
+    height: 58.6125rem; /* 72.5vh = 72.5 * 12.9px = 935.25px ≈ 58.6125rem */
 }
 
 .title {
     width: 100%;
-    height: 130px;
-    padding-top: 40px;
+    height: 8.125rem;
+    padding-top: 2.5rem;
 }
 
 .login_logo {
     display: flex;
-    width: 270px;
-    height: 75px;
+    width: 16.875rem;
+    height: 4.6875rem;
     margin: auto;
 }
 
 .login_logo img {
-    height: 75px;
+    height: 4.6875rem;
 }
 
 .login_logo h1 {
     font-family: Helvetica;
-    font-size: 30px;
+    font-size: 1.875rem;
     color: #FFFFFF;
-    margin-left: 18px;
+    margin-left: 1.125rem;
 }
 
-.login-input{
+.login-input {
     width: 100%;
     text-align: center;
 }
 
 input {
-    width: 440px;
-    height: 70px;
-    border-radius: 25px;
-    border: 2px solid #FFFFFF;
+    width: 27.5rem;
+    height: 4.375rem;
+    border-radius: 1.5625rem;
+    border: 0.125rem solid #FFFFFF;
     background-color: #4B3795;
     font-family: Helvetica;
     outline: none;
-    font-size: 25px;
-    text-indent: 20px;
-    margin-top: 20px;
+    font-size: 1.5625rem;
+    text-indent: 1.25rem;
+    margin-top: 1.25rem;
     color: #FFFFFF;
 }
 
@@ -224,29 +226,29 @@ input::placeholder {
 }
 
 .sing-in {
-    width: 440px;
-    height: 70px;
-    margin-top: 20px;
+    width: 27.5rem;
+    height: 4.375rem;
+    margin-top: 1.25rem;
     background-color: #FFFFFF;
-    border-radius: 25px;
+    border-radius: 1.5625rem;
     border: none;
     transition: 0.15s;
     font-family: Helvetica;
-    font-size: 25px;
+    font-size: 1.5625rem;
     text-align: center;
     color: #0E091D;
 }
 
 .reg-sing-in {
-    width: 440px;
-    height: 70px;
-    margin-top: 20px;
+    width: 27.5rem;
+    height: 4.375rem;
+    margin-top: 1.25rem;
     background-color: #FFFFFF;
-    border-radius: 25px;
+    border-radius: 1.5625rem;
     border: none;
     transition: 0.15s;
     font-family: Helvetica;
-    font-size: 25px;
+    font-size: 1.5625rem;
     text-align: center;
     color: #0E091D;
 }
@@ -254,38 +256,37 @@ input::placeholder {
 .forgot-password {
     display: inline-block;
     position: absolute;
-    bottom: 0px;
-    margin-top: 5vh;
-    margin-left: 2vh;
+    bottom: 0;
+    margin-top: 4.03125rem; /* 5vh = 5 * 12.9px = 64.5px ≈ 4.03125rem */
+    margin-left: 1.6125rem; /* 2vh = 2 * 12.9px = 25.8px ≈ 1.6125rem */
     color: #0048FF;
     font-family: Intro;
-    font-size: 2vh;
+    font-size: 1.6125rem; /* 2vh = 2 * 12.9px = 25.8px ≈ 1.6125rem */
 }
 
 .toggle-form {
     display: inline-block;
     position: absolute;
-    bottom: 0px;
-    right: 0px;
-    margin-top: 5vh;
-    margin-right: 2vh;
+    bottom: 0;
+    right: 0;
+    margin-top: 4.03125rem; /* 5vh = 5 * 12.9px = 64.5px ≈ 4.03125rem */
+    margin-right: 1.6125rem; /* 2vh = 2 * 12.9px = 25.8px ≈ 1.6125rem */
     color: #0048FF;
     font-family: Intro;
-    font-size: 2vh;
+    font-size: 1.6125rem; /* 2vh = 2 * 12.9px = 25.8px ≈ 1.6125rem */
 }
-
 
 .reg {
     display: none;
     width: 99.5%;
-    height: 72.5vh;
+    height: 58.6125rem; /* 72.5vh = 72.5 * 12.9px = 935.25px ≈ 58.6125rem */
     background-color: #CBCBCB;
     border: solid black;
-    border-width: 0.3vh;
+    border-width: 0.241875rem; /* 0.3vh = 0.3 * 12.9px = 3.87px ≈ 0.241875rem */
     position: relative;
 }
 
-.reg-input{
+.reg-input {
     width: 100%;
     text-align: center;
 }

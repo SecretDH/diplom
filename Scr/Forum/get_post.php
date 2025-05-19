@@ -1,12 +1,19 @@
 <?php
 require __DIR__ . '../../db.php';
 
-if (!isset($user_id)) {
-    echo "Ошибка: ID пользователя не передан.";
+// Получаем user_id и поисковый запрос
+$user_id = isset($_POST['user_id']) ? $_POST['user_id'] : (isset($_GET['user_id']) ? $_GET['user_id'] : null);
+$search = isset($_POST['search']) ? trim($_POST['search']) : '';
+
+if (!$user_id) {
+    echo '<p class="error-message">Ошибка: ID пользователя не передан. Убедитесь, что user_id передан через URL или AJAX.</p>';
     exit;
 }
 
-// Ваш код для получения постов
+// Отладочный вывод (скрыт)
+echo '<p style="display: none;">Debug: User ID = ' . htmlspecialchars($user_id) . ', Search = ' . htmlspecialchars($search) . '</p>';
+
+// Формируем SQL-запрос
 $sql = "
     SELECT 
         forum.*, 
@@ -30,13 +37,26 @@ $sql = "
         forum_reposts_view ON forum.ID = forum_reposts_view.post_id
     LEFT JOIN 
         users ON forum.user_id = users.ID
-    ORDER BY 
-        forum.post_date DESC
 ";
+
+// Добавляем условие поиска, если есть
+if (!empty($search)) {
+    $sql .= " WHERE forum.post_text LIKE '%" . mysqli_real_escape_string($conn, $search) . "%'";
+}
+
+$sql .= " ORDER BY forum.post_date DESC";
+
 $result = mysqli_query($conn, $sql);
 
 if (!$result) {
-    echo "Ошибка при получении постов: " . mysqli_error($conn);
+    echo '<p class="error-message">Ошибка при получении постов: ' . htmlspecialchars(mysqli_error($conn)) . '</p>';
+    exit;
+}
+
+// Проверяем, есть ли результаты
+if (mysqli_num_rows($result) === 0 && !empty($search)) {
+    echo '<p class="error-message">Nothing found.</p>';
+    mysqli_free_result($result);
     exit;
 }
 
@@ -93,4 +113,6 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '</div>'; // .post_stat
     echo '</div>'; // .content_block
 }
+
+mysqli_free_result($result);
 ?>

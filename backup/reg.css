@@ -1,0 +1,291 @@
+/* 1vh = 12.9px */
+
+html, body {
+	margin: 0; 
+	height: 100%; 
+    user-select: none;
+    overflow-x: hidden;
+}
+
+html {
+    overflow: hidden;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #0E091D;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #241A43;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #4D1E96;
+}
+
+@font-face {
+	font-family: Peace Sans;
+	src: url(../../Font/ofont.ru_Peace.ttf);
+}
+
+@font-face {
+	font-family: Intro;
+	src: url(../../Font/SCP_Font.otf);
+}
+
+@font-face {
+    font-family: Helvetica;
+    src: url(../../Font/helveticaneueltstd_blk.otf);
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-image: url(../../Image/register_background.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.background_color {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: #0E091D;
+    z-index: -2;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    padding: 3vh 4vh;
+}
+
+header p {
+    color: white;
+    display: inline-block;
+    font-family: Helvetica;
+    font-size: 2.5vh;
+    margin: 0;
+}
+
+header img {
+    display: inline-block;
+    height: 10vh;
+    margin-left: 34vw;
+}
+
+.login-outline {
+    width: 560px;
+    height: 700px;
+    background-color: #4B3795;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    border-radius: 40px;
+}
+
+.login-outline.active {
+    height: 900px;
+}
+
+.circles {
+    width: 360px;
+    margin: auto;
+    margin-top: 40px;
+} 
+
+.switcher {
+    height: 100px;
+    width: 100%;
+}
+
+/* Переключатель */
+.toggle-switch {
+    position: relative;
+    display: flex;
+    width: 440px;
+    height: 70px;
+    background: #4B3795;
+    border-radius: 25px;
+    border: 1px solid #FFFFFF;
+    padding: 5px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.switch-btn {
+    width: 210px;
+    height: 30px;
+    padding-top: 20px;
+    border: none;
+    background: transparent;
+    color: #FFFFFF;
+    font-family: Helvetica;
+    font-size: 24px;
+    z-index: 2;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.switch-btn.active {
+    color: white;
+}
+
+.slider {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: calc(50% - 10px);
+    height: 70px;
+    background-color: #a88bd8;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+/* Формы */
+.form {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+}
+
+.form.show {
+    opacity: 1;
+    pointer-events: auto;
+    position: relative;
+}
+
+.login {
+    display: block;
+    width: 99.5%;
+    height: 72.5vh;
+}
+
+.title {
+    width: 100%;
+    height: 130px;
+    padding-top: 40px;
+}
+
+.login_logo {
+    display: flex;
+    width: 270px;
+    height: 75px;
+    margin: auto;
+}
+
+.login_logo img {
+    height: 75px;
+}
+
+.login_logo h1 {
+    font-family: Helvetica;
+    font-size: 30px;
+    color: #FFFFFF;
+    margin-left: 18px;
+}
+
+.login-input{
+    width: 100%;
+    text-align: center;
+}
+
+input {
+    width: 440px;
+    height: 70px;
+    border-radius: 25px;
+    border: 2px solid #FFFFFF;
+    background-color: #4B3795;
+    font-family: Helvetica;
+    outline: none;
+    font-size: 25px;
+    text-indent: 20px;
+    margin-top: 20px;
+    color: #FFFFFF;
+}
+
+input::placeholder {
+    color: #FFFFFF;
+    opacity: 0.5;
+}
+
+.sing-in {
+    width: 440px;
+    height: 70px;
+    margin-top: 20px;
+    background-color: #FFFFFF;
+    border-radius: 25px;
+    border: none;
+    transition: 0.15s;
+    font-family: Helvetica;
+    font-size: 25px;
+    text-align: center;
+    color: #0E091D;
+}
+
+.reg-sing-in {
+    width: 440px;
+    height: 70px;
+    margin-top: 20px;
+    background-color: #FFFFFF;
+    border-radius: 25px;
+    border: none;
+    transition: 0.15s;
+    font-family: Helvetica;
+    font-size: 25px;
+    text-align: center;
+    color: #0E091D;
+}
+
+.forgot-password {
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
+    margin-top: 5vh;
+    margin-left: 2vh;
+    color: #0048FF;
+    font-family: Intro;
+    font-size: 2vh;
+}
+
+.toggle-form {
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    margin-top: 5vh;
+    margin-right: 2vh;
+    color: #0048FF;
+    font-family: Intro;
+    font-size: 2vh;
+}
+
+
+.reg {
+    display: none;
+    width: 99.5%;
+    height: 72.5vh;
+    background-color: #CBCBCB;
+    border: solid black;
+    border-width: 0.3vh;
+    position: relative;
+}
+
+.reg-input{
+    width: 100%;
+    text-align: center;
+}

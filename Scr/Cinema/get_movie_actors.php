@@ -10,8 +10,8 @@ if ($type === 'movie') {
     $table = 'movie_actors';
     $column = 'movie_id';
 } elseif ($type === 'series') {
-    $table = 'serias_actor';
-    $column = 'serias_id';
+    $table = 'series_actors';
+    $column = 'series_id';
 } else {
     die("Некорректный тип.");
 }
