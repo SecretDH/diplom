@@ -69,101 +69,141 @@ a {
 .background_image {
     display: flex;
     width: 100%;
-    height: 125vh;
+    max-height: 112vh;
     position: absolute;
     left: 0;
     z-index: 2;
-    transform: translateY(-24vh);
+    transform: translateY(-19vh);
 }
 
-.background_image_blur {
-    position: absolute;
+#slider_background_image {
     width: 100%;
-    height: 125vh;
-    background-color: #000000;
-    opacity: 0.6;
+    transition: opacity 0.5s;
+    opacity: 1;
 }
-
-.background_image img {
-    width: 100%;
-}
-
-.slider-track {
-    display: flex;
-    height: 100%;
-    user-select: none;
-    transition: none;
-}
-
-.slide {
-    width: 21.875rem;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    color: white;
-    flex-shrink: 0;
-}
-
-/* Для активного слайда (увеличиваем вверх) */
-.slide_img {
-    position: absolute;
-    bottom: 0;
-    width: 12.5rem;
-    height: 18.75rem;
-    margin-right: 1.25rem;
-    margin-left: 1.25rem;
-    transition: width 0.5s ease, height 0.5s ease;
-    transform-origin: top center;
-    z-index: 3;
-}
-
-.slide_img.active {
-    width: 21.875rem;
-    height: 32.5rem;
-    z-index: 4;
-    border: 0.125rem solid #FFFFFF;
-    border-radius: 0.625rem;
-}
-
-.slide_img img {
-    width: 12.5rem;
-    height: 18.75rem;
-    transition: width 0.5s ease, height 0.5s ease;
-    transform-origin: top center;
-    border-radius: 0.625rem;
-}
-
-.slide_img.active img {
-    width: 21.875rem;
-    height: 32.5rem;
+#slider_background_image.fade {
+    opacity: 0;
 }
 
 .slide_description {
     position: absolute;
-    top: -38vh;
-    left: -38vw;
+    top: 40vh;
+    left: 2vw;
+    transition: opacity 0.2s, top 0.5s;
     opacity: 0;
-    transition: 0.5s;
+    pointer-events: none;
+    z-index: 1;
+}
+.slide_description.fade {
+    opacity: 0;
+    top: 40vh;
+}
+.slide_description.visible {
+    opacity: 1;
+    top: 33vh;
 }
 
-.slide_img.active .slide_description {
-    opacity: 1;
+.slide_description .watch_button {
+    pointer-events: auto;
 }
 
 .slide_description h1 {
-    width: 80vw;
+    width: 66vw;
     color: #F4F4F2;
     font-size: 6rem;
     font-family: Helvetica;
 }
 
 .slide_description h2 {
-    width: 31.25rem;
+    width: 61.25rem;
     color: #F4F4F2;
     font-size: 0.9375rem;
     font-family: Helvetica;
+}
+
+.background_overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(14, 9, 29, 0.7);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.slider-track {
+    display: flex;
+    gap: 1.25rem;
+    height: 100%;
+    user-select: none;
+    transition: none;
+}
+
+.slide {
+    width: calc((100vw - 7 * 1.25rem - 16 * 0.125rem) / 8);
+    height: 91.7vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    flex-shrink: 0;
+    transition: width 0.5s ease, height 0.5s ease;
+}
+
+.slide.active {
+    width: calc((100vw - 7 * 1.25rem - 16 * 0.125rem) / 8 * 1.5);
+}
+
+.watch_button {
+    display: block;
+    width: 17.125rem;
+    height: 3.525rem;
+    margin-top: 2.125rem;
+    margin-bottom: 2.125rem;
+    background-color: #FFFFFF;
+    border-radius: 1.25rem;
+    border: none;
+    color: #000000;
+    font-family: Helvetica;
+    font-size: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.watch_button:hover {
+    background-color: #4D1E96;
+    color: #FFFFFF;
+}
+
+.slide_img {
+    position: absolute;
+    bottom: 0;
+    width: calc((100vw - 7 * 1.25rem - 16 * 0.125rem) / 8);
+    aspect-ratio: 2 / 3;
+    transition: width 0.5s ease, height 0.5s ease;
+    transform-origin: top center;
+    z-index: 3;
+}
+
+.slide_img.active {
+    width: calc((100vw - 7 * 1.25rem - 16 * 0.125rem) / 8 * 1.5);
+    aspect-ratio: 2 / 3;
+    z-index: 4;
+}
+
+.slide_img img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    transition: width 0.5s ease, height 0.5s ease, border 0.5s ease;
+    transform-origin: top center;
+    border-radius: 0.625rem;
+    border: 0.125rem solid transparent;
+}
+
+.slide_img.active img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    border: 0.125rem solid #FFFFFF;
 }
 
 .mini_forum {

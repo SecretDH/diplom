@@ -12,121 +12,28 @@
     <?php include '../navbar.php'; ?>
 
     <div class="background_image">
-        <div class="background_image_blur"></div>
-        <img src="../../Sliders/slide_1.png" id="slider_background_image">
+        <div class="background_overlay"></div>
+        <img src="" id="slider_background_image" draggable="false">
+
+        <div class="slide_description">
+            <h1> Wanda Vision </h1>
+            <div class="raiting">
+                <img src="../../Image/raiting_star.svg" class="star" alt="Star">
+                <img src="../../Image/raiting_star.svg" class="star" alt="Star">
+                <img src="../../Image/raiting_star.svg" class="star" alt="Star">
+                <img src="../../Image/raiting_star.svg" class="star" alt="Star">
+                <img src="../../Image/raiting_star_empty.svg" class="star" alt="Star">
+            </div>
+            <h2> Wanda and Vision are newlyweds living in the idyllic town of Westview. At first, their lives seem perfect, but they gradually realize that this is not the case. </h2>
+            <button class="watch_button" onclick="">
+                Watch
+            </button>
+        </div>
     </div>
     <div class="slider-container" id="slider">
         
         <div class="slider-track" id="track">
-            <!-- Твои слайды -->
-            <div class="slide" >
-                <div class="slide_img" id="1">
-                    <img src="../../Sliders/slide_1_mini.png" draggable="false">
-                    <div class="slide_description">
-                        <h1> Wanda Vision </h1>
-                        <h2> Wanda and Vision are newlyweds living in the idyllic town of Westview. At first, their lives seem perfect, but they gradually realize that this is not the case. </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="slide" >
-                <div class="slide_img" id="2">
-                    <img src="../../Sliders/slide_2_mini.png" draggable="false">
-                    <div class="slide_description">
-                        <h1> Ant-Man Wasp <br> Quantamania </h1>
-                        <h2> Scott Lang and Hope Van Dyne are dragged into the Quantum Realm, along with Hope's parents and Scott's daughter Cassie. Together they must find a way to escape, but what secrets  is Hope's mother hiding? And who is the mysterious Kang? </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="slide" >
-                <div class="slide_img" id="3">
-                    <img src="../../Sliders/slide_3_mini.png" draggable="false">
-                    <div class="slide_description">
-                        <h1> Agata All Along </h1>
-                        <h2> A spell-bound Agatha Harkness regains freedom thanks to a teen's help. Intrigued by his plea, she embarks on the Witches' Road trials to reclaim her powers and discover the teen's motivations. </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="slide" >
-                <div class="slide_img" id="4">
-                    <img src="../../Sliders/slide_4_mini.png" draggable="false">
-                    <div class="slide_description">
-                        <h1> Thunderbolts </h1>
-                        <h2> After finding themselves ensnared in a death trap, an unconventional team of antiheroes must embark on a dangerous mission that will force them to confront the darkest corners of their pasts. </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="slide" >
-                <div class="slide_img" id="5">
-                    <img src="../../Sliders/slide_5_mini.png" draggable="false">
-                    <div class="slide_description">
-                        <h1> Capitan America <br> Brave New World </h1>
-                        <h2> Sam Wilson, the new Captain America, finds himself in the middle of an international incident and must discover the motive behind a nefarious global plan. </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="slide" >
-                <div class="slide_img" id="6">
-                    <img src="../../Sliders/slide_6_mini.png" draggable="false">
-                    <div class="slide_description">
-                        <h1> Moonknigh </h1>
-                        <h2> Steven Grant discovers he's been granted the powers of an Egyptian moon god. But he soon finds out that these newfound powers can be both a blessing and a curse to his troubled life. </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="slide" >
-                <div class="slide_img" id="7">
-                    <img src="../../Sliders/slide_7_mini.png" draggable="false">
-                    <div class="slide_description">
-                        <h1> She-Hulk </h1>
-                        <h2> Jennifer Walters navigates the complicated life of a single, 30-something attorney who also happens to be a green 6-foot-7-inch superpowered Hulk. </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="slide" >
-                <div class="slide_img" id="8">
-                    <img src="../../Sliders/slide_8_mini.png" draggable="false">
-                    <div class="slide_description">
-                        <h1> Secret Invasion </h1>
-                        <h2> Fury and Talos try to stop the Skrulls who have infiltrated the highest spheres of the Marvel Universe. </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="slide" >
-                <div class="slide_img" id="9">
-                    <img src="../../Sliders/slide_9_mini.png" draggable="false">
-                    <div class="slide_description">
-                        <h1> Loki </h1>
-                        <h2> The mercurial villain Loki resumes his role as the God of Mischief in a new series that takes place after the events of “Avengers: Endgame.” </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="slide" >
-                <div class="slide_img" id="10">
-                    <img src="../../Sliders/slide_10_mini.png" draggable="false">
-                    <div class="slide_description">
-                        <h1> Avengers: <br> EndGame </h1>
-                        <h2> After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe. </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="slide" >
-                <div class="slide_img" id="11">
-                    <img src="../../Sliders/slide_11_mini.png" draggable="false">
-                    <div class="slide_description">
-                        <h1> The Amazing Spider-Man </h1>
-                        <h2> After Peter Parker is bitten by a genetically altered spider, he gains newfound, spider-like powers and ventures out to save the city from the machinations of a mysterious reptilian foe. </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="slide" >
-                <div class="slide_img" id="12">
-                    <img src="../../Sliders/slide_12_mini.png" draggable="false">
-                    <div class="slide_description">
-                        <h1> The Amazing Spider-Man 2 </h1>
-                        <h2> When New York is put under siege by Oscorp, it is up to Spider-Man to save the city he swore to protect as well as his loved ones. </h2>
-                    </div>
-                </div>
-            </div>
+            <?php include 'get_slides.php'; ?>
         </div>
     </div>
 
@@ -231,165 +138,223 @@
         </div>
     </div>
 
-    <div class="pox3"></div>
+    <script>
+        const slider = document.getElementById('slider');
+        const track = document.getElementById('track');
+        const originalSlides = Array.from(track.children);
+        const slideCount = originalSlides.length;
 
-<script>
-    const slider = document.getElementById('slider');
-    const track = document.getElementById('track');
-    const originalSlides = Array.from(track.children);
-    const slideCount = originalSlides.length;
+        const slideWidth = originalSlides[0].offsetWidth + parseInt(getComputedStyle(originalSlides[0]).marginRight);
 
-    const slideWidth = originalSlides[0].offsetWidth + parseInt(getComputedStyle(originalSlides[0]).marginRight);
-
-    // Клонируем в начало (в правильном порядке)
-    originalSlides.forEach(slide => {
-      const clone = slide.cloneNode(true);
-      track.insertBefore(clone, track.lastChild);
-    });
-
-    // Клонируем в конец
-    originalSlides.forEach(slide => {
-      const clone = slide.cloneNode(true);
-      track.appendChild(clone);
-    });
-
-    // Установка начального положения на оригинальные слайды
-    let currentScroll = slideWidth * slideCount;
-    slider.scrollLeft = currentScroll;
-
-    // Обновление ширины трека
-    track.style.width = `${slideWidth * track.children.length}px`;
-
-    // Drag-скроллинг
-    let isDragging = false;
-    let startX = 0;
-    let scrollStart = 0;
-
-    slider.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      startX = e.pageX;
-      scrollStart = slider.scrollLeft;
-      slider.style.cursor = 'grabbing';
-    });
-
-    document.addEventListener('mouseup', () => {
-      isDragging = false;
-      slider.style.cursor = 'grab';
-    });
-
-    document.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      const dx = e.pageX - startX;
-      slider.scrollLeft = scrollStart - dx;
-    });
-
-    // Зацикливание
-    slider.addEventListener('scroll', () => {
-      const maxScroll = slideWidth * (slideCount * 2);
-
-      if (slider.scrollLeft <= slideWidth * 0.5) {
-        // Перепрыгиваем вперёд (в центр)
-        slider.scrollLeft += slideWidth * slideCount;
-      }
-
-      if (slider.scrollLeft >= maxScroll + slideWidth * 0.5) {
-        // Перепрыгиваем назад (в центр)
-        slider.scrollLeft -= slideWidth * slideCount;
-      }
-    });
-
-    // Центрируем слайд по клику
-    track.addEventListener('click', (e) => {
-        const slide = e.target.closest('.slide_img');
-        if (!slide) return;
-
-        // Убираем увеличение со всех
-        track.querySelectorAll('.slide_img').forEach(s => s.classList.remove('active'));
-
-        // Вычисляем позицию слайда внутри трека
-        const slideLeft = slide.offsetLeft;
-        const sliderCenter = slider.offsetWidth / 2;
-        const scrollTo = slideLeft - sliderCenter + slide.offsetWidth / 2;
-
-        // Прокручиваем к нужной позиции
-        slider.scrollTo({
-          left: scrollTo,
-          behavior: 'smooth'
+        // Клонируем в начало (в правильном порядке)
+        originalSlides.forEach(slide => {
+            const clone = slide.cloneNode(true);
+            track.insertBefore(clone, track.lastChild);
         });
 
-        // Добавляем класс увеличения
-        slide.classList.add('active');
+        // Клонируем в конец
+        originalSlides.forEach(slide => {
+            const clone = slide.cloneNode(true);
+            track.appendChild(clone);
+        });
 
-        // Устанавливаем новое изображение фона
-        document.getElementById('slider_background_image').src = '../../Sliders/slide_' + slide.id + '.png';
+        // Установка начального положения на оригинальные слайды
+        let currentScroll = slideWidth * slideCount;
+        slider.scrollLeft = currentScroll;
+
+        // Обновление ширины трека
+        track.style.width = `${slideWidth * track.children.length}px`;
+
+        // Drag-скроллинг
+        let isDragging = false;
+        let startX = 0;
+        let scrollStart = 0;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.pageX;
+            scrollStart = slider.scrollLeft;
+            slider.style.cursor = 'grabbing';
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            slider.style.cursor = 'grab';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const dx = e.pageX - startX;
+            slider.scrollLeft = scrollStart - dx;
+        });
+
+        // Зацикливание
+        slider.addEventListener('scroll', () => {
+            const maxScroll = slideWidth * (slideCount * 2);
+
+            if (slider.scrollLeft <= slideWidth * 0.5) {
+                // Перепрыгиваем вперёд (в центр)
+                slider.scrollLeft += slideWidth * slideCount;
+            }
+
+            if (slider.scrollLeft >= maxScroll + slideWidth * 0.5) {
+                // Перепрыгиваем назад (в центр)
+                slider.scrollLeft -= slideWidth * slideCount;
+            }
+        });
+
+        // Центрируем слайд по клику
+        let currentActiveSlideImg = null;
+
+track.addEventListener('click', (e) => {
+    const slideImg = e.target.closest('.slide_img');
+    if (!slideImg) return;
+
+    // Убираем увеличение со всех .slide_img и .slide
+    track.querySelectorAll('.slide_img').forEach(s => s.classList.remove('active'));
+    track.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+
+    // Добавляем класс увеличения
+    slideImg.classList.add('active');
+    const parentSlide = slideImg.closest('.slide');
+    if (parentSlide) parentSlide.classList.add('active');
+
+    // Смещение центра
+    let offset = 0;
+    if (currentActiveSlideImg && currentActiveSlideImg !== slideImg) {
+        const prevRect = currentActiveSlideImg.getBoundingClientRect();
+        const newRect = slideImg.getBoundingClientRect();
+        const slideWidth = prevRect.width;
+        const activeSlideWidth = slideWidth * 1.4;
+        const offsetValue = (activeSlideWidth - slideWidth) / 2;
+
+        if (newRect.left < prevRect.left) {
+            offset = offsetValue;
+        } else if (newRect.left > prevRect.left) {
+            offset = -offsetValue;
+        }
+    }
+
+    // Центрируем слайд с учётом смещения
+    const slideLeft = slideImg.offsetLeft;
+    const sliderCenter = slider.offsetWidth / 2;
+    const scrollTo = slideLeft - sliderCenter + slideImg.offsetWidth / 2 + offset;
+
+    slider.scrollTo({
+        left: scrollTo,
+        behavior: 'smooth'
     });
-  </script>
 
-  <script>
-    const second_slider = document.getElementById('second_slider');
-    const second_track = document.getElementById('second_track');
-    const second_originalSlides = Array.from(second_track.children);
-    const second_slideCount = second_originalSlides.length;
+    // --- ОБНОВЛЯЕМ .slide_description и фон ---
+    const title = slideImg.dataset.title || '';
+    const description = slideImg.dataset.description || '';
+    const bigPoster = slideImg.dataset.big_poster || '';
+    const averageRating = parseFloat(slideImg.dataset.average_rating || '0');
 
-    const second_slideWidth = second_originalSlides[0].offsetWidth + parseInt(getComputedStyle(second_originalSlides[0]).marginRight);
+    const slideDescription = document.querySelector('.slide_description');
+    const h1 = slideDescription?.querySelector('h1');
+    const h2 = slideDescription?.querySelector('h2');
+    const bgImg = document.getElementById('slider_background_image');
+    const ratingDiv = slideDescription?.querySelector('.raiting');
 
-    // Клонируем в начало (в правильном порядке)
-    second_originalSlides.forEach(second_slide => {
-      const second_clone = second_slide.cloneNode(true);
-      second_track.insertBefore(second_clone, second_track.lastChild);
-    });
+    // Скрываем описание и фон
+    slideDescription.classList.remove('visible');
+    bgImg.classList.add('fade');
 
-    // Клонируем в конец
-    second_originalSlides.forEach(second_slide => {
-      const second_clone = second_slide.cloneNode(true);
-      second_track.appendChild(second_clone);
-    });
+    setTimeout(() => {
+        if (h1) h1.textContent = title;
+        if (h2) h2.textContent = description;
+        if (bgImg && bigPoster) bgImg.src = bigPoster;
 
-    // Установка начального положения на оригинальные слайды
-    let second_currentScroll = second_slideWidth * second_slideCount;
-    second_slider.scrollLeft = second_currentScroll;
+        // Обновляем звёзды рейтинга
+        if (ratingDiv) {
+            const rounded = Math.round(averageRating);
+            let stars = '';
+            for (let i = 0; i < 5; i++) {
+                if (i < rounded) {
+                    stars += '<img src="../../Image/raiting_star.svg" class="star" alt="Star">';
+                } else {
+                    stars += '<img src="../../Image/raiting_star_empty.svg" class="star" alt="Star">';
+                }
+            }
+            ratingDiv.innerHTML = stars;
+        }
 
-    // Обновление ширины трека
-    second_track.style.width = `${second_slideWidth * second_track.children.length}px`;
+        // Показываем описание плавно
+        slideDescription.classList.add('visible');
+        bgImg.classList.remove('fade');
+    }, 300);
 
-    // Drag-скроллинг
-    let second_isDragging = false;
-    let second_startX = 0;
-    let second_scrollStart = 0;
+    // Запоминаем текущий активный
+    currentActiveSlideImg = slideImg;
+});
+    </script>
 
-    second_slider.addEventListener('mousedown', (second_e) => {
-      second_isDragging = true;
-      second_startX = second_e.pageX;
-      second_scrollStart = second_slider.scrollLeft;
-      second_slider.style.cursor = 'grabbing';
-    });
+    <script>
+        const second_slider = document.getElementById('second_slider');
+        const second_track = document.getElementById('second_track');
+        const second_originalSlides = Array.from(second_track.children);
+        const second_slideCount = second_originalSlides.length;
 
-    document.addEventListener('mouseup', () => {
-      second_isDragging = false;
-      second_slider.style.cursor = 'grab';
-    });
+        const second_slideWidth = second_originalSlides[0].offsetWidth + parseInt(getComputedStyle(second_originalSlides[0]).marginRight);
 
-    document.addEventListener('mousemove', (second_e) => {
-      if (!second_isDragging) return;
-      const second_dx = second_e.pageX - second_startX;
-      second_slider.scrollLeft = second_scrollStart - second_dx;
-    });
+        // Клонируем в начало (в правильном порядке)
+        second_originalSlides.forEach(second_slide => {
+        const second_clone = second_slide.cloneNode(true);
+        second_track.insertBefore(second_clone, second_track.lastChild);
+        });
 
-    // Зацикливание
-    second_slider.addEventListener('scroll', () => {
-      const second_maxScroll = second_slideWidth * (second_slideCount * 2);
+        // Клонируем в конец
+        second_originalSlides.forEach(second_slide => {
+        const second_clone = second_slide.cloneNode(true);
+        second_track.appendChild(second_clone);
+        });
 
-      if (second_slider.scrollLeft <= second_slideWidth * 0.5) {
-        // Перепрыгиваем вперёд (в центр)
-        second_slider.scrollLeft += second_slideWidth * second_slideCount;
-      }
+        // Установка начального положения на оригинальные слайды
+        let second_currentScroll = second_slideWidth * second_slideCount;
+        second_slider.scrollLeft = second_currentScroll;
 
-      if (second_slider.scrollLeft >= second_maxScroll + second_slideWidth * 0.5) {
-        // Перепрыгиваем назад (в центр)
-        second_slider.scrollLeft -= second_slideWidth * second_slideCount;
-      }
-    });
+        // Обновление ширины трека
+        second_track.style.width = `${second_slideWidth * second_track.children.length}px`;
 
-  </script>
+        // Drag-скроллинг
+        let second_isDragging = false;
+        let second_startX = 0;
+        let second_scrollStart = 0;
+
+        second_slider.addEventListener('mousedown', (second_e) => {
+            second_isDragging = true;
+            second_startX = second_e.pageX;
+            second_scrollStart = second_slider.scrollLeft;
+            second_slider.style.cursor = 'grabbing';
+        });
+
+        document.addEventListener('mouseup', () => {
+            second_isDragging = false;
+            second_slider.style.cursor = 'grab';
+        });
+
+        document.addEventListener('mousemove', (second_e) => {
+            if (!second_isDragging) return;
+            const second_dx = second_e.pageX - second_startX;
+            second_slider.scrollLeft = second_scrollStart - second_dx;
+        });
+
+        // Зацикливание
+        second_slider.addEventListener('scroll', () => {
+            const second_maxScroll = second_slideWidth * (second_slideCount * 2);
+
+            if (second_slider.scrollLeft <= second_slideWidth * 0.5) {
+                // Перепрыгиваем вперёд (в центр)
+                second_slider.scrollLeft += second_slideWidth * second_slideCount;
+            }
+
+            if (second_slider.scrollLeft >= second_maxScroll + second_slideWidth * 0.5) {
+                // Перепрыгиваем назад (в центр)
+                second_slider.scrollLeft -= second_slideWidth * second_slideCount;
+            }
+        });
+    </script>
+
 </body>
 </html>

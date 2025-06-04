@@ -1,4 +1,5 @@
 <?php
+// login.php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -7,7 +8,7 @@ require '../../vendor/autoload.php';
 
 use Firebase\JWT\JWT;
 
-header('Content-Type: application/json');  // Важно!
+header('Content-Type: application/json');
 
 $username = $_POST['fname'] ?? '';
 $password = $_POST['password'] ?? '';

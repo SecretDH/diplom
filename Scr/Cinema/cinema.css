@@ -7,6 +7,7 @@ html, body {
     padding: 0;
     user-select: none;
     background-color: #0E091D;
+    overflow-x: clip;
 }
 
 body.noscroll {
@@ -82,6 +83,7 @@ a {
     pointer-events: auto;
     scroll-behavior: auto;
     overflow-x: scroll;
+    overflow: hidden;
 }
 
 .slider::-webkit-scrollbar {
@@ -91,9 +93,105 @@ a {
 /* Individual slides */
 .slide {
     flex: 0 0 100%;
+    width: 100%;
     height: 40vh;
     user-select: none;
     pointer-events: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide img {
+    width: 100%;
+}
+
+.background_overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(14, 9, 29, 0.7);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.slide_title {
+    position: absolute;
+    left: 2rem;
+    font-family: Helvetica;
+    font-size: 10.5rem;
+    color: #F4F4F2;
+    text-align: left;
+    z-index: 10;
+    line-height: 10rem;
+}
+
+.purple_text {
+    color: #9747FF;
+}
+
+.blue_text {
+    color: #0A7AFB;
+}
+
+.green_text {
+    color: #00FFC3;
+}
+
+.slide_description {
+    position: absolute;
+    left: 70%;
+    top: 5.5rem;
+    z-index: 10;
+    max-width: 50%;
+}
+
+.movie_title, .series_title, .comic_title {
+    width: 93%;
+    font-family: Helvetica;
+    font-size: 2.5rem;
+    color: #F4F4F2;
+    margin-top: 1.25rem;
+}
+
+.raiting {
+    display: flex;
+    width: 14rem;
+    margin-top: 0.625rem;
+}
+
+.star {
+    height: 1.875rem;
+    margin-left: 0.3125rem;
+}
+
+.description {
+    width: 93%;
+    margin-top: 1rem;
+    font-family: Helvetica;
+    font-size: 1rem;
+    color: #F4F4F2;
+}
+
+.watch_button {
+    display: block;
+    width: 17.125rem;
+    height: 3.525rem;
+    margin-top: 1.125rem;
+    background-color: #FFFFFF;
+    border-radius: 1.25rem;
+    border: none;
+    color: #000000;
+    font-family: Helvetica;
+    font-size: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.watch_button:hover {
+    background-color: #4D1E96;
+    color: #FFFFFF;
 }
 
 /* Slider indicators */
@@ -104,34 +202,22 @@ a {
     transform: translateX(-50%);
     display: flex;
     gap: 0.625rem;
+    z-index: 1;
 }
 
 .slider-indicators .dot {
     width: 0.75rem;
     height: 0.75rem;
-    background-color: #ccc;
+    background-color: #FFFFFF;
     border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    opacity: 0.3;
 }
 
 .slider-indicators .dot.active {
-    background-color: #4D1E96; /* Активная точка */
-}
-
-#slide1 {
-    background-image: url(../../Sliders/slide_1.png);
-    background-size: 100%;
-}
-
-#slide2 {
-    background-image: url(../../Sliders/slide_2.png);
-    background-size: 100%;
-}
-
-#slide3 {
-    background-image: url(../../Sliders/slide_3.png);
-    background-size: 100%;
+    background-color: #FFFFFF;
+    opacity: 1;
 }
 
 /* SERIES CONTAINER */

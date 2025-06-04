@@ -1,4 +1,5 @@
 <?php
+// upload_post.php
 require __DIR__ . '../../db.php';
 
 ini_set('display_errors', 1);
@@ -23,11 +24,10 @@ if (!empty($_FILES['images']['name'][0])) {
         mkdir($upload_dir, 0777, true);
     }
 
-    // Разрешенные MIME-типы
     $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
 
     foreach ($_FILES['images']['tmp_name'] as $index => $tmp_name) {
-        $file_type = mime_content_type($tmp_name); // Определяем MIME-тип файла
+        $file_type = mime_content_type($tmp_name);
         if (in_array($file_type, $allowed_types)) {
             $filename = basename($_FILES['images']['name'][$index]);
             $target_path = $upload_dir . time() . '_' . $filename;
@@ -44,7 +44,6 @@ if (!empty($_FILES['images']['name'][0])) {
 
 $image_paths = json_encode($uploaded_paths);
 
-// ✨ Используем mysqli
 $sql = "INSERT INTO forum (user_id, post_text, post_image, post_date)
         VALUES (?, ?, ?, ?)";
 

@@ -210,7 +210,7 @@ a {
 .input_container input {
     position: relative;
     display: flex;
-    width: 75.5rem;
+    width: 91.5%;
     height: 6rem;
     align-items: center;
     border-radius: 1.5625rem;
@@ -236,7 +236,7 @@ a {
 
 .input_container textarea {
     display: flex;
-    width: 73.30rem;
+    width: 89%;
     height: 17.625rem;
     margin-top: 1.25rem;
     margin-left: 3.125rem;
@@ -283,12 +283,12 @@ a {
 .status-icon {
     position: absolute;
     width: 6rem;
-    height: 6.3rem;
+    height: 6.6rem;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
     background-color: #3F2E72;
-    right: 2.1rem;
-    top: 50%;
+    right: 3.6%;
+    top: 50.3%;
     transform: translateY(-50%);
     font-size: 1.2rem;
     display: inline;

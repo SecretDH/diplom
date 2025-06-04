@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Главная и навигация -->
+    <url>
+        <loc>http://localhost/diplom/Home/home.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Scr/navbar.php</loc>
+    </url>
+
+    <!-- Кинотека -->
+    <url>
+        <loc>http://localhost/diplom/Cinema/Cinema.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Cinema/movie_page.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Cinema/series_page.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Cinema/get_actors.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Cinema/actor_page.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Cinema/get_pins.php</loc>
+    </url>
+
+    <!-- Форум -->
+    <url>
+        <loc>http://localhost/diplom/Forum/forum.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Forum/get_post.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Forum/comment.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Forum/upload_comments.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Forum/like_toggle.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Forum/repost_toggle.php</loc>
+    </url>
+
+    <!-- Профиль -->
+    <url>
+        <loc>http://localhost/diplom/Profile/profile.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Profile/pin_page.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Profile/get_avatar.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Profile/get_pins.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Profile/save_profile_edits.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Profile/delete_pinned_item.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Profile/get_pinned_movie_series.php</loc>
+    </url>
+
+    <!-- Магазин (если реализовано) -->
+    <url>
+        <loc>http://localhost/diplom/Shop/shop.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Shop/product_page.php</loc>
+    </url>
+
+    <!-- Комиксы (если реализовано) -->
+    <url>
+        <loc>http://localhost/diplom/Comics/comics.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Comics/comic_page.php</loc>
+    </url>
+
+    <!-- Аутентификация и регистрация -->
+    <url>
+        <loc>http://localhost/diplom/Regestration/login.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Regestration/register.php</loc>
+    </url>
+
+    <!-- Вспомогательные и API-файлы -->
+    <url>
+        <loc>http://localhost/diplom/Scr/db.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Scr/Forum/pin_like_toggle.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Scr/Forum/delete_pinned_item.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Scr/Forum/get_avatar.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Scr/Forum/get_pins.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Scr/Forum/save_profile_edits.php</loc>
+    </url>
+    <url>
+        <loc>http://localhost/diplom/Scr/Forum/get_pinned_movie_series.php</loc>
+    </url>
+    <!-- Добавьте другие файлы, если появятся новые разделы или API -->
+</urlset>

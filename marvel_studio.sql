@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 16 2025 г., 10:04
+-- Время создания: Июн 04 2025 г., 15:47
 -- Версия сервера: 10.4.28-MariaDB
 -- Версия PHP: 8.2.4
 
@@ -50,7 +50,36 @@ INSERT INTO `actors` (`id`, `name`, `photo`, `bio`, `birth_date`, `country`) VAL
 (7, 'Benedict Cumberbatch', '../../Actors/benedict_cumberbatch.jpg', 'Benedict Cumberbatch portrays Doctor Stephen Strange, a brilliant neurosurgeon turned master of the mystic arts.', '1976-07-19', 'UK'),
 (8, 'Elizabeth Olsen', '../../Actors/elizabeth_olsen.jpg', 'Elizabeth Olsen plays Wanda Maximoff / Scarlet Witch, one of the most powerful characters in the MCU with magic and reality-altering abilities.', '1989-02-16', 'USA'),
 (9, 'Paul Rudd', '../../Actors/paul_rudd.jpg', 'Paul Rudd stars as Scott Lang / Ant-Man, a former thief turned superhero who can shrink and grow in size.', '1969-04-06', 'USA'),
-(10, 'Brie Larson', '../../Actors/brie_larson.jpg', 'Brie Larson portrays Carol Danvers / Captain Marvel, a former Air Force pilot who gains cosmic powers and becomes one of the MCU’s strongest heroes.', '1989-10-01', 'USA');
+(10, 'Brie Larson', '../../Actors/brie_larson.jpg', 'Brie Larson portrays Carol Danvers / Captain Marvel, a former Air Force pilot who gains cosmic powers and becomes one of the MCU’s strongest heroes.', '1989-10-01', 'USA'),
+(11, 'Don Cheadle', '../../Actors/don_cheadle.png', 'Don Cheadle is known for portraying James \"Rhodey\" Rhodes / War Machine in the Marvel Cinematic Universe, succeeding Terrence Howard in the role starting with Iron Man 2.', '1965-04-04', 'USA'),
+(12, 'Anthony Mackie', '../../Actors/anthony_mackie.png', 'Anthony Mackie is best known for his role as Sam Wilson / Falcon, who later takes up the mantle of Captain America in the Marvel Cinematic Universe.', '1981-06-13', 'USA'),
+(13, 'Chris Pratt', '../../Actors/chris_pratt.png', 'Chris Pratt portrays Peter Quill / Star-Lord, the charismatic leader of the Guardians of the Galaxy in the Marvel Cinematic Universe.', '1984-11-22', 'USA'),
+(14, 'Evangeline Lilly', '../../Actors/evangeline_lilly.jpg', 'Evangeline Lilly stars as Hope van Dyne / The Wasp, a skilled fighter and partner to Ant-Man in the Marvel Cinematic Universe.', '1983-08-11', 'Australia'),
+(15, 'Samuel L. Jackson', '../../Actors/samuel_l_jackson.png', 'Samuel L. Jackson plays Nick Fury, the former director of S.H.I.E.L.D., who assembles the Avengers and appears across many Marvel films.', '1967-11-22', 'USA'),
+(16, 'Natalie Portman', '../../Actors/natalie_portman.png', 'Natalie Portman plays Jane Foster in the Marvel Cinematic Universe and later wields Mjolnir to become Mighty Thor in Thor: Love and Thunder.', '1996-06-01', 'UK'),
+(17, 'Tom Hiddleston', '../../Actors/tom_hiddleston.jpg', 'Tom Hiddleston is widely recognized for his role as Loki, the God of Mischief, appearing in Thor and Avengers films as well as his own Disney+ series.', '1976-07-19', 'UK'),
+(18, 'Sebastian Stan', '../../Actors/sebastian_stan.jpg', 'Sebastian Stan portrays Bucky Barnes / Winter Soldier, Captain America’s best friend who becomes a brainwashed assassin before redeeming himself.', '1989-02-16', 'USA'),
+(19, 'Jon Favreau', '../../Actors/jon_favreau.jpeg', 'Jon Favreau plays Happy Hogan, Tony Stark’s friend and head of security; he also directed the first two Iron Man films and helped launch the MCU.', '1969-04-06', 'USA'),
+(20, 'Jeremy Renner', '../../Actors/jeremy_renner.jpg', 'Jeremy Renner portrays Clint Barton / Hawkeye, a master archer and member of the original Avengers team in the Marvel Cinematic Universe.', '1989-10-01', 'USA'),
+(21, 'Chadwick Boseman', '../../Actors/chadwick_boseman.jpg', 'Chadwick Boseman portrayed T’Challa / Black Panther, the king of Wakanda who became a cultural icon through his strength and leadership.', '1976-11-29', 'USA'),
+(22, 'Paul Bettany', '../../Actors/paul_bettany.jpg', 'Paul Bettany played Vision, an android with immense power and humanity, evolving from J.A.R.V.I.S. into a key member of the Avengers.', '1971-05-27', 'UK'),
+(23, 'Karen Gillan', '../../Actors/karen_gillan.jpg', 'Karen Gillan portrayed Nebula, the adopted daughter of Thanos who finds redemption and joins the Guardians of the Galaxy.', '1987-11-28', 'UK'),
+(24, 'Pom Klementieff', '../../Actors/pom_klementieff.jpg', 'Pom Klementieff played Mantis, a compassionate empath with the power to sense and alter emotions, joining the Guardians of the Galaxy.', '1986-05-03', 'France'),
+(25, 'Vin Diesel', '../../Actors/vin_diesel.jpg', 'Vin Diesel voiced Groot, the lovable tree-like creature known for his loyalty and iconic line \"I am Groot\" in the Guardians series.', '1967-07-18', 'USA'),
+(26, 'Letitia Wright', '../../Actors/letitia_wright.jpg', 'Letitia Wright played Shuri, the brilliant sister of T’Challa and tech genius of Wakanda who takes on a greater role in the Black Panther legacy.', '1993-10-31', 'Guyana'),
+(27, 'Danai Gurira', '../../Actors/danai_gurira.jpg', 'Danai Gurira portrayed Okoye, the fierce and loyal general of the Dora Milaje, Wakanda’s elite all-female warriors.', '1978-02-14', 'USA'),
+(28, 'Winston Duke', '../../Actors/winston_duke.jpg', 'Winston Duke played M’Baku, the powerful leader of the Jabari Tribe in Wakanda, known for his strength and pride.', '1986-11-15', 'TrinidadandTobago'),
+(29, 'Michael B. Jordan', '../../Actors/michael_b_jordan.jpg', 'Michael B. Jordan portrayed Erik Killmonger, a formidable adversary to Black Panther with a tragic past and a powerful ideology.', '1987-02-09', 'USA'),
+(30, 'Florence Pugh', '../../Actors/florence_pugh.jpg', 'Florence Pugh played Yelena Belova, the skilled assassin and sister figure to Natasha Romanoff who continues the Black Widow legacy.', '1996-01-03', 'UK'),
+(31, 'David Harbour', '../../Actors/david_arbour.jpg', 'David Harbour portrayed Alexei Shostakov / Red Guardian, a Soviet super-soldier and father figure in the Black Widow storyline.', '1975-04-10', 'USA'),
+(32, 'Simu Liu', '../../Actors/simu_liu.jpg', 'Simu Liu played Shang-Chi, a skilled martial artist confronting his past while embracing his destiny as a superhero.', '1989-04-19', 'Canada'),
+(33, 'Gemma Chan', '../../Actors/gemma_chan.jpeg', 'Gemma Chan portrayed Sersi, an Eternal with a deep love for humanity and the ability to transform matter.', '1982-11-29', 'UK'),
+(34, 'Richard Madden', '../../Actors/richard_madden.jpg', 'Richard Madden played Ikaris, a powerful Eternal with the ability to fly and project cosmic energy from his eyes.', '1986-06-18', 'UK'),
+(35, 'Angelina Jolie', '../../Actors/angelina_jolie.jpg', 'Angelina Jolie portrayed Thena, a fierce Eternal warrior with the ability to manifest cosmic weapons at will.', '1975-06-04', 'USA'),
+(36, 'Salma Hayek', '../../Actors/salma_hayek.jpg', 'Salma Hayek played Ajak, the wise and spiritual leader of the Eternals who guides their mission on Earth.', '1966-09-02', 'Mexico'),
+(37, 'Kumail Nanjiani', '../../Actors/kumail_nanjiani.jpg', 'Kumail Nanjiani portrayed Kingo, a Bollywood star and Eternal who channels cosmic energy through his hands.', '1978-05-02', 'Pakistan'),
+(38, 'Kit Harington', '../../Actors/kit_harington.jpg', 'Kit Harington played Dane Whitman, a human with a mysterious lineage who is linked to the legacy of the Black Knight.', '1986-12-26', 'UK'),
+(39, 'Christian Bale', '../../Actors/christian_bale.jpg', 'Christian Bale portrayed Gorr the God Butcher, a vengeful villain who seeks the extinction of the gods in Thor: Love and Thunder.', '1974-01-30', 'UK');
 
 -- --------------------------------------------------------
 
@@ -79,6 +108,146 @@ CREATE TABLE `actor_series_count` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `comics`
+--
+
+CREATE TABLE `comics` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `plot` text DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
+  `release_date` date DEFAULT NULL,
+  `create_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Дамп данных таблицы `comics`
+--
+
+INSERT INTO `comics` (`id`, `title`, `description`, `plot`, `image`, `background_image`, `release_date`, `create_at`) VALUES
+(1, 'Infinity Gauntlet', 'Infinity Gauntlet is a groundbreaking Marvel Comics event that explores the cosmic consequences of ultimate power. When Thanos acquires all six Infinity Gems, he becomes omnipotent and wipes out half of all life in the universe with a snap of his fingers. The story delves into the psychological and emotional turmoil of both heroes and villains as they confront the unimaginable threat posed by Thanos. This saga is renowned for its epic scale, philosophical undertones, and the desperate struggle of Marvel’s greatest champions to restore balance.', 'Thanos, the Mad Titan, finally succeeds in collecting all six Infinity Gems—Space, Time, Reality, Power, Mind, and Soul—and mounts them on his Infinity Gauntlet. With a single snap, he erases half of all life in the universe, including many beloved heroes. The cosmic entities, such as Eternity, Galactus, and the Celestials, are powerless against his might. Adam Warlock, Doctor Strange, and the surviving Avengers rally the remaining heroes for a last stand. As Thanos battles the universe’s greatest forces, he is ultimately undone by his own hubris and the intervention of Nebula, who briefly wields the Gauntlet herself. Adam Warlock ultimately claims the Gauntlet, restoring reality and ending Thanos’s reign. The story is a meditation on power, loss, and the resilience of hope in the face of cosmic despair.', 'infinity_gauntlet.jpg', 'infinity_bg.jpg', '1991-07-01', '2025-06-03 11:24:15'),
+(2, 'House of M', 'House of M is a reality-altering Marvel Comics crossover event that centers on the Scarlet Witch, Wanda Maximoff. After suffering immense personal loss, Wanda reshapes reality to create a world where mutants are the dominant species and her deepest wishes are fulfilled. The story explores themes of grief, identity, and the consequences of unchecked power, as the Marvel Universe is forever changed by Wanda’s actions.', 'Following the tragic events of Avengers: Disassembled, Wanda Maximoff’s mental state deteriorates, and her reality-warping powers spiral out of control. In a desperate attempt to give everyone their heart’s desire, she creates the House of M reality, where mutants rule and Magneto is king. Heroes such as Wolverine and Spider-Man slowly regain their memories and realize the world is wrong. A resistance forms, led by Layla Miller, to confront Wanda and restore reality. The climax sees Wanda utter the words “No more mutants,” resulting in the decimation of the mutant population and altering the course of Marvel history. The event leaves lasting scars on the X-Men and the entire superhero community, raising questions about the nature of reality and the price of happiness.', 'house_of_m.jpg', 'house_of_m_bg.jpg', '2005-06-01', '2025-06-03 11:24:15'),
+(3, 'Planet Hulk', 'Planet Hulk is an epic Marvel storyline that sends the Hulk to the distant planet Sakaar, where he becomes a gladiator and eventually a revolutionary leader. Betrayed by Earth’s heroes, Hulk must survive brutal combat, forge alliances, and rise against a tyrannical regime. The story is a powerful exploration of exile, leadership, and the search for belonging, blending science fiction with classic heroism.', 'After being deemed too dangerous for Earth, the Hulk is exiled by the Illuminati and sent into space. His ship crash-lands on the war-torn planet Sakaar, where he is enslaved and forced to fight in gladiatorial arenas. Hulk’s strength and resilience earn him the respect of fellow gladiators, and together they form the Warbound. As Hulk rises through the ranks, he challenges the Red King, Sakaar’s ruthless ruler, and inspires a rebellion. Along the way, Hulk finds love with Caiera, but tragedy strikes when the ship’s warp core explodes, destroying much of Sakaar and killing Caiera. Consumed by grief and rage, Hulk returns to Earth, setting the stage for the World War Hulk storyline. Planet Hulk is a tale of survival, loss, and the unbreakable spirit of a hero cast out by his own world.', 'planet_hulk.jpg', 'planet_hulk_bg.jpg', '2006-04-01', '2025-06-03 11:24:15'),
+(4, 'Civil War', 'Civil War is a landmark Marvel crossover event that pits hero against hero over the issue of government registration of superhumans. When a tragic accident leads to public outcry, the Superhuman Registration Act divides the superhero community, with Iron Man and Captain America leading opposing factions. The story examines themes of freedom, security, and the cost of loyalty, resulting in lasting changes to the Marvel Universe.', 'After a battle involving the New Warriors results in the deaths of hundreds of civilians, the U.S. government enacts the Superhuman Registration Act, requiring all superpowered individuals to register and reveal their identities. Iron Man supports the law, believing it will bring accountability, while Captain America opposes it, seeing it as a violation of civil liberties. The superhero community is torn apart as friends and allies find themselves on opposite sides. The conflict escalates into open warfare, with betrayals, tragic losses, and shifting alliances. Spider-Man’s unmasking, the imprisonment of dissenters in the Negative Zone, and the involvement of villains all add to the chaos. The war ends with Captain America’s surrender, realizing the destruction caused by the conflict. Civil War leaves deep scars, reshaping relationships and the future of Marvel’s heroes.', 'civil_war.jpg', 'civil_war_bg.jpg', '2006-07-01', '2025-06-03 11:24:15'),
+(5, 'Secret Wars (2015)', 'Secret Wars (2015) is a universe-shattering Marvel event where the multiverse collapses, and fragments of various realities are merged into Battleworld, ruled by Doctor Doom. Heroes and villains from across Marvel history must navigate this patchwork world, facing new alliances and old enemies. The story explores themes of power, survival, and the nature of reality, culminating in a dramatic rebirth of the Marvel Universe.', 'As incursions between universes threaten all existence, the Marvel multiverse is destroyed, leaving only fragments of worlds. Doctor Doom, wielding godlike power as “God Emperor Doom,” creates Battleworld from these remnants, ruling with an iron fist. Heroes such as Reed Richards, Black Panther, and Miles Morales struggle to survive and challenge Doom’s authority. The story features epic confrontations, shifting loyalties, and the merging of classic storylines. Ultimately, Reed Richards confronts Doom, and with the help of the Molecule Man, restores the multiverse. Secret Wars (2015) is a grand exploration of what it means to be a hero in a world where everything familiar is gone, and the only constant is change.', 'secret_wars_2015.jpg', 'secret_wars_2015_bg.jpg', '2015-05-01', '2025-06-03 11:24:15'),
+(6, 'Old Man Logan', 'Old Man Logan is a dystopian Marvel tale set in a future where villains have conquered America and most heroes are dead. Logan, the former Wolverine, lives in seclusion, haunted by his past. Forced into action by circumstance, he embarks on a cross-country journey, confronting old enemies and his own demons. The story is a gritty, emotional exploration of redemption, legacy, and the enduring spirit of a hero.', 'In a bleak future, the United States is divided among supervillains, and the heroes have been all but exterminated. Logan, having sworn never to use his claws again after a traumatic event, lives with his family in the wastelands. When the Hulk Gang threatens his home, Logan is forced to take a job escorting Hawkeye across the country. Along the way, they encounter the remnants of a shattered world, including twisted versions of familiar characters. Logan’s journey is one of pain, loss, and reluctant heroism, culminating in a final confrontation with the Hulk and his descendants. Old Man Logan is a powerful meditation on the cost of violence, the burden of memory, and the hope for a better future.', 'old_man_logan.jpg', 'old_man_logan_bg.jpg', '2008-06-01', '2025-06-03 11:24:15'),
+(7, 'Annihilation', 'Annihilation is a cosmic Marvel event that brings together heroes and antiheroes to face the threat of Annihilus and his annihilation wave. The story spans the far reaches of the universe, featuring Nova, Silver Surfer, Drax, and others as they unite against overwhelming odds. Annihilation explores themes of sacrifice, unity, and the struggle for survival on a galactic scale.', 'The universe is thrown into chaos when Annihilus, ruler of the Negative Zone, launches a massive invasion known as the Annihilation Wave. Worlds fall as the relentless horde sweeps across the cosmos. Nova, stripped of his Corps, rises as a leader, gathering allies such as Drax the Destroyer, Gamora, and the Silver Surfer. The heroes face impossible odds, forging uneasy alliances and making heartbreaking sacrifices. The war culminates in a final battle against Annihilus, with the fate of the universe hanging in the balance. Annihilation is a sweeping saga of heroism, loss, and the enduring fight against darkness.', 'annihilation.jpg', 'annihilation_bg.jpg', '2006-08-01', '2025-06-03 11:24:15'),
+(8, 'Ms. Marvel (2014) #1', 'Ms. Marvel (2014) #1 introduces Kamala Khan, a Pakistani-American teenager from Jersey City who discovers she has shape-shifting powers. The comic explores themes of identity, family, and cultural heritage as Kamala navigates her new abilities and responsibilities. Ms. Marvel is celebrated for its fresh perspective, relatable protagonist, and positive representation.', 'Kamala Khan is an ordinary high school student struggling with her cultural identity and the expectations of her family. After being exposed to the Terrigen Mist, she gains the ability to stretch, shrink, and morph her body. Inspired by her idol, Carol Danvers, Kamala adopts the mantle of Ms. Marvel. The story follows her journey as she learns to control her powers, balance her personal life, and stand up for her community. Kamala faces challenges from both supervillains and the pressures of adolescence, forging her own path as a hero. Ms. Marvel’s debut is a heartfelt exploration of what it means to be different and the courage to embrace one’s true self.', 'ms_marvel_2014.jpg', 'ms_marvel_2014_bg.jpg', '2014-02-01', '2025-06-03 11:24:15'),
+(9, 'Spider-Verse', 'Spider-Verse is a multiversal Marvel event that brings together countless versions of Spider-Man from different realities. When the villain Morlun and his family, the Inheritors, begin hunting spider-powered heroes, Peter Parker and his counterparts must unite to survive. The story is a celebration of Spider-Man’s legacy, diversity, and the power of teamwork across worlds.', 'The Inheritors, a family of powerful beings who feed on the life force of spider-powered individuals, launch a campaign across the multiverse. Spider-Men, Spider-Women, and Spider-heroes from countless realities—including Gwen Stacy, Miles Morales, Spider-Man 2099, and Spider-Ham—are targeted. Peter Parker becomes the central figure in uniting these heroes, devising strategies and forging alliances. The event features epic battles, emotional sacrifices, and the exploration of what it means to be Spider-Man. Together, the Spider-Army confronts Morlun and the Inheritors in a final showdown, proving that heroism transcends dimensions. Spider-Verse is a thrilling, imaginative adventure that honors the enduring spirit of Spider-Man.', 'spider_verse.jpg', 'spider_verse_bg.jpg', '2014-11-01', '2025-06-03 11:24:15'),
+(10, 'X-Men: God Loves, Man Kills', 'X-Men: God Loves, Man Kills is a powerful graphic novel that delves into themes of prejudice, intolerance, and the fight for equality. The story follows the X-Men as they confront religious fanaticism and hatred, led by the charismatic but dangerous Reverend William Stryker. This comic is renowned for its mature storytelling, emotional depth, and its exploration of the social issues that have always been at the heart of the X-Men mythos.', 'The X-Men are thrust into a battle not just for their own survival, but for the soul of humanity itself, when Reverend William Stryker launches a crusade against mutants. Stryker, a televangelist with a dark past, manipulates public opinion and orchestrates a campaign of violence and fear. He kidnaps Professor Xavier and attempts to use his powers to exterminate all mutants. The X-Men, joined by Magneto, must overcome their differences and unite against Stryker’s forces. The story is a tense, emotional journey that challenges the team’s beliefs and forces them to confront the darkest aspects of human nature. In the end, the X-Men’s resilience and compassion shine through, but the scars of the conflict remain, highlighting the ongoing struggle for acceptance and justice.', 'xmen_godloves.jpg', 'xmen_godloves_bg.jpg', '1982-11-01', '2025-06-03 11:26:25'),
+(11, 'Black Panther: The Client', 'Black Panther: The Client is a critically acclaimed story arc that redefines T’Challa’s role as both a superhero and a king. Written by Christopher Priest, this comic explores political intrigue, personal responsibility, and the challenges of leadership. The narrative weaves together action, diplomacy, and social commentary, making it a landmark in Black Panther’s history.', 'After the death of a child in New York, T’Challa, the Black Panther and king of Wakanda, travels to America to investigate. He becomes entangled in a web of political intrigue, facing opposition from both criminals and government agencies. The story is told through the eyes of Everett K. Ross, a U.S. government liaison, whose perspective adds humor and insight. As T’Challa navigates the complexities of international relations, he must also confront threats to his throne back home. The arc explores the duality of T’Challa’s identity as a monarch and a hero, his commitment to justice, and the burdens of leadership. The Client is a nuanced, character-driven tale that elevates Black Panther to new heights in the Marvel Universe.', 'blackpanther_client.jpg', 'blackpanther_client_bg.jpg', '1998-11-01', '2025-06-03 11:26:25'),
+(12, 'Thor: God of Thunder – The God Butcher', 'Thor: God of Thunder – The God Butcher is an epic saga that pits Thor against Gorr, a relentless cosmic killer who seeks the extinction of all gods. Spanning centuries and multiple timelines, this story explores the nature of faith, immortality, and the burden of divinity. The narrative is both grand and deeply personal, redefining Thor’s mythos for a new generation.', 'The story unfolds across three eras: young Viking Thor, present-day Avenger Thor, and King Thor in the distant future. Gorr, driven by the loss of his family and his hatred of gods, embarks on a crusade to eliminate every deity in existence. Thor encounters Gorr at different points in his life, each time facing the villain’s growing power and the existential threat he poses. The narrative weaves together action, philosophy, and tragedy, as Thor grapples with his own doubts and the responsibilities of godhood. The final confrontation is a battle across time itself, with Thor’s legacy and the fate of all gods hanging in the balance. The God Butcher is a masterful blend of cosmic adventure and introspective drama.', 'thor_godbutcher.jpg', 'thor_godbutcher_bg.jpg', '2012-11-14', '2025-06-03 11:26:25'),
+(13, 'Hawkeye: My Life as a Weapon', 'Hawkeye: My Life as a Weapon is a modern classic that reimagines Clint Barton as a street-level hero dealing with everyday problems. Written by Matt Fraction, this comic blends humor, action, and heartfelt moments, focusing on Hawkeye’s life outside the Avengers. The series is celebrated for its unique storytelling, stylish art, and its portrayal of a flawed but relatable hero.', 'The story follows Clint Barton as he navigates life in New York City, helping his neighbors and getting into trouble with the Russian mob. Joined by Kate Bishop, the other Hawkeye, Clint faces challenges ranging from rescuing a dog to battling criminals in his apartment building. The narrative is told in a nonlinear fashion, with clever dialogue and inventive layouts. Clint’s struggles with relationships, injuries, and his own limitations are central to the story. My Life as a Weapon is a grounded, character-driven tale that showcases the humanity behind the mask, making Hawkeye one of Marvel’s most endearing heroes.', 'hawkeye_weapon.jpg', 'hawkeye_weapon_bg.jpg', '2012-08-01', '2025-06-03 11:26:25'),
+(14, 'She-Hulk: Single Green Female', 'She-Hulk: Single Green Female is a witty and engaging comic that explores the life of Jennifer Walters, a lawyer who also happens to be the sensational She-Hulk. Balancing her legal career with superheroics, Jennifer faces unique challenges in and out of the courtroom. The series is known for its humor, meta-commentary, and its celebration of female empowerment.', 'Jennifer Walters, cousin of Bruce Banner, gains her powers after a blood transfusion from him. As She-Hulk, she retains her intelligence and personality, making her a formidable force both in battle and in the courtroom. The story follows Jennifer as she joins a prestigious law firm specializing in superhuman cases. She must navigate office politics, eccentric clients, and her own desire for a normal life. The comic blends legal drama with superhero action, breaking the fourth wall and poking fun at comic book conventions. Single Green Female is a smart, funny, and empowering story that highlights Jennifer’s strength, wit, and resilience.', 'shehulk_single.jpg', 'shehulk_single_bg.jpg', '2004-05-01', '2025-06-03 11:26:25'),
+(15, 'Moon Knight: The Bottom', 'Moon Knight: The Bottom is a dark and psychological exploration of Marc Spector, a vigilante struggling with dissociative identity disorder. The comic delves into themes of trauma, redemption, and the blurred line between heroism and madness. The story is praised for its gritty tone, complex characterization, and its reinvention of Moon Knight for modern readers.', 'Marc Spector, once a mercenary left for dead in Egypt, is resurrected by the moon god Khonshu and becomes Moon Knight. Years later, Marc is broken—physically, mentally, and emotionally. Haunted by his past and his fractured psyche, he is drawn back into vigilantism when old enemies resurface. The narrative explores Marc’s relationships with his multiple identities, his struggle with addiction, and his quest for meaning. As Moon Knight, he battles both criminals and his own inner demons, questioning whether his actions are guided by justice or madness. The Bottom is a raw, introspective journey that redefines what it means to be a hero.', 'moonknight_bottom.jpg', 'moonknight_bottom_bg.jpg', '2006-06-01', '2025-06-03 11:26:25'),
+(16, 'Runaways: Pride & Joy', 'Runaways: Pride & Joy introduces a group of teenagers who discover their parents are part of an evil criminal organization known as The Pride. Forced to go on the run, the teens must come to terms with their powers, heritage, and the bonds of friendship. This comic is celebrated for its fresh take on the superhero genre, its diverse cast, and its exploration of family, trust, and rebellion.', 'Alex Wilder, Nico Minoru, Karolina Dean, Chase Stein, Molly Hayes, and Gertrude Yorkes are six seemingly ordinary teenagers living in Los Angeles. Every year, their parents gather for a mysterious charity event, but this time the kids secretly witness them performing a ritual sacrifice. Horrified, the teens realize their parents are supervillains known as The Pride. As they struggle to process the truth, each teen discovers unique abilities or resources: Nico wields the magical Staff of One, Karolina learns she is an alien, Chase steals his parents’ advanced tech, Molly manifests mutant strength, and Gertrude bonds with a genetically engineered dinosaur. The group decides to run away, vowing to stop their parents and protect each other. Along the way, they face betrayal, danger, and the challenge of forging their own identities. Pride & Joy is a coming-of-age story that redefines what it means to be a hero, emphasizing the importance of found family and the courage to stand up for what is right.', 'runaways.jpg', 'runaways_bg.jpg', '2003-07-01', '2025-06-03 11:27:46'),
+(17, 'Vision (2015) #1', 'Vision (2015) #1 launches a critically acclaimed series that follows the android Avenger as he attempts to build a normal life in the suburbs. Vision creates a synthetic family and moves into a quiet neighborhood, but his quest for humanity leads to unexpected tragedy. The comic is praised for its psychological depth, haunting atmosphere, and exploration of identity, belonging, and the American dream.', 'Vision, seeking to better understand humanity, constructs a wife, Virginia, and twin children, Viv and Vin, using his own brain patterns. The family moves into a suburban home in Arlington, Virginia, hoping to blend in and live peacefully. However, their artificial nature and Vision’s past as an Avenger draw suspicion and fear from neighbors. As the Visions struggle to fit in, a series of violent and tragic events unfold, including murder, blackmail, and the unraveling of family secrets. Vision’s determination to protect his family at all costs leads him down a dark path, blurring the line between heroism and obsession. The story is a meditation on what it means to be human, the desire for acceptance, and the consequences of denying one’s true nature. Vision (2015) is a modern masterpiece that challenges the conventions of superhero storytelling.', 'vision_2015.jpg', 'vision_2015_bg.jpg', '2015-11-01', '2025-06-03 11:27:46'),
+(18, 'Ms. Marvel: Generation Why', 'Ms. Marvel: Generation Why continues the adventures of Kamala Khan as she embraces her role as Jersey City’s new superhero. Kamala faces new threats, navigates high school life, and learns what it truly means to be a hero. The comic is celebrated for its humor, heart, and positive representation, making Kamala one of Marvel’s most beloved new characters.', 'Kamala Khan juggles her responsibilities as Ms. Marvel with the challenges of being a teenager. When a mysterious villain known as The Inventor begins kidnapping local teens, Kamala investigates and discovers a plot to exploit their energy for his own gain. With the help of her friend Bruno and her idol, Wolverine, Kamala confronts The Inventor’s robotic minions and rallies her peers to resist. Along the way, she learns valuable lessons about leadership, teamwork, and self-acceptance. Kamala’s journey is filled with action, humor, and heartfelt moments as she inspires those around her to stand up for themselves. Generation Why is a vibrant, uplifting story that highlights the power of community and the importance of believing in oneself.', 'msmarvel_genwhy.jpg', 'msmarvel_genwhy_bg.jpg', '2015-01-01', '2025-06-03 11:27:46'),
+(19, 'Doctor Strange: The Oath', 'Doctor Strange: The Oath is a critically acclaimed miniseries that blends mysticism, detective work, and personal stakes. When Wong is gravely ill, Doctor Strange embarks on a quest to find a magical cure, uncovering a conspiracy that threatens the world. The comic is praised for its sharp writing, inventive visuals, and its exploration of friendship, sacrifice, and the responsibilities of power.', 'Doctor Stephen Strange, Sorcerer Supreme, discovers that his loyal friend and servant Wong is dying from a brain tumor. Determined to save him, Strange seeks out the mystical elixir known as the Oath, which has the power to cure any illness. Alongside Night Nurse, Strange navigates a web of magical intrigue, corporate greed, and supernatural threats. As he battles the villainous Brigand and confronts the pharmaceutical company Timely Pharmaceuticals, Strange must also face his own past mistakes and the ethical dilemmas of wielding immense power. The story is a blend of action, mystery, and emotional depth, culminating in a dramatic showdown that tests Strange’s resolve and compassion. The Oath is a testament to the enduring bond between friends and the lengths one will go to protect those they love.', 'doctorstrange_oath.jpg', 'doctorstrange_oath_bg.jpg', '2006-12-01', '2025-06-03 11:27:46'),
+(20, 'Captain Marvel: Higher, Further, Faster, More', 'Captain Marvel: Higher, Further, Faster, More follows Carol Danvers as she takes on a new mission in space, embracing her role as an intergalactic hero. The comic explores themes of empowerment, adventure, and self-discovery, as Carol faces cosmic threats and personal challenges. The series is celebrated for its dynamic storytelling, strong characterization, and inspiring message.', 'Carol Danvers, now fully embracing her identity as Captain Marvel, joins the Avengers and takes on a mission to help an alien refugee colony. Traveling across the galaxy in her new ship, the Hala, Carol confronts interstellar smugglers, corrupt officials, and the enigmatic alien race known as the Builders. Along the way, she forms new alliances, including with the Guardians of the Galaxy, and faces difficult choices about loyalty and leadership. The story is a thrilling blend of action, humor, and heart, as Carol pushes herself to new heights and inspires those around her. Higher, Further, Faster, More is a celebration of courage, resilience, and the unbreakable spirit of a true hero.', 'captainmarvel_hffm.jpg', 'captainmarvel_hffm_bg.jpg', '2014-03-01', '2025-06-03 11:27:46'),
+(21, 'Spider-Gwen: Most Wanted?', 'Spider-Gwen: Most Wanted? introduces an alternate universe where Gwen Stacy, not Peter Parker, is bitten by the radioactive spider. As Spider-Woman, Gwen faces the challenges of heroism, public scrutiny, and personal loss. The comic is praised for its energetic art, fresh perspective, and exploration of identity, responsibility, and redemption in a world that sees her as both hero and outlaw.', 'In Earth-65, Gwen Stacy is a high school student and drummer for The Mary Janes. After being bitten by a radioactive spider, she gains superhuman abilities and becomes Spider-Woman. When her friend Peter Parker, desperate to be special, transforms into the Lizard and dies in a tragic accident, Gwen is blamed for his death and becomes a fugitive. Hunted by her own father, Captain George Stacy, and vilified by the media, Gwen struggles to balance her double life, friendships, and the burden of guilt. As she faces villains like the Vulture and Kingpin, Gwen must also confront her own insecurities and the expectations placed upon her. The story is a vibrant, action-packed journey of self-discovery, resilience, and the search for acceptance in a world that fears what it does not understand.', 'spidergwen.jpg', 'spidergwen_bg.jpg', '2015-02-25', '2025-06-03 11:29:03'),
+(22, 'Moon Girl and Devil Dinosaur', 'Moon Girl and Devil Dinosaur is a delightful and inventive comic that follows Lunella Lafayette, a young genius, and her unlikely companion, Devil Dinosaur. Together, they embark on adventures that blend science, friendship, and fun. The series is celebrated for its positive representation, humor, and the inspiring journey of a girl determined to change the world with her intellect and heart.', 'Lunella Lafayette is a brilliant nine-year-old living in New York City, frustrated by the limitations of her school and misunderstood by her peers. When she discovers a mysterious Kree device, she accidentally brings Devil Dinosaur—a giant red dinosaur from another dimension—into her world. The two quickly form a bond, facing threats from the villainous Killer Folk and navigating the challenges of city life. Lunella, who fears she may become an Inhuman, uses her intelligence and creativity to solve problems and protect her community. As Moon Girl, she learns the value of teamwork, courage, and believing in herself. The comic is a heartwarming tale of friendship, adventure, and the limitless potential of young minds.', 'moongirl.jpg', 'moongirl_bg.jpg', '2015-11-25', '2025-06-03 11:29:03'),
+(23, 'The Immortal Hulk', 'The Immortal Hulk reinvents Bruce Banner’s story as a horror-infused saga, exploring the monstrous and immortal aspects of the Hulk. The series delves into themes of death, resurrection, and the darker side of heroism, earning acclaim for its psychological depth, suspenseful storytelling, and striking visuals. It stands as one of the most unique takes on the Hulk in Marvel history.', 'After being killed, Bruce Banner discovers that he cannot die—each time he is killed, he returns to life at night as the Hulk. This new status quo leads Banner and the Hulk down a path of horror and mystery, as they investigate supernatural occurrences and confront inner demons. The Hulk becomes an avenger of the night, punishing those who prey on the innocent. The series explores the fractured relationship between Banner and the Hulk, the trauma of their past, and the existential terror of immortality. As the Hulk faces new and old enemies, including the mysterious Shadow Base and the terrifying Leader, the line between man and monster blurs. The Immortal Hulk is a chilling, thought-provoking journey into the heart of darkness.', 'immortalhulk.jpg', 'immortalhulk_bg.jpg', '2018-06-06', '2025-06-03 11:29:03'),
+(24, 'Young Avengers: Sidekicks', 'Young Avengers: Sidekicks introduces a new generation of heroes inspired by the Avengers. The team, comprised of teenagers with unique abilities and legacies, must prove themselves in a world that doubts their potential. The comic is praised for its dynamic characters, engaging storylines, and its exploration of identity, teamwork, and the challenges of growing up as a hero.', 'When the Avengers disband, a mysterious figure known as Iron Lad assembles a group of teenagers with connections to the original team: Patriot, Hulkling, Wiccan, and later Kate Bishop as Hawkeye. Each member brings their own strengths, insecurities, and secrets to the team. As they face threats from Kang the Conqueror and other villains, the Young Avengers must learn to trust each other and themselves. The story explores the pressures of living up to legendary predecessors, the complexities of friendship and romance, and the courage required to forge a new legacy. Sidekicks is a vibrant, heartfelt tale of heroism, self-discovery, and the power of youth to change the world.', 'youngavengers.jpg', 'youngavengers_bg.jpg', '2005-04-06', '2025-06-03 11:29:03');
+
+-- --------------------------------------------------------
+
+--
+-- Дублирующая структура для представления `comic_avg_rating`
+-- (См. Ниже фактическое представление)
+--
+CREATE TABLE `comic_avg_rating` (
+`comic_id` int(11)
+,`avg_rating` decimal(7,4)
+,`ratings_count` bigint(21)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `comic_rating`
+--
+
+CREATE TABLE `comic_rating` (
+  `id` int(11) NOT NULL,
+  `comic_id` int(11) NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `rating` tinyint(4) DEFAULT NULL CHECK (`rating` >= 1 and `rating` <= 5),
+  `rate_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Дамп данных таблицы `comic_rating`
+--
+
+INSERT INTO `comic_rating` (`id`, `comic_id`, `user_id`, `rating`, `rate_at`) VALUES
+(1, 22, 1, 5, '2025-06-04 17:44:13'),
+(2, 22, 5, 3, '2025-06-04 14:37:43'),
+(3, 24, 5, 5, '2025-06-04 14:37:50'),
+(4, 24, 1, 2, '2025-06-04 17:44:02');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `comic_views`
+--
+
+CREATE TABLE `comic_views` (
+  `id` int(11) NOT NULL,
+  `comic_id` int(11) NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `view_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Дамп данных таблицы `comic_views`
+--
+
+INSERT INTO `comic_views` (`id`, `comic_id`, `user_id`, `view_at`) VALUES
+(1, 13, 1, '2025-06-03 14:41:41'),
+(2, 14, 1, '2025-06-03 14:41:45'),
+(3, 12, 1, '2025-06-03 14:51:33'),
+(4, 15, 1, '2025-06-03 14:59:51'),
+(5, 3, 1, '2025-06-03 15:16:33'),
+(6, 4, 1, '2025-06-03 15:16:35'),
+(7, 5, 1, '2025-06-03 15:16:36'),
+(8, 1, 1, '2025-06-03 15:16:43'),
+(9, 2, 1, '2025-06-03 15:16:50'),
+(10, 6, 1, '2025-06-03 15:19:42'),
+(11, 7, 1, '2025-06-03 15:19:44'),
+(12, 8, 1, '2025-06-03 15:19:44'),
+(13, 9, 1, '2025-06-03 15:19:45'),
+(14, 11, 1, '2025-06-03 15:19:55'),
+(15, 17, 1, '2025-06-03 15:27:02'),
+(16, 18, 1, '2025-06-03 15:27:42'),
+(17, 22, 1, '2025-06-03 15:27:47'),
+(18, 19, 1, '2025-06-03 15:28:10'),
+(19, 20, 1, '2025-06-03 15:28:11'),
+(20, 10, 1, '2025-06-03 15:28:12'),
+(21, 16, 1, '2025-06-03 15:29:12'),
+(22, 23, 1, '2025-06-03 19:51:36'),
+(23, 22, 5, '2025-06-04 14:37:41'),
+(24, 24, 5, '2025-06-04 14:37:47'),
+(25, 20, 5, '2025-06-04 14:37:53'),
+(26, 21, 1, '2025-06-04 14:39:41'),
+(27, 24, 1, '2025-06-04 17:42:49');
+
+-- --------------------------------------------------------
+
+--
+-- Дублирующая структура для представления `comic_views_count`
+-- (См. Ниже фактическое представление)
+--
+CREATE TABLE `comic_views_count` (
+`comic_id` int(11)
+,`views` bigint(21)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `comments`
 --
 
@@ -100,7 +269,8 @@ INSERT INTO `comments` (`ID`, `post_id`, `user_id`, `comment_text`, `comment_ima
 (2, 44, 1, 'Test N 2', '[]', '2025-04-27 00:10:22'),
 (3, 44, 1, 'Sosat Omerika', '[]', '2025-04-27 01:23:46'),
 (4, 48, 1, 'Comment', '[]', '2025-05-05 19:29:24'),
-(5, 50, 1, 'Comment\r\n', '[]', '2025-05-05 19:33:47');
+(5, 50, 1, 'Comment\r\n', '[]', '2025-05-05 19:33:47'),
+(6, 51, 1, 'Prost@ mi ban asenq te', '[]', '2025-05-22 23:31:35');
 
 -- --------------------------------------------------------
 
@@ -272,7 +442,8 @@ INSERT INTO `likes` (`id`, `user_id`, `post_id`, `created_at`) VALUES
 (47, 5, 44, '2025-04-28 01:18:38'),
 (48, 1, 48, '2025-05-05 17:29:16'),
 (50, 6, 50, '2025-05-05 17:39:40'),
-(52, 1, 50, '2025-05-06 22:34:14');
+(52, 1, 50, '2025-05-06 22:34:14'),
+(53, 1, 51, '2025-05-22 21:31:28');
 
 -- --------------------------------------------------------
 
@@ -346,38 +517,79 @@ CREATE TABLE `movie_actors` (
 
 INSERT INTO `movie_actors` (`movie_id`, `actor_id`) VALUES
 (1, 1),
+(1, 15),
+(1, 19),
 (2, 5),
+(2, 15),
+(2, 22),
 (3, 1),
 (3, 3),
+(3, 19),
 (4, 4),
+(4, 16),
+(4, 17),
+(4, 20),
+(4, 22),
 (5, 2),
+(5, 18),
 (6, 1),
 (6, 2),
 (6, 3),
 (6, 4),
 (6, 5),
+(6, 15),
+(6, 17),
+(6, 20),
+(6, 22),
 (7, 1),
+(7, 19),
 (8, 4),
+(8, 16),
+(8, 17),
 (9, 2),
 (9, 3),
+(9, 15),
+(9, 18),
 (10, 3),
+(10, 23),
+(10, 25),
 (11, 1),
 (11, 2),
 (11, 3),
 (11, 4),
 (11, 5),
+(11, 8),
+(11, 15),
+(11, 20),
+(11, 22),
 (12, 9),
+(12, 14),
 (13, 1),
 (13, 2),
 (13, 3),
+(13, 8),
 (13, 9),
+(13, 18),
+(13, 20),
+(13, 22),
 (14, 7),
 (15, 3),
+(15, 23),
+(15, 24),
+(15, 25),
 (16, 1),
 (16, 6),
+(16, 19),
 (17, 4),
 (17, 5),
+(17, 17),
 (18, 3),
+(18, 18),
+(18, 21),
+(18, 26),
+(18, 27),
+(18, 28),
+(18, 29),
 (19, 1),
 (19, 2),
 (19, 3),
@@ -387,8 +599,20 @@ INSERT INTO `movie_actors` (`movie_id`, `actor_id`) VALUES
 (19, 7),
 (19, 8),
 (19, 9),
+(19, 17),
+(19, 18),
+(19, 21),
+(19, 22),
+(19, 23),
+(19, 24),
+(19, 25),
+(19, 26),
+(19, 27),
+(19, 28),
 (20, 9),
+(20, 14),
 (21, 10),
+(21, 15),
 (22, 1),
 (22, 2),
 (22, 3),
@@ -399,14 +623,47 @@ INSERT INTO `movie_actors` (`movie_id`, `actor_id`) VALUES
 (22, 8),
 (22, 9),
 (22, 10),
+(22, 14),
+(22, 18),
+(22, 19),
+(22, 20),
+(22, 21),
+(22, 22),
+(22, 23),
+(22, 24),
+(22, 25),
+(22, 26),
+(22, 27),
 (23, 6),
+(23, 19),
 (24, 3),
+(24, 30),
+(24, 31),
+(25, 32),
+(26, 23),
+(26, 24),
+(26, 25),
+(26, 33),
+(26, 34),
+(26, 35),
+(26, 36),
+(26, 37),
+(26, 38),
 (27, 1),
 (27, 6),
 (27, 7),
+(27, 19),
 (28, 7),
+(28, 8),
 (29, 4),
-(30, 8);
+(29, 16),
+(29, 39),
+(30, 8),
+(30, 26),
+(30, 27),
+(30, 28),
+(30, 29),
+(30, 30);
 
 -- --------------------------------------------------------
 
@@ -519,7 +776,9 @@ INSERT INTO `pin_series` (`id`, `pin_id`, `series_id`, `created_at`) VALUES
 (9, 1, 22, '2025-05-13 17:24:50'),
 (10, 1, 21, '2025-05-13 17:24:51'),
 (13, 3, 19, '2025-05-13 18:11:40'),
-(14, 1, 2, '2025-05-13 18:13:27');
+(14, 1, 2, '2025-05-13 18:13:27'),
+(15, 2, 20, '2025-05-19 19:54:29'),
+(16, 3, 20, '2025-05-19 19:54:30');
 
 -- --------------------------------------------------------
 
@@ -538,11 +797,11 @@ CREATE TABLE `pin_view` (
 --
 
 INSERT INTO `pin_view` (`pin_id`, `user_id`, `created_at`) VALUES
-(1, 1, '2025-05-14 13:55:11'),
-(2, 1, '2025-05-13 22:45:52'),
-(3, 1, '2025-05-14 13:55:09'),
-(4, 1, '2025-05-13 22:45:43'),
-(5, 1, '2025-05-13 17:43:20');
+(1, 1, '2025-05-22 21:56:55'),
+(2, 1, '2025-05-22 22:04:16'),
+(3, 1, '2025-05-22 21:49:55'),
+(4, 1, '2025-05-22 21:49:56'),
+(5, 1, '2025-05-22 21:34:33');
 
 -- --------------------------------------------------------
 
@@ -653,24 +912,52 @@ CREATE TABLE `series_actors` (
 
 INSERT INTO `series_actors` (`series_id`, `actor_id`) VALUES
 (2, 3),
+(2, 11),
+(2, 15),
 (3, 3),
+(3, 20),
+(3, 30),
 (4, 2),
+(4, 12),
+(4, 18),
 (5, 2),
+(5, 16),
 (7, 7),
 (11, 8),
 (12, 10),
 (13, 3),
+(13, 11),
+(13, 15),
 (14, 7),
 (14, 8),
+(14, 22),
 (15, 3),
+(15, 20),
+(15, 22),
 (16, 2),
+(16, 11),
+(16, 20),
 (17, 4),
+(17, 17),
 (18, 3),
+(18, 15),
+(18, 19),
 (19, 3),
+(19, 11),
 (20, 4),
+(20, 11),
+(21, 1),
+(21, 2),
 (21, 3),
+(21, 4),
+(21, 5),
+(21, 6),
 (21, 7),
-(22, 3);
+(21, 8),
+(21, 9),
+(21, 10),
+(22, 3),
+(22, 15);
 
 -- --------------------------------------------------------
 
@@ -724,7 +1011,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `login`, `name`, `email`, `password`, `avatar`, `description`, `background_image`, `posts`, `followers`, `following`, `pin`, `achivments`, `balance`) VALUES
-(1, 'Davit', 'SoloGamer', '101sologaming101@gmail.com', '$2y$10$ZHbcI3lri8KWBIe9gtpRuOiVomXzqV2XMZfcqI2mD8DevetzoAFMG', '../../Avatars/Davit_avatar.jpg\r\n', NULL, '../../Backgrounds/davit.png', 12, 777, 777, 27, 777, 0.00),
+(1, 'Davit', 'SoloGamer', '101sologaming101@gmail.com', '$2y$10$ZHbcI3lri8KWBIe9gtpRuOiVomXzqV2XMZfcqI2mD8DevetzoAFMG', '../../Avatars/user_1_1747677185.png', 'Im the developer behind this website. I designed and built it from the ground up, focusing on both functionality and user experience. This project is constantly evolving—Im always working on adding new features, improving performance, fixing bugs, and making things more intuitive for users. Whether it’s polishing the UI, optimizing the backend, or experimenting with new ideas, there’s always something in progress.', '../../Backgrounds/bg_1_1747675152.png', 12, 777, 777, 27, 777, 0.00),
 (5, 'GigaNiga', '', 'GigaNigaNiga@gmail.com', '$2y$10$nAsGrTsuILomjXVE.3p38uorwmpmnbEZAaD9N1Y8yRANl/HiCy82i', '../../Avatars/GigaNiga_avatar.png\r\n', NULL, '../../Backgrounds/default_background.png', 0, 0, 0, 0, 0, 0.00),
 (6, 'Narek', '', 'narek@gmail.com', '$2y$10$/e.BmoOLkAh9UVOnXtpCD.qDdebuB7Ma8LC5GYVcQCjvD9rfciMpm', '../../Avatars/Defoult_avatar.png', NULL, '../../Backgrounds/default_background.png', 0, 0, 0, 0, 0, 0.00);
 
@@ -797,7 +1084,7 @@ CREATE TABLE `user_ratings` (
 --
 
 INSERT INTO `user_ratings` (`user_id`, `movie_id`, `rating`, `created_at`) VALUES
-(1, 24, 5, '2025-05-08 19:23:29'),
+(1, 24, 2, '2025-06-04 12:30:01'),
 (1, 28, 5, '2025-05-10 23:40:34'),
 (5, 24, 5, '2025-05-05 16:04:59');
 
@@ -813,6 +1100,13 @@ CREATE TABLE `user_series_ratings` (
   `rating` tinyint(3) UNSIGNED NOT NULL CHECK (`rating` between 1 and 10),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Дамп данных таблицы `user_series_ratings`
+--
+
+INSERT INTO `user_series_ratings` (`user_id`, `series_id`, `rating`, `created_at`) VALUES
+(1, 19, 4, '2025-06-04 13:27:57');
 
 -- --------------------------------------------------------
 
@@ -832,20 +1126,21 @@ CREATE TABLE `views` (
 --
 
 INSERT INTO `views` (`id`, `user_id`, `post_id`, `viewed_at`) VALUES
-(1, 1, 44, '2025-05-06 22:47:22'),
+(1, 1, 44, '2025-05-25 15:57:31'),
 (3, 1, 24, '2025-04-25 22:40:00'),
-(16, 5, 44, '2025-05-13 18:28:50'),
+(16, 5, 44, '2025-05-19 19:39:43'),
 (153, 1, 22, '2025-05-13 20:01:06'),
 (238, 5, 47, '2025-04-28 01:22:23'),
 (301, 1, 48, '2025-05-13 20:00:49'),
-(303, 1, 50, '2025-05-13 20:07:12'),
+(303, 1, 50, '2025-05-19 19:55:25'),
 (305, 6, 50, '2025-05-05 17:39:41'),
-(316, 1, 49, '2025-05-06 22:43:47'),
+(316, 1, 49, '2025-05-22 21:55:06'),
 (324, 1, 7, '2025-05-06 22:15:57'),
 (331, 1, 10, '2025-05-06 22:21:01'),
 (357, 1, 21, '2025-05-13 20:01:09'),
 (358, 1, 16, '2025-05-13 20:01:27'),
-(361, 1, 17, '2025-05-13 20:02:00');
+(361, 1, 17, '2025-05-13 20:02:00'),
+(403, 1, 51, '2025-05-25 19:00:05');
 
 -- --------------------------------------------------------
 
@@ -864,6 +1159,24 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `actor_series_count`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `actor_series_count`  AS SELECT `a`.`id` AS `actor_id`, `a`.`name` AS `actor_name`, count(`asr`.`series_id`) AS `series_count` FROM (`actors` `a` left join `series_actors` `asr` on(`a`.`id` = `asr`.`actor_id`)) GROUP BY `a`.`id` ;
+
+-- --------------------------------------------------------
+
+--
+-- Структура для представления `comic_avg_rating`
+--
+DROP TABLE IF EXISTS `comic_avg_rating`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `comic_avg_rating`  AS SELECT `comic_rating`.`comic_id` AS `comic_id`, avg(`comic_rating`.`rating`) AS `avg_rating`, count(0) AS `ratings_count` FROM `comic_rating` GROUP BY `comic_rating`.`comic_id` ;
+
+-- --------------------------------------------------------
+
+--
+-- Структура для представления `comic_views_count`
+--
+DROP TABLE IF EXISTS `comic_views_count`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `comic_views_count`  AS SELECT `comic_views`.`comic_id` AS `comic_id`, count(0) AS `views` FROM `comic_views` GROUP BY `comic_views`.`comic_id` ;
 
 -- --------------------------------------------------------
 
@@ -973,6 +1286,28 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 ALTER TABLE `actors`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `comics`
+--
+ALTER TABLE `comics`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `comic_rating`
+--
+ALTER TABLE `comic_rating`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_comic_user_rating` (`comic_id`,`user_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Индексы таблицы `comic_views`
+--
+ALTER TABLE `comic_views`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_comic_user_view` (`comic_id`,`user_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Индексы таблицы `comments`
@@ -1151,13 +1486,31 @@ ALTER TABLE `views`
 -- AUTO_INCREMENT для таблицы `actors`
 --
 ALTER TABLE `actors`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT для таблицы `comics`
+--
+ALTER TABLE `comics`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT для таблицы `comic_rating`
+--
+ALTER TABLE `comic_rating`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT для таблицы `comic_views`
+--
+ALTER TABLE `comic_views`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT для таблицы `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `comments_likes`
@@ -1181,7 +1534,7 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT для таблицы `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT для таблицы `movies`
@@ -1199,7 +1552,7 @@ ALTER TABLE `pin_movie`
 -- AUTO_INCREMENT для таблицы `pin_series`
 --
 ALTER TABLE `pin_series`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT для таблицы `premium_subscriptions`
@@ -1235,11 +1588,25 @@ ALTER TABLE `user_pins`
 -- AUTO_INCREMENT для таблицы `views`
 --
 ALTER TABLE `views`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=366;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=411;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
+
+--
+-- Ограничения внешнего ключа таблицы `comic_rating`
+--
+ALTER TABLE `comic_rating`
+  ADD CONSTRAINT `comic_rating_ibfk_1` FOREIGN KEY (`comic_id`) REFERENCES `comics` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `comic_rating_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`ID`) ON DELETE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `comic_views`
+--
+ALTER TABLE `comic_views`
+  ADD CONSTRAINT `comic_views_ibfk_1` FOREIGN KEY (`comic_id`) REFERENCES `comics` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `comic_views_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`ID`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `comments_likes`

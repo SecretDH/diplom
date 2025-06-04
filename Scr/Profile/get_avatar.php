@@ -1,4 +1,5 @@
 <?php
+// get_avatar.php
 require __DIR__ . '/../db.php';
 header('Content-Type: application/json');
 

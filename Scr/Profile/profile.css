@@ -54,7 +54,7 @@ body.noscroll {
     src: url(../../Font/DIN_Next_LT_Arabic_Light.ttf);
 }
 
-p, h1, h2, h3 {
+p, h1, h2, h3, h4, h5, h6, span {
     margin: 0;
 }
 

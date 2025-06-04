@@ -1,11 +1,11 @@
 <?php
+// get_movie_actors.php
 require __DIR__ . '../../db.php';
 
 if (!isset($id) || !isset($type) || $id <= 0) {
     die("Некорректный ID или тип.");
 }
 
-// Определяем таблицу и поле для запроса
 if ($type === 'movie') {
     $table = 'movie_actors';
     $column = 'movie_id';
@@ -16,7 +16,6 @@ if ($type === 'movie') {
     die("Некорректный тип.");
 }
 
-// Выполняем запрос для получения актеров
 $sql = "
     SELECT 
         actors.id, 
@@ -45,7 +44,6 @@ if (!$result) {
     exit;
 }
 
-// Вывод данных
 while ($row = mysqli_fetch_assoc($result)) {
     $actorId = htmlspecialchars($row['id']);
     $actorName = htmlspecialchars($row['name']);

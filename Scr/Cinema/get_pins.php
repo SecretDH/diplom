@@ -1,7 +1,7 @@
 <?php
+//get_pins.php
 require __DIR__ . '../../db.php';
 
-// Получение user_id
 $user_id = $_GET['user_id'] ?? null;
 $pin_type = $_GET['pin_type'] ?? null;
 $related_id = $_GET['related_id'] ?? null;
@@ -18,11 +18,9 @@ if (!$related_id) {
     die("<p>Некорректные данные: related_id не передан.</p>");
 }
 
-// Определяем таблицу и поле для проверки связи
 $tableName = $pin_type === 'movie' ? 'pin_movie' : 'pin_series';
 $relatedField = $pin_type === 'movie' ? 'movie_id' : 'series_id';
 
-// SQL-запрос для получения всех пинов пользователя
 $query = "
     SELECT 
         id AS pin_id, 
@@ -37,17 +35,15 @@ $query = "
         user_id = ?
 ";
 
-// Подготовка и выполнение запроса
 $stmt = $pdo->prepare($query);
 $stmt->execute([$user_id]);
 $pins = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($pins as $row) {
-    $pinId = htmlspecialchars($row['pin_id']); // Уникальный ID пина
-    $photo = htmlspecialchars($row['photo']); // Экранируем данные для безопасности
+    $pinId = htmlspecialchars($row['pin_id']);
+    $photo = htmlspecialchars($row['photo']);
     $name = htmlspecialchars($row['name']);
 
-    // Проверяем, прикреплен ли movie_id или series_id к текущему pin_id
     $isAttachedQuery = "
         SELECT COUNT(*) 
         FROM $tableName 
@@ -55,9 +51,8 @@ foreach ($pins as $row) {
     ";
     $isAttachedStmt = $pdo->prepare($isAttachedQuery);
     $isAttachedStmt->execute([$pinId, $related_id]);
-    $isAttached = $isAttachedStmt->fetchColumn() > 0; // true, если связь существует
+    $isAttached = $isAttachedStmt->fetchColumn() > 0;
 
-    // Определяем текст кнопки
     $buttonText = $isAttached ? 'UnPin' : 'Pin';
 
     echo "

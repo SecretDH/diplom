@@ -1,7 +1,6 @@
 <?php
 require __DIR__ . '../../db.php';
 
-// Получаем user_id и поисковый запрос
 $user_id = isset($_POST['user_id']) ? $_POST['user_id'] : (isset($_GET['user_id']) ? $_GET['user_id'] : null);
 $search = isset($_POST['search']) ? trim($_POST['search']) : '';
 
@@ -10,10 +9,8 @@ if (!$user_id) {
     exit;
 }
 
-// Отладочный вывод (скрыт)
 echo '<p style="display: none;">Debug: User ID = ' . htmlspecialchars($user_id) . ', Search = ' . htmlspecialchars($search) . '</p>';
 
-// Формируем SQL-запрос
 $sql = "
     SELECT 
         forum.*, 
@@ -39,7 +36,6 @@ $sql = "
         users ON forum.user_id = users.ID
 ";
 
-// Добавляем условие поиска, если есть
 if (!empty($search)) {
     $sql .= " WHERE forum.post_text LIKE '%" . mysqli_real_escape_string($conn, $search) . "%'";
 }
@@ -53,7 +49,6 @@ if (!$result) {
     exit;
 }
 
-// Проверяем, есть ли результаты
 if (mysqli_num_rows($result) === 0 && !empty($search)) {
     echo '<p class="error-message">Nothing found.</p>';
     mysqli_free_result($result);
@@ -69,7 +64,6 @@ while ($row = mysqli_fetch_assoc($result)) {
     $images = json_decode($row['post_image'], true);
     $main_image = !empty($images) ? $images[0] : '';
 
-    // Проверяем, поставлен ли лайк текущим пользователем
     $likeQuery = "SELECT 1 FROM likes WHERE user_id = ? AND post_id = ?";
     $stmt = $pdo->prepare($likeQuery);
     $stmt->execute([$user_id, $postId]);

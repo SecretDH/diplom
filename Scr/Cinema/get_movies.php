@@ -1,13 +1,7 @@
 <?php
+// get_movies.php
 require __DIR__ . '../../db.php';
 
-// Проверяем, что пользователь авторизован (если требуется)
-// if (!isset($user_id)) {
-//     echo "Ошибка: ID пользователя не передан.";
-//     exit;
-// }
-
-// Запрос к таблице moimoviesves
 $sql = "
     SELECT 
         movies.id, 

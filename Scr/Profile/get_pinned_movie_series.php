@@ -1,14 +1,13 @@
 <?php
-require __DIR__ . '/../db.php'; // Убедитесь, что путь к db.php корректный
+// get_pined_movie_series.php
+require __DIR__ . '/../db.php';
 
-// Получаем ID пина из URL или через GET-запрос
 $pin_id = isset($_GET['pin_id']) ? intval($_GET['pin_id']) : 0;
 
 if ($pin_id <= 0) {
     die("Некорректный ID пина.");
 }
 
-// Запрос для получения фильмов, связанных с пином
 $moviesQuery = "
     SELECT 
         movies.id AS id,
@@ -26,7 +25,6 @@ $moviesQuery = "
         pin_movie.pin_id = ?
 ";
 
-// Запрос для получения сериалов, связанных с пином
 $seriesQuery = "
     SELECT 
         series.id AS id,
@@ -44,7 +42,6 @@ $seriesQuery = "
         pin_series.pin_id = ?
 ";
 
-// Выполняем запросы
 $moviesStmt = $pdo->prepare($moviesQuery);
 $moviesStmt->execute([$pin_id]);
 $movies = $moviesStmt->fetchAll(PDO::FETCH_ASSOC);
@@ -53,15 +50,12 @@ $seriesStmt = $pdo->prepare($seriesQuery);
 $seriesStmt->execute([$pin_id]);
 $series = $seriesStmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Объединяем фильмы и сериалы в один массив
 $items = array_merge($movies, $series);
 
-// Сортируем по времени создания (created_at)
 usort($items, function ($a, $b) {
     return strtotime($b['created_at']) - strtotime($a['created_at']);
 });
 
-// Вывод всех элементов
 echo '<div class="pinned_items">';
 if (!empty($items)) {
     foreach ($items as $item) {

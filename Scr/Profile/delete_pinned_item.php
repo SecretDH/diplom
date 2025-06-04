@@ -1,20 +1,19 @@
 <?php
-require __DIR__ . '/../db.php'; // Убедитесь, что путь к db.php корректный
+//delete_pinned_item.php
+require __DIR__ . '/../db.php';
 
 header('Content-Type: application/json');
 
-// Получаем данные из POST-запроса
 $related_id = $_POST['related_id'] ?? null;
 $pin_type = $_POST['pin_type'] ?? null;
 
 if (!$related_id || !$pin_type) {
-    http_response_code(400); // Неверный запрос
+    http_response_code(400);
     echo json_encode(['status' => 'error', 'error' => 'ID элемента и тип пина обязательны.']);
     exit;
 }
 
 try {
-    // Определяем таблицу и поле для удаления
     if ($pin_type === 'movie') {
         $table = 'pin_movie';
         $field = 'movie_id';
@@ -22,12 +21,11 @@ try {
         $table = 'pin_series';
         $field = 'series_id';
     } else {
-        http_response_code(400); // Неверный запрос
+        http_response_code(400);
         echo json_encode(['status' => 'error', 'error' => 'Неверный тип пина.']);
         exit;
     }
 
-    // Удаляем запись из таблицы
     $stmt = $pdo->prepare("DELETE FROM $table WHERE $field = ?");
     $stmt->execute([$related_id]);
 
@@ -37,7 +35,7 @@ try {
         echo json_encode(['status' => 'error', 'error' => 'Элемент не найден или уже удален.']);
     }
 } catch (Exception $e) {
-    http_response_code(500); // Ошибка сервера
+    http_response_code(500);
     echo json_encode(['status' => 'error', 'error' => 'Ошибка сервера: ' . $e->getMessage()]);
 }
 ?>

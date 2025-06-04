@@ -1,0 +1,79 @@
+html {
+    font-size: 16px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    background-color: #0E091D;
+}
+
+p, h1, h2 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 0.9375rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #0E091D;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 0.3125rem;
+    background: #241A43;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #4D1E96;
+}
+
+@font-face {
+    font-family: Peace Sans;
+    src: url(../../Font/ofont.ru_Peace.ttf);
+}
+
+@font-face {
+    font-family: Intro;
+    src: url(../../Font/SCP_Font.otf);
+}
+
+@font-face {
+    font-family: Helvetica;
+    src: url(../../Font/helveticaneueltstd_blk.otf);
+}
+
+@font-face {
+    font-family: Din_next;
+    src: url(../../Font/DIN_Next_LT_Arabic_Light.ttf);
+}
+
+.soon {
+    position: relative;
+    font-size: 10rem;
+    font-family: Helvetica;
+    color: #FFFFFF;
+    text-align: center;
+    margin-top: 20rem;
+    z-index: 2;
+}
+
+.tentacles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.5;
+}

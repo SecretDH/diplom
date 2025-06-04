@@ -1,4 +1,5 @@
 <?php
+// save_profile_edits.php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -7,7 +8,6 @@ require __DIR__ . '/../db.php';
 header('Content-Type: application/json');
 
 try {
-    // Получаем данные из POST (JSON)
     $data = json_decode(file_get_contents('php://input'), true);
 
     if (!$data) {
@@ -29,7 +29,6 @@ try {
         throw new Exception('user_id не передан');
     }
 
-    // --- Сохраняем аватар, если это base64 ---
     if (strpos($avatar, 'data:image/') === 0) {
         $avatar_folder = __DIR__ . '/../../Avatars/';
         if (!is_dir($avatar_folder)) {
@@ -43,10 +42,9 @@ try {
         $decoded_data = base64_decode($avatar_data[1]);
         file_put_contents($avatar_path, $decoded_data);
 
-        $avatar = $avatar_url; // относительный путь для БД
+        $avatar = $avatar_url;
     }
 
-    // --- Сохраняем фон, если это base64 ---
     if (strpos($background_image, 'data:image/') === 0) {
         $bg_folder = __DIR__ . '/../../Backgrounds/';
         if (!is_dir($bg_folder)) {
@@ -60,10 +58,9 @@ try {
         $bg_decoded = base64_decode($bg_data[1]);
         file_put_contents($bg_path, $bg_decoded);
 
-        $background_image = $bg_url; // относительный путь для БД
+        $background_image = $bg_url;
     }
 
-    // Обновляем основные поля
     $stmt = $conn->prepare("UPDATE users SET name=?, login=?, email=?, description=?, avatar=?, background_image=? WHERE ID=?");
     if (!$stmt) {
         throw new Exception('Ошибка подготовки запроса: ' . $conn->error);
@@ -74,13 +71,11 @@ try {
     }
     $stmt->close();
 
-    // Если нужно сменить пароль
     if (!empty($new_password) && !empty($repeat_password)) {
         if ($new_password !== $repeat_password) {
             echo json_encode(['success' => false, 'message' => 'Пароли не совпадают']);
             exit;
         }
-        // Получаем текущий хэш пароля
         $stmt = $conn->prepare("SELECT password FROM users WHERE ID=?");
         if (!$stmt) {
             throw new Exception('Ошибка подготовки запроса (select password): ' . $conn->error);
@@ -100,7 +95,6 @@ try {
             exit;
         }
 
-        // Обновляем пароль
         $new_hashed = password_hash($new_password, PASSWORD_DEFAULT);
         $stmt = $conn->prepare("UPDATE users SET password=? WHERE ID=?");
         if (!$stmt) {

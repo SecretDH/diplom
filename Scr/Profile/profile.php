@@ -189,8 +189,8 @@ $balance = number_format($userInfo['balance'], 2);
         <div>
             <div style="display: flex;">
                 <div class="user_personal_info">
-                    <p class="user_name" id="username-display"><?php echo htmlspecialchars(!empty($name) ? $name : $login); ?></p>
-                    <p class="user_login" id="login-display">@<?php echo htmlspecialchars($login); ?></p>
+                    <h1 class="user_name" id="username-display"><?php echo htmlspecialchars(!empty($name) ? $name : $login); ?></h1>
+                    <h2 class="user_login" id="login-display">@<?php echo htmlspecialchars($login); ?></h2>
                 </div>
                 <div class="edit">
                     <p>
@@ -200,30 +200,30 @@ $balance = number_format($userInfo['balance'], 2);
             </div>
             <div class="user_stats">
                 <div class="user_stat">
-                    <p class="big_text" id="posts-display"> <?php echo htmlspecialchars($totalPosts); ?> </p>
-                    <p class="mini_text"> posts</p>
+                    <h4 class="big_text" id="posts-display"> <?php echo htmlspecialchars($totalPosts); ?> </h4>
+                    <h4 class="mini_text"> posts</h4>
                 </div>
                 <div class="user_stat">
-                    <p class="big_text" id="followers-display"> <?php echo htmlspecialchars($followers); ?> </p>
-                    <p class="mini_text"> followers </p>
+                    <h4 class="big_text" id="followers-display"> <?php echo htmlspecialchars($followers); ?> </h4>
+                    <h4 class="mini_text"> followers </h4>
                 </div>
                 <div class="user_stat">
-                    <p class="big_text" id="following-display"> <?php echo htmlspecialchars($following); ?> </p>
-                    <p class="mini_text"> following </p>
+                    <h4 class="big_text" id="following-display"> <?php echo htmlspecialchars($following); ?> </h4>
+                    <h4 class="mini_text"> following </h4>
                 </div>
                 <div class="user_stat">
-                    <p class="big_text" id="pin-display"> <?php echo htmlspecialchars($totalPins); ?> </p>
-                    <p class="mini_text"> pin </p>
+                    <h4 class="big_text" id="pin-display"> <?php echo htmlspecialchars($totalPins); ?> </h4>
+                    <h4 class="mini_text"> pin </h4>
                 </div>
                 <div class="user_stat">
-                    <p class="big_text" id="achivments-display"> <?php echo htmlspecialchars($achivments); ?> </p>
-                    <p class="mini_text"> achievements </p>
+                    <h4 class="big_text" id="achivments-display"> <?php echo htmlspecialchars($achivments); ?> </h4>
+                    <h4 class="mini_text"> achievements </h4>
                 </div>
             </div>
             <div class="profile_bio">
-                <p class="bio_text" id="bio-display">
+                <h3 class="bio_text" id="bio-display">
                     <?php echo htmlspecialchars($description); ?>
-                </p>
+                </h3>
             </div>
         </div>
     </div>

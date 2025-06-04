@@ -1,3 +1,52 @@
+<?php
+require __DIR__ . '/../db.php';
+
+// Получаем фильм с самым высоким рейтингом
+$movie_sql = "
+    SELECT m.id, m.title, m.big_poster, m.description, COALESCE(v.average_rating, 0) AS average_rating
+    FROM movies m
+    LEFT JOIN movie_ratings_view v ON m.id = v.movie_id
+    ORDER BY average_rating DESC
+    LIMIT 1
+";
+$movie_result = mysqli_query($conn, $movie_sql);
+$movie = mysqli_fetch_assoc($movie_result);
+
+// Получаем сериал с самым высоким рейтингом
+$series_sql = "
+    SELECT s.id, s.title, s.big_poster, s.description, COALESCE(v.average_rating, 0) AS average_rating
+    FROM series s
+    LEFT JOIN series_ratings_view v ON s.id = v.series_id
+    ORDER BY average_rating DESC
+    LIMIT 1
+";
+$series_result = mysqli_query($conn, $series_sql);
+$series = mysqli_fetch_assoc($series_result);
+
+// Получаем комикс с самым высоким рейтингом
+$comic_sql = "
+    SELECT c.id, c.title, c.background_image AS poster, c.description, COALESCE(v.avg_rating, 0) AS avg_rating
+    FROM comics c
+    LEFT JOIN comic_avg_rating v ON c.id = v.comic_id
+    ORDER BY avg_rating DESC
+    LIMIT 1
+";
+$comic_result = mysqli_query($conn, $comic_sql);
+$comic = mysqli_fetch_assoc($comic_result);
+
+function renderStars($rating) {
+    $rounded = round($rating);
+    $stars = '';
+    for ($i = 0; $i < 5; $i++) {
+        if ($i < $rounded) {
+            $stars .= '<img src="../../Image/raiting_star.svg" class="star" alt="Star">';
+        } else {
+            $stars .= '<img src="../../Image/raiting_star_empty.svg" class="star" alt="Star">';
+        }
+    }
+    return $stars;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,9 +85,75 @@
     <?php include '../navbar.php'; ?>
     <div class="best_movies_container">
         <div id="cinema_slider" class="slider">
-            <div class="slide" id="slide1">Page 1 Content</div>
-            <div class="slide" id="slide2">Page 2 Content</div>
-            <div class="slide" id="slide3">Page 3 Content</div>
+            <div class="slide" id="slide1">
+                <div class="background_overlay"></div>
+                <img src="<?= htmlspecialchars($movie['big_poster']) ?>" alt="" class="slide_image">
+                <h1 class="slide_title">
+                    Best <br>
+                    New <br>
+                    <span class="purple_text"> Movies </span>
+                </h1>
+                <div class="slide_description">
+                    <h1 class="movie_title">
+                        <?= htmlspecialchars(mb_strlen($movie['title']) > 30 ? mb_substr($movie['title'], 0, 30) . '...' : $movie['title']) ?>
+                    </h1>
+                    <div class="raiting">
+                        <?= renderStars($movie['average_rating']) ?>
+                    </div>
+                    <h2 class="description">
+                        <?= htmlspecialchars($movie['description']) ?>
+                    </h2>
+                    <button class="watch_button" onclick="window.location.href='movie_series_page.php?movie_id=<?= htmlspecialchars($movie['id']) ?>'">
+                        Watch
+                    </button>
+                </div>
+            </div>
+            <div class="slide" id="slide2">
+                <div class="background_overlay"></div>
+                <img src="<?= htmlspecialchars($series['big_poster']) ?>" alt="" class="slide_image">
+                <h1 class="slide_title">
+                    Best <br>
+                    New <br>
+                    <span class="blue_text"> Series </span>
+                </h1>
+                <div class="slide_description">
+                    <h1 class="series_title">
+                        <?= htmlspecialchars($series['title']) ?>
+                    </h1>
+                    <div class="raiting">
+                        <?= renderStars($series['average_rating']) ?>
+                    </div>
+                    <h2 class="description">
+                        <?= htmlspecialchars($series['description']) ?>
+                    </h2>
+                    <button class="watch_button" onclick="window.location.href='movie_series_page.php?series_id=<?= htmlspecialchars($series['id']) ?>'">
+                        Watch
+                    </button>
+                </div>
+            </div>
+            <div class="slide" id="slide3">
+                <div class="background_overlay"></div>
+                <img src="../../Comic/<?= htmlspecialchars($comic['poster']) ?>" alt="" class="slide_image">
+                <h1 class="slide_title">
+                    Best <br>
+                    New <br>
+                    <span class="green_text"> Comics </span>
+                </h1>
+                <div class="slide_description">
+                    <h1 class="comic_title">
+                        <?= htmlspecialchars(mb_strlen($comic['title']) > 30 ? mb_substr($comic['title'], 0, 30) . '...' : $comic['title']) ?>
+                    </h1>
+                    <div class="raiting">
+                        <?= renderStars($comic['avg_rating']) ?>
+                    </div>
+                    <h2 class="description">
+                        <?= htmlspecialchars($comic['description']) ?>
+                    </h2>
+                    <button class="watch_button" onclick="window.location.href='../Comic/comic_page.php?id=<?= htmlspecialchars($comic['id']) ?>&user_id=<?= urlencode($_GET['user_id'] ?? '') ?>'">
+                        Read
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="slider-indicators">
             <span class="dot active"></span>
@@ -73,9 +188,6 @@
         </div>
         <button class="actors-scroll-right">&#10142;</button>
     </div>
-
-
-    <div style="width:100%; height:1000px"></div>
 
     <template id="infoBoxTemplateSeries">
         <div class="info_box_series">

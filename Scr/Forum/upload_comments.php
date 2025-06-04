@@ -1,4 +1,5 @@
 <?php
+// upload_comments.php
 require __DIR__ . '../../db.php';
 
 ini_set('display_errors', 1);
@@ -6,7 +7,6 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 header('Content-Type: application/json');
 
-// Получаем данные из POST-запроса
 $text = $_POST['text'] ?? '';
 $user_id = $_POST['user_id'] ?? null;
 $post_id = $_POST['post_id'] ?? null;
@@ -29,7 +29,7 @@ if (!empty($_FILES['images']['name'][0])) {
     $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
 
     foreach ($_FILES['images']['tmp_name'] as $index => $tmp_name) {
-        $file_type = mime_content_type($tmp_name); // Определяем MIME-тип файла
+        $file_type = mime_content_type($tmp_name);
         if (in_array($file_type, $allowed_types)) {
             $filename = basename($_FILES['images']['name'][$index]);
             $target_path = $upload_dir . time() . '_' . $filename;
@@ -46,7 +46,6 @@ if (!empty($_FILES['images']['name'][0])) {
 
 $image_paths = json_encode($uploaded_paths);
 
-// ✨ Используем mysqli для вставки комментария
 $sql = "INSERT INTO comments (post_id, user_id, comment_text, comment_image, comment_date) 
         VALUES (?, ?, ?, ?, ?)";
 

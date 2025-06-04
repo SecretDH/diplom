@@ -1,13 +1,7 @@
 <?php
+// get_actors.php
 require __DIR__ . '../../db.php';
 
-// Проверяем, что пользователь авторизован (если требуется)
-// if (!isset($user_id)) {
-//     echo "Ошибка: ID пользователя не передан.";
-//     exit;
-// }
-
-// Запрос к таблице series
 $sql = "
     SELECT 
         actors.id, 
@@ -31,7 +25,6 @@ if (!$result) {
     exit;
 }
 
-// Вывод данных
 while ($row = mysqli_fetch_assoc($result)) {
     $actorsId = htmlspecialchars($row['id']);
     $actorsName = htmlspecialchars($row['name']);

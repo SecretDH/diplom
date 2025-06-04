@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /Scr/
+Disallow: /Profile/
+Disallow: /Regestration/
+Disallow: /Shop/
+Disallow: /Cinema/
+Disallow: /Forum/
+Disallow: /Comics/
+Disallow: /uploads/
+Allow: /Home/home.php
+Allow: /
+
+Sitemap: http://localhost/diplom/saitmap.xml

@@ -1,4 +1,5 @@
 <?php
+//get_user_posts.php
 require __DIR__ . '../../db.php';
 
 if (!isset($user_id)) {
@@ -84,7 +85,7 @@ $sql = "
 ";
 
 $stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, 'ii', $user_id, $user_id); // Передаем $user_id дважды: для постов и репостов
+mysqli_stmt_bind_param($stmt, 'ii', $user_id, $user_id);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
@@ -94,19 +95,18 @@ if (!$result) {
 }
 
 while ($row = mysqli_fetch_assoc($result)) {
-    $type = $row['type']; // Тип записи: 'post' или 'repost'
+    $type = $row['type']; 
     $postId = htmlspecialchars($row['post_id']);
-    $userId = htmlspecialchars($row['post_user_id']); // ID автора оригинального поста
-    $userName = htmlspecialchars($row['user_name']); // Имя автора оригинального поста
-    $userLogin = htmlspecialchars($row['user_login']); // Логин автора оригинального поста
+    $userId = htmlspecialchars($row['post_user_id']);
+    $userName = htmlspecialchars($row['user_name']);
+    $userLogin = htmlspecialchars($row['user_login']);
     $userName = !empty($userName) ? $userName : $userLogin;
-    $userAvatar = htmlspecialchars($row['user_avatar']); // Аватар автора оригинального поста
+    $userAvatar = htmlspecialchars($row['user_avatar']);
     $postDate = htmlspecialchars($row['post_date']);
     $postText = htmlspecialchars($row['post_text']);
     $images = json_decode($row['post_image'], true);
     $main_image = !empty($images) ? $images[0] : '';
 
-    // Если это репост, добавляем данные о пользователе, который сделал репост
     if ($type === 'repost') {
         $repostUserId = htmlspecialchars($row['repost_user_id']);
         $repostUserName = htmlspecialchars($row['repost_user_name']);
@@ -115,19 +115,16 @@ while ($row = mysqli_fetch_assoc($result)) {
         $repostUserAvatar = htmlspecialchars($row['repost_user_avatar']);
     }
 
-    // Проверяем, поставлен ли лайк текущим пользователем
     $likeQuery = "SELECT 1 FROM likes WHERE user_id = ? AND post_id = ?";
     $stmt = $pdo->prepare($likeQuery);
     $stmt->execute([$user_id, $postId]);
     $isLiked = $stmt->fetch() ? 'true' : 'false';
 
-    // Проверяем, сделан ли репост текущим пользователем
     $repostQuery = "SELECT 1 FROM reposts WHERE user_id = ? AND post_id = ?";
     $stmt = $pdo->prepare($repostQuery);
     $stmt->execute([$user_id, $postId]);
     $isReposted = $stmt->fetch() ? 'true' : 'false';
 
-    // Выводим HTML
     echo '<div class="content_block" data-post-id="' . $postId . '" data-type="' . $type . '" data-user-id="' . $userId . '">';
     echo '<img src="' . $userAvatar . '" class="post_avatar_img">';
     echo '<div class="user_info">';

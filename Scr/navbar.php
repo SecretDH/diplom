@@ -11,19 +11,19 @@
             <a href="../Cinema/Cinema.php" class="navbar_scr"><p class="button-text_navbar"> CINEMA </p></a>
         </div>
         <div class="button_navbar">
-            <a href="#"><p class="button-text_navbar"> LIVE ROOM </p></a>
+            <a href="../LiveRoom/liveroom.php"><p class="button-text_navbar"> LIVE ROOM </p></a>
         </div>
         <div class="button_navbar">
             <a href="../Forum/forum.php" class="navbar_scr"><p class="button-text_navbar"> FORUM </p></a>
         </div>
         <div class="button_navbar">
-            <a href="#"><p class="button-text_navbar"> SHOP </p></a>
+            <a href="../Shop/shop.php"><p class="button-text_navbar"> SHOP </p></a>
         </div>
         <div class="button_navbar">
-            <a href="#"><p class="button-text_navbar"> LIBRARY </p></a>
+            <a href="../Library/library.php"><p class="button-text_navbar"> LIBRARY </p></a>
         </div>
         <div class="button_navbar">
-            <a href="#"><p class="button-text_navbar"> COMIC </p></a>
+            <a href="../Comic/comic.php"><p class="button-text_navbar"> COMIC </p></a>
         </div>
     </div>
 

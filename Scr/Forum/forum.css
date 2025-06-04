@@ -240,6 +240,7 @@ a {
     display: flex;
     margin: auto;
     opacity: 0.5;
+    cursor: pointer;
 }
 
 .stat:hover {

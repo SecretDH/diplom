@@ -5,7 +5,6 @@ if (!isset($actor_id) || $actor_id <= 0) {
     die("Некорректный ID актера.");
 }
 
-// Запрос к таблице series
 $sql = "
     SELECT 
         series.id AS id, 
@@ -49,7 +48,6 @@ if (!$result) {
     exit;
 }
 
-// Вывод данных
 while ($row = mysqli_fetch_assoc($result)) {
     $seriesId = htmlspecialchars($row['id']);
     $seriesTitle = htmlspecialchars($row['title']);
